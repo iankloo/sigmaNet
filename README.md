@@ -16,17 +16,24 @@ This is an attempt at an htmlwidget connecting R and sigma js.  While there is a
 
 ## Basic network rendering
 
-Currently, you can only create graphs from igraph objects:
-
+Currently, the sigmaNet function takes an igraph object and outputs a Simga js widget:
 ```
 sigmaNet(graph = igraphObject)
 ```
 
+There are a few options:
+
+```
+sigmaNet(graph = igraphObject, minNodeSize = 1, maxNodeSize = 8, minEdgeSize = 1, maxEdgeSize = 1, nodeColor = 'blue', edgeColor = 'black')
+```
+Note, edge and node colors can be set as a color string or a hex string.
+
+The edge size attributes are particularly useful when drawing large graphs.  These act as defacto alpha (opacity) attributes - which is necessary because alpha is not available in the Sigma webgl renderer.  If you find that your edges are creating a messy graph, try setting them to be very small (say, 0.05).
+
 ## Features in development
 
 - Make graphs from edges/nodes data frames
-- Be able to change node and edge colors
 - Choose between webgl and canvas
-- Option for edge size/opacity
 - Make all igraph layouts available
 - Shiny support
+- Base node size on things other than degree
