@@ -4,5 +4,3 @@ dependencies:
     src: htmlwidgets/lib/sigma-1.2.0
     script:
       - sigma.min.js
-      - plugins/sigma.parsers.json.min.js
-
