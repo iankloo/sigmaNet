@@ -60,3 +60,17 @@ sigmaNet <- function(graph, minNodeSize = 1, maxNodeSize = 8, minEdgeSize = 1, m
   
   htmlwidgets::createWidget(name='sigmaNet', x, width = width, height = height, package = 'sigmaNet', elementId = elementId)
 }
+
+
+# #add custom html for filter plugin
+# sigmaNet_html <- function(id, style, class, ...){
+#   htmltools::tags$div(
+#     id = id, class = class, style = style,
+#     htmltools::tags$div(
+#       id = "control-pane",
+#       htmltools::tags$h3('Filter by Degree'),
+#       htmltools::tags$input(id = 'min-degree', type = 'range', min = '0', max = '0', value = '0')
+#     )
+#   )
+# }
+
