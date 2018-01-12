@@ -32,7 +32,7 @@ layout <- layout_with_fr(karate)
 
 sigmaNet(karate, layout = layout)
 ```
-![](simpleNetwork.png)
+![alt tag](simpleNetwork.png)
 
 If you render this at home, you'll see that you can zoom, pan, and get information on-hover for the nodes.
 
