@@ -1,6 +1,6 @@
 # sigmaNet
 
-Render igraph networks using Sigma.js.  
+Render igraph networks using Sigma.js - in R!  
 
 ## Why?
 
@@ -32,7 +32,7 @@ layout <- layout_with_fr(karate)
 
 sigmaNet(karate, layout = layout)
 ```
-![](simpleNetwork.PNG)
+![](simpleNetwork.png)
 
 If you render this at home, you'll see that you can zoom, pan, and get information on-hover for the nodes.
 
@@ -55,7 +55,7 @@ data(immuno)
 layout <- layout_with_fr(immuno)
 sigmaNet(immuno, layout = layout,minNodeSize = .001, maxNodeSize = 3, minEdgeSize = .1, maxEdgeSize = .1)
 ```
-![](bigNetwork.PNG)
+![](bigNetwork.png)
 
 As you can see, this graph still looks great even without transparency.  If you render this at home, you will see that the visualization is still snappy and responsive.  
 
