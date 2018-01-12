@@ -1,39 +1,74 @@
 # sigmaNet
 
-IN DEVELOPMENT
+Render igraph networks using Sigma.js.  
 
-This is an attempt at an htmlwidget connecting R and sigma js.  While there is already a pre-existing library called sigma, this one is meant to be more full featured (the original library was built as a demonstration of the htmlwidgets framework and is no longer being developed).
+## Why?
 
-## Advantages over existing Sigma htmlwidget
+Igraph is a great tool for working with networks in R, but it comes up short when creating visualizations.  Igraph uses R's plot() and a less-than-user-friendly set of parameters to create visualizations.  These visualizations are static and can be difficult to work with aesthetically.  For example, node sizes can be given with the vertex.size parameter, but they are then re-scaled by the plot() function behind the scenes.  Finally, plot() output is static and can only be rendered in image formats.
 
-1. No need to create external file before rendering (which can complicate implementation in server-side shiny apps)
-2. Remove rgexf dependency
-3. More intuitive to make graphs in R workflow (no need to learn what a gexf object should look like)
-4. More control over graph attributes: color, size, opacity, etc. of edges/nodes
-5. Choose between webgl and canvas
-6. Bring the graph learning algorithms (from igraph) and graph drawing via sigma into one place
+This package addresses these problems by allowing users to quickly create Sigma.js visualizations from igraph objects.  These visualizations render quickly, even with large numbers of nodes/edges, and allow for a number of different outputs: PNG, PDF, and interactive HTML.  
 
+If you are only working with small networks, check out the visNetwork package which uses vis.js to draw networks.  The package has a lot of great features, but it is somewhat slow for large networks (10s of thousands of nodes) and can be sluggish once rendered.  This is because vis.js (and thus visNetwork) use canvas to render graphs.  Canvas is much faster than SVG-based graphics (like D3), but is slower than Webgl (used by Sigma.js).
 
-## Basic network rendering
+## How?
 
-Currently, the sigmaNet function takes an igraph object and outputs a Simga js widget:
-```
-sigmaNet(graph = igraphObject)
-```
-
-There are a few options:
+First, install this package:
 
 ```
-sigmaNet(graph = igraphObject, minNodeSize = 1, maxNodeSize = 8, minEdgeSize = 1, maxEdgeSize = 1, nodeColor = 'blue', edgeColor = 'black')
+devtools::install_github('iankloo/sigmaNet')
 ```
-Note, edge and node colors can be set as a color string or a hex string.
 
-The edge size attributes are particularly useful when drawing large graphs.  These act as defacto alpha (opacity) attributes - which is necessary because alpha is not available in the Sigma webgl renderer.  If you find that your edges are creating a messy graph, try setting them to be very small (say, 0.05).
+Then, create an igraph network.  Here we'll use the sample "Karate" network from the igraphdata package.
+
+Note, passing a layout to the sigmaNet() function will dramatically improve speed and allow you to focus on the asthetics (re-drawing will be much faster than re-learning a layout every time you change one little thing).
+
+```
+library(sigmaNet)
+library(igraph)
+library(igraphdata)
+
+data(karate)
+layout <- layout_with_fr(karate)
+
+sigmaNet(karate, layout = layout)
+```
+![](simpleNetwork.PNG)
+
+If you render this at home, you'll see that you can zoom, pan, and get information on-hover for the nodes.
+
+## Options
+
+You have a few options available to change the aesthetics of graphs:
+
+- minNodeSize and maxNodeSize adjust the scale of your nodes.  Sizing is assigned by degree (for now).
+- minEdgeSize and maxEdgeSize act similar to the node attributes.  Sizing is done by weight, but the min- and max- attributes are both set as 1 by default, which ignores weighting.
+- nodeColor and EdgeColor adjust colors...
+- layout lets you bring your own layout to save rendering time (discussed above)
+
+Note: there is no opacity/transparency/alpha attribute!  That is because webgl doesn't support transparency.  To mimic transparency, set your edge size to be small - this works really well.  I know this is a big tradeoff, but it is the only way to render large networks.  
+
+Using some of these options to render a larger network:
+
+```
+data(immuno)
+
+layout <- layout_with_fr(immuno)
+sigmaNet(immuno, layout = layout,minNodeSize = .001, maxNodeSize = 3, minEdgeSize = .1, maxEdgeSize = .1)
+```
+![](bigNetwork.PNG)
+
+As you can see, this graph still looks great even without transparency.  If you render this at home, you will see that the visualization is still snappy and responsive.  
+
 
 ## Features in development
 
-- Make graphs from edges/nodes data frames
-- Choose between webgl and canvas
-- Make all igraph layouts available
 - Shiny support
 - Base node size on things other than degree
+- Review original code base
+- Add neighborhoods plugin
+- Add filter plugin
+- Options to control interactivity
+- Export options
+
+
+

@@ -1,6 +1,7 @@
 #' Draw a network in sigmajs
 #'
 #' @param graph An igraph object
+#' @param layout The output of one of the igraph layout functions.  If not provided, layout_nicely() will be used (note, this will slow things down).
 #' @param minNodeSize The minimum size of graph nodes (defaults to 1)
 #' @param maxNodeSize The maximum size of graph nodes (defaults to 8)
 #' @param minEdgeSize The minimum size of graph edges (defaults to 1)
@@ -19,7 +20,7 @@ sigmaNet <- function(graph, layout = NULL, minNodeSize = 1, maxNodeSize = 8, min
   colnames(edges) <- c('source','target','id','size')
 
   if(length(layout) == 0){
-    l <- igraph::layout_with_fr(graph, grid = 'nogrid')
+    l <- igraph::layout_nicely(graph)
   } else {
     l <- layout
   }
