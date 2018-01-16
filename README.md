@@ -60,6 +60,9 @@ sigmaNet(immuno, layout = layout,minNodeSize = .001, maxNodeSize = 3, minEdgeSiz
 
 As you can see, this graph still looks great even without transparency.  If you render this at home, you will see that the visualization is still snappy and responsive.  
 
+## Shiny Support
+
+You can use sigmaNet() output in Shiny using renderSigmaNet() in your server and sigmaNetOutput() in your ui.  See the shiny docs for more general info about Shiny - these functions drop-in just like the basic plotting examples.  
 
 ## Features in development
 
