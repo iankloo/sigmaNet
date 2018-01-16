@@ -4,6 +4,8 @@
 #' @param layout The output of one of the igraph layout functions.  If not provided, layout_nicely() will be used (note, this will slow things down).
 #' @param nodeSizeMetric The metric to use when sizing the nodes.  Options are: degree, closeness, betweenness, pageRank, or eigenCentrality.
 #' @param nodeLabel Which attribute to use as the node labels.  Default will be the "names" assigned by igraph - you probably don't need to change this.
+#' @param edgeWeightAttr Which attribute to use as edge weights.  Defaults to NULL to render all edges the same size.
+#' @param nodeColorPalette ??
 #' @param minNodeSize The minimum size of graph nodes (defaults to 1)
 #' @param maxNodeSize The maximum size of graph nodes (defaults to 8)
 #' @param minEdgeSize The minimum size of graph edges (defaults to 1)
@@ -15,7 +17,16 @@
 #' @import htmlwidgets
 #' @export
 
-sigmaNet <- function(graph, layout = NULL, nodeSizeMetric = 'degree', nodeLabels = NULL, edgeWeightAttr = NULL, minNodeSize = 1, maxNodeSize = 8, minEdgeSize = 1, maxEdgeSize = 1, nodeColor = "#3182bd", edgeColor =  "#636363", width = NULL, height = NULL, elementId = NULL){
+sigmaNet <- function(graph, layout = NULL, nodeSizeMetric = 'degree', nodeLabels = NULL,
+                     nodeColorAttr = NULL, edgeColorAttr = NULL, nodeColorPalette = 'Dark2', edgeColorPalette = 'Set2',
+                     edgeWeightAttr = NULL, minNodeSize = 1, maxNodeSize = 8, minEdgeSize = 1,
+                     maxEdgeSize = 1, nodeColor = "#3182bd", edgeColor =  "#636363", saveAs = NULL, showInViewer = TRUE,
+                     width = NULL, height = NULL, elementId = NULL){
+
+  if(!is.null(saveAs) & showInViewer == FALSE){
+    stop('Please either save the result using the saveAs argument or set showInViewer to TRUE to see the result.')
+  }
+
   edges <- igraph::as_data_frame(graph, what = 'edges')
 
   if(!is.null(edgeWeightAttr) & minEdgeSize == maxEdgeSize){
@@ -91,6 +102,22 @@ sigmaNet <- function(graph, layout = NULL, nodeSizeMetric = 'degree', nodeLabels
   edges$source <- as.character(edges$source)
   edges$target <- as.character(edges$target)
 
+  if(!is.null(nodeColorAttr)){
+    nodes$tempCol <- igraph::as_data_frame(graph, what = 'vertices')[,nodeColorAttr]
+    suppressWarnings(pal <- brewer.pal(length(unique(nodes[,'tempCol'])), nodeColorPalette))
+    palDF <- data.frame(group = unique(nodes[,'tempCol']), color = pal[1:length(unique(nodes[,'tempCol']))], stringsAsFactors = FALSE)
+    nodes <- dplyr::left_join(nodes, palDF, by = c('tempCol' = 'group'))
+    nodes$tempCol <- NULL
+  }
+
+  if(!is.null(edgeColorAttr)){
+    edges$tempCol <- igraph::as_data_frame(graph, what = 'edges')[,edgeColorAttr]
+    suppressWarnings(pal <- brewer.pal(length(unique(edges[,'tempCol'])), edgeColorPalette))
+    palDF <- data.frame(group = unique(edges[,'tempCol']), color = pal[1:length(unique(edges[,'tempCol']))], stringsAsFactors = FALSE)
+    edges <- dplyr::left_join(edges, palDF, by = c('tempCol' = 'group'))
+    edges$tempCol <- NULL
+  }
+
   if(length(grep('^#([[:alnum:]]){6}$', nodeColor)) == 0){
     nodeColor <- grDevices::rgb(t(grDevices::col2rgb(nodeColor)), maxColorValue = 255)
   }
@@ -108,7 +135,14 @@ sigmaNet <- function(graph, layout = NULL, nodeSizeMetric = 'degree', nodeLabels
 
   x <- list(data = out, options = options)
 
-  htmlwidgets::createWidget(name='sigmaNet', x, width = width, height = height, package = 'sigmaNet', elementId = elementId)
+  wid <- htmlwidgets::createWidget(name='sigmaNet', x, width = width, height = height, package = 'sigmaNet', elementId = elementId)
+
+  if(!is.null(saveAs)){
+    htmlwidgets::saveWidget(wid, file = saveAs)
+  }
+  if(showInViewer == TRUE){
+    wid
+  }
 }
 
 #' @export
@@ -120,7 +154,6 @@ renderSigmaNet <- function(expr, env = parent.frame(), quoted = FALSE) {
   if (!quoted) { expr <- substitute(expr) }
   shinyRenderWidget(expr, sigmaNetOutput, env, quoted = TRUE)
 }
-
 
 # #add custom html for filter plugin
 # sigmaNet_html <- function(id, style, class, ...){

@@ -66,12 +66,9 @@ You can use sigmaNet() output in Shiny using renderSigmaNet() in your server and
 
 ## Features in development
 
-- Color nodes based on specified group (attribute in igraph object).
-- Color edges based on specified group (attribute in igraph object).
 - Add neighborhoods plugin
 - Add filter plugin
 - Options to control interactivity (plugins)
-- Export options - only HTML, image formats requires phantomjs which is a big IF...better to just take a screenshot
 - GUI to modify aesthetics (shiny gadget)
 
 
