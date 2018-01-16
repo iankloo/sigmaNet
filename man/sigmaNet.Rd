@@ -4,9 +4,10 @@
 \alias{sigmaNet}
 \title{Draw a network in sigmajs}
 \usage{
-sigmaNet(graph, layout = NULL, minNodeSize = 1, maxNodeSize = 8,
-  minEdgeSize = 1, maxEdgeSize = 1, nodeColor = "#3182bd",
-  edgeColor = "#636363", width = NULL, height = NULL, elementId = NULL)
+sigmaNet(graph, layout = NULL, nodeLabels = NULL, minNodeSize = 1,
+  maxNodeSize = 8, minEdgeSize = 1, maxEdgeSize = 1,
+  nodeColor = "#3182bd", edgeColor = "#636363", width = NULL,
+  height = NULL, elementId = NULL)
 }
 \arguments{
 \item{graph}{An igraph object}

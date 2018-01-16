@@ -46,7 +46,7 @@ You have a few options available to change the aesthetics of graphs:
 - nodeColor and EdgeColor adjust colors...
 - layout lets you bring your own layout to save rendering time (discussed above)
 
-Note: there is no opacity/transparency/alpha attribute!  That is because webgl doesn't support transparency.  To mimic transparency, set your edge size to be small - this works really well.  I know this is a big tradeoff, but it is the only way to render large networks.  
+Note: there is no opacity/transparency/alpha attribute!  That is because webgl doesn't support transparency.  To mimic transparency, set your edge size to be small - this works really well.  I know this is a big tradeoff, but it is the only way to render large networks without sacrificing performance.  
 
 Using some of these options to render a larger network:
 
@@ -66,12 +66,14 @@ You can use sigmaNet() output in Shiny using renderSigmaNet() in your server and
 
 ## Features in development
 
-- Base node size on things other than degree
-- Review original code base
+- Support for edge weights
+- Color nodes based on specified group (attribute in igraph object).
+- Color edges based on specified group (attribute in igraph object).
 - Add neighborhoods plugin
 - Add filter plugin
-- Options to control interactivity
-- Export options
+- Options to control interactivity (plugins)
+- Export options - only HTML, image formats requires phantomjs which is a big IF...better to just take a screenshot
+- GUI to modify aesthetics (shiny gadget)
 
 
 
