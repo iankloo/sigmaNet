@@ -66,7 +66,6 @@ You can use sigmaNet() output in Shiny using renderSigmaNet() in your server and
 
 ## Features in development
 
-- Support for edge weights
 - Color nodes based on specified group (attribute in igraph object).
 - Color edges based on specified group (attribute in igraph object).
 - Add neighborhoods plugin

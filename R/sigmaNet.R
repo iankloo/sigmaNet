@@ -15,15 +15,30 @@
 #' @import htmlwidgets
 #' @export
 
-sigmaNet <- function(graph, layout = NULL, nodeSizeMetric = 'degree', nodeLabels = NULL, minNodeSize = 1, maxNodeSize = 8, minEdgeSize = 1, maxEdgeSize = 1, nodeColor = "#3182bd", edgeColor =  "#636363", width = NULL, height = NULL, elementId = NULL){
+sigmaNet <- function(graph, layout = NULL, nodeSizeMetric = 'degree', nodeLabels = NULL, edgeWeightAttr = NULL, minNodeSize = 1, maxNodeSize = 8, minEdgeSize = 1, maxEdgeSize = 1, nodeColor = "#3182bd", edgeColor =  "#636363", width = NULL, height = NULL, elementId = NULL){
   edges <- igraph::as_data_frame(graph, what = 'edges')
-  #ignore weights for now - add handler here later
-  edges <- edges[, c('from', 'to')]
+
+  if(!is.null(edgeWeightAttr) & minEdgeSize == maxEdgeSize){
+    message('To size edges based on your edgeWeight Attr, modify the min- and maxEdgeSize so they are not equal.')
+  }
+
+  if(is.null(edgeWeightAttr)){
+    edges <- edges[, c('from', 'to')]
+    edges$id <- 1:nrow(edges)
+    edges$size <- 1
+  } else{
+    tryCatch({
+      edges <- edges[,c('from', 'to', edgeWeightAttr)]
+    }, error = function(e) {
+      stop('Specified weight attribute does not exist in igraph object.')
+    })
+    edges$id <- 1:nrow(edges)
+    edges$size <- edges$weight
+    edges$weight <- NULL
+  }
   edges$from <- as.character(edges$from)
   edges$to <- as.character(edges$to)
-  edges$id <- 1:nrow(edges)
-  edges$size <- 1
-  colnames(edges) <- c('source','target','id','size')
+  colnames(edges) <- c('source','target', 'id','size')
 
   if(length(layout) == 0){
     l <- igraph::layout_nicely(graph)
@@ -41,8 +56,7 @@ sigmaNet <- function(graph, layout = NULL, nodeSizeMetric = 'degree', nodeLabels
       colnames(nodes) <- 'label'
     }, error = function(e) {
       stop('Specified node labels do not exist in igraph object.')
-    }
-    )
+    })
   }
 
   nodes <- cbind(nodes, l)
