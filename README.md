@@ -43,6 +43,7 @@ If you render this at home, you'll see that you can zoom, pan, and get informati
 
 You have a few options available to change the aesthetics of graphs. Options are applied in a similar way to ggplot, but use the pipe operator instead of the "+".  Here is an example showing most of the options you can use:
 
+(this thing looks terrible if you render it - just showing what options you can change)
 ```
 data(karate)
 layout <- layout_with_fr(karate)
@@ -50,7 +51,7 @@ sig <- sigmaFromIgraph(karate, layout = layout)
 
 sig %>%
   addNodeColors(colorAttr = 'Faction') %>%
-  addNodeSize(sizeVector = size, minSize = 1, maxSize = 6) %>%
+  addNodeSize(sizeMetric = 'degree', minSize = 1, maxSize = 6) %>%
   addNodeLabels(labelAttr = 'Faction') %>%
   addEdgeSize(sizeAttr = 'weight', minSize = .1, maxSize = 5) %>%
   addEdgeColors(colorAttr = 'weight', colorPal = 'Dark2') 
