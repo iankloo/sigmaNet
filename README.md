@@ -63,7 +63,6 @@ As you can see, this graph still looks great even without transparency.  If you 
 
 ## Features in development
 
-- Shiny support
 - Base node size on things other than degree
 - Review original code base
 - Add neighborhoods plugin

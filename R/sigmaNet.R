@@ -66,6 +66,16 @@ sigmaNet <- function(graph, layout = NULL, minNodeSize = 1, maxNodeSize = 8, min
   htmlwidgets::createWidget(name='sigmaNet', x, width = width, height = height, package = 'sigmaNet', elementId = elementId)
 }
 
+#' @export
+sigmaNetOutput <- function(outputId, width = "100%", height = "400px") {
+  shinyWidgetOutput(outputId, "sigmaNet", width, height, package = "sigmaNet")
+}
+#' @export
+renderSigmaNet <- function(expr, env = parent.frame(), quoted = FALSE) {
+  if (!quoted) { expr <- substitute(expr) }
+  shinyRenderWidget(expr, sigmaNetOutput, env, quoted = TRUE)
+}
+
 
 # #add custom html for filter plugin
 # sigmaNet_html <- function(id, style, class, ...){
