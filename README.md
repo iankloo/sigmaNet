@@ -83,9 +83,9 @@ You can use sigmaNet() output in Shiny using renderSigmaNet() in your server and
 
 ## Features in development
 
-- Use different shapes?
 - Add neighborhoods plugin
 - Add filter plugin
+- Node shapes plugin?
 - Options to control interactivity (plugins)
 - GUI to modify aesthetics (shiny gadget)
 
