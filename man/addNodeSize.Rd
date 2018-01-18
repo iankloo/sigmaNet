@@ -2,7 +2,7 @@
 % Please edit documentation in R/sigmaAttrs.R
 \name{addNodeSize}
 \alias{addNodeSize}
-\title{Add node size by either specifying a metric, or supplying your own vector of sizes.}
+\title{Modify the node size of a sigmaNet object.}
 \usage{
 addNodeSize(sigmaObj, minSize = 1, maxSize = 3, sizeMetric = "degree",
   sizeVector = NULL, oneSize = NULL)
@@ -20,6 +20,42 @@ addNodeSize(sigmaObj, minSize = 1, maxSize = 3, sizeMetric = "degree",
 
 \item{oneSize}{A single size to use for all nodes}
 }
+\value{
+A sigmaNet object with modified node sizes  This object can be called directly
+  to create a visualization, or modified by additional functions.
+}
 \description{
-Add node size by either specifying a metric, or supplying your own vector of sizes.
+Modify the node size of an existing sigmaNet object by providing one of the following:
+(1) A single size to use for all nodes; (2) a vector of node sizes (this must be the same
+length as the number of nodes in the graph); or (3) a metric to use to scale the nodes.
+}
+\details{
+If using the 2nd or 3rd approach, specifying the minSize and maxSize attributes will scale
+the nodes according to your specification, between these min- and max sizes.
+}
+\examples{
+library(igraph)
+library(sigmaNet)
+library(magrittr)
+
+data(lesMis)
+
+l <- layout_nicely(lesMis)
+
+#one size for all nodes
+sig <- sigmaFromIgraph(graph = lesMis, layout = l) \%>\%
+  addNodeSize(oneSize = 3)
+sig
+
+#using a size attribute
+sig <- sigmaFromIgraph(graph = lesMis, layout = l) \%>\%
+  addNodeSize(sizeMetric = 'degree', minSize = 2, maxSize = 8)
+sig
+
+#using a vector
+customSize <- log10(degree(lesMis))
+sig <- sigmaFromIgraph(graph = lesMis, layout = l) \%>\%
+ addNodeSize(sizeVector = customSize)
+sig
+
 }

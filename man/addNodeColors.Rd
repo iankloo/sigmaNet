@@ -2,7 +2,7 @@
 % Please edit documentation in R/sigmaAttrs.R
 \name{addNodeColors}
 \alias{addNodeColors}
-\title{Add node colors by an attribute or by specifying a single color.}
+\title{Modify the node colors of a sigmaNet object.}
 \usage{
 addNodeColors(sigmaObj, oneColor = NULL, colorAttr = NULL,
   colorPal = "Dark2")
@@ -16,6 +16,39 @@ addNodeColors(sigmaObj, oneColor = NULL, colorAttr = NULL,
 
 \item{colorPal}{The color palatte to use - only used if colorAttr is specified}
 }
+\value{
+A sigmaNet object with modified node colors.  This object can be called directly
+  to create a visualization, or modified by additional functions.
+}
 \description{
-Add node colors by an attribute or by specifying a single color.
+Modify the node colors in an existing sigmaNet object by providing one of the following:
+(1) a single color to use for all nodes or; (2) a vertex attribute from your original
+igraph object.  If you are using a vertex attribute, you can also specify a color palette
+from the RColorBrewer package.
+}
+\details{
+*It is most useful to use the pipe operator from the magrittr package with this function.
+}
+\examples{
+library(igraph)
+library(sigmaNet)
+library(magrittr)
+
+data(lesMis)
+
+l <- layout_nicely(lesMis)
+
+#one color for all nodes
+sig <- sigmaFromIgraph(graph = lesMis, layout = l) \%>\%
+  addNodeColors(oneColor = '#D95F02')
+sig
+
+#color based on attribute (edge betweenness cluster)
+clust <- cluster_edge_betweenness(lesMis)$membership
+V(lesMis)$group <- clust
+
+sig <- sigmaFromIgraph(graph = lesMis, layout = l) \%>\%
+  addNodeColors(colorAttr = 'group', colorPal = 'Set1')
+sig
+
 }

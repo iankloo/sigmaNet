@@ -2,7 +2,7 @@
 % Please edit documentation in R/sigmaAttrs.R
 \name{addInteraction}
 \alias{addInteraction}
-\title{Add/modify interactivity of the visualization}
+\title{Modify the interactivity of a sigmaNet object.}
 \usage{
 addInteraction(sigmaObj, neighborEvent = "onClick", doubleClickZoom = TRUE,
   mouseWheelZoom = TRUE)
@@ -17,5 +17,21 @@ addInteraction(sigmaObj, neighborEvent = "onClick", doubleClickZoom = TRUE,
 \item{mouseWheelZoom}{Enable/disable zoom event on mouse wheel}
 }
 \description{
-Add/modify interactivity of the visualization
+Modify the interactivity of a sigmaNet object using the below options.  By default, visualizations
+include on-click neighbor events, double-click zoom, and mouse-wheel zoom.  These can all be disabled
+or modified per the below options.
+}
+\examples{
+library(igraph)
+library(sigmaNet)
+library(magrittr)
+
+data(lesMis)
+
+l <- layout_nicely(lesMis)
+#change neighbor highlighting to on-hover, disable double-click zoom, enable mouse-wheel zoom
+sig <- sigmaFromIgraph(graph = lesMis, layout = l) \%>\%
+  addInteraction(neighborEvent = 'onHover', doubleClickZoom = FALSE, mouseWheelZoom = TRUE)
+sig
+
 }

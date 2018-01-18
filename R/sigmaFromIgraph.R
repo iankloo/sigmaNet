@@ -1,12 +1,32 @@
 #' Make a basic Sigma graph object from an igraph object
 #'
+#' Create a sigmaNet object from an igraph object.  The sigmaNet object will be a basic visualization
+#' of the igraph object and is meant to be the starting point for the development of a useful Sigma.js
+#' visualization.  If you are familiar with the ggplot syntax, this is similar to the basic ggplot()
+#' function.
+#'
 #' @param graph An igraph object
 #' @param layout The output of one of the igraph layout functions.  If not provided, layout_nicely() will be used (note, this will slow things down).
 #' @param width Width of the resulting graph - defaults to fit container, probably leave this alone
 #' @param height Height of the resulting graph - defaults to fit container, probably leave this alone
 #' @param elementId Do not specify, this is used by the htmlwidgets package
 #'
-#' @import htmlwidgets
+#' @return A sigmaNet object (which is an htmlwidget).  This object is meant to be called directly
+#'   to render a default sigma.js visualization, or it can be passed to other arguments to
+#'   change visualization attributes (colors, sizes, interactivity, etc.).
+#'
+#' @examples
+#' library(igraph)
+#' library(sigmaNet)
+#'
+#' data(lesMis)
+#'
+#' l <- layout_nicely(lesMis)
+#' sig <- sigmaFromIgraph(graph = lesMis, layout = l)
+#'
+#' #render basic visualization by calling the object
+#' sig
+#'
 #' @export
 
 sigmaFromIgraph <- function(graph, layout = NULL, width = NULL, height = NULL, elementId = NULL){
@@ -52,6 +72,5 @@ sigmaFromIgraph <- function(graph, layout = NULL, width = NULL, height = NULL, e
   x <- list(data = out, options = options, graph = graph)
 
   htmlwidgets::createWidget(name='sigmaNet', x, width = width, height = height, package = 'sigmaNet', elementId = elementId)
-
 }
 

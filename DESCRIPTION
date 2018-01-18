@@ -2,6 +2,8 @@ Package: sigmaNet
 Title: Render Sigma.js Networks in R
 Version: 1.0
 Authors@R: person("Ian", "Kloo", email = "iankloo@gmail.com", role = c("aut", "cre"))
+URL: https://github.com/iankloo/sigmaNet
+BugReports: https://github.com/iankloo/sigmaNet/issues
 Description: Create interactive network visualizations using Sigma.js.  This package is meant to be used in conjunction
     with igraph, replacing the (somewhat underwhelming) plotting features of the package.  The idea is to quickly render
     networks, regardless of their size, in a way that allows for easy, iterative modification of aesthetics.  Because 
@@ -16,6 +18,6 @@ LazyData: true
 Imports: htmlwidgets,
     igraph,
     jsonlite,
-    RColorBrewer,
-    magrittr
+    RColorBrewer
 RoxygenNote: 6.0.1
+Suggests: magrittr

@@ -2,7 +2,7 @@
 % Please edit documentation in R/sigmaAttrs.R
 \name{addEdgeSize}
 \alias{addEdgeSize}
-\title{Add edge size by specifying an attribute (usually weight) or a single edge size for all edges.}
+\title{Modify the edge size of a sigmaNet object.}
 \usage{
 addEdgeSize(sigmaObj, sizeAttr = NULL, minSize = 1, maxSize = 5,
   oneSize = NULL)
@@ -18,6 +18,35 @@ addEdgeSize(sigmaObj, sizeAttr = NULL, minSize = 1, maxSize = 5,
 
 \item{oneSize}{A single size to use for all edges}
 }
+\value{
+A sigmaNet object with modified node labels.  This object can be called directly
+  to create a visualization, or modified by additional functions.
+}
 \description{
-Add edge size by specifying an attribute (usually weight) or a single edge size for all edges.
+Modify the edge size of a sigmaNet object by providing one of the following: (1) a single size
+to use for all edges; or (2) an attribute in the initial igraph to be used to size the edges.
+}
+\details{
+If the 2nd method is used, the minSize and maxSize attribute will control lower and upper bounds
+of the scaling function.
+}
+\examples{
+library(igraph)
+library(sigmaNet)
+library(magrittr)
+
+data(lesMis)
+
+l <- layout_nicely(lesMis)
+
+#specify a single edge size
+sig <- sigmaFromIgraph(graph = lesMis, layout = l) \%>\%
+  addEdgeSize(oneSize = 5)
+sig
+
+#specify an attribute and min/max
+sig <- sigmaFromIgraph(graph = lesMis, layout = l) \%>\%
+  addEdgeSize(sizeAttr = 'value', minSize = .1, maxSize = 2)
+sig
+
 }

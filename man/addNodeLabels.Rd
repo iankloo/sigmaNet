@@ -2,7 +2,7 @@
 % Please edit documentation in R/sigmaAttrs.R
 \name{addNodeLabels}
 \alias{addNodeLabels}
-\title{Add node labels by specifying an attribute from the igraph object.}
+\title{Modify the node labels of a sigmaNet object.}
 \usage{
 addNodeLabels(sigmaObj, labelAttr = NULL)
 }
@@ -11,6 +11,24 @@ addNodeLabels(sigmaObj, labelAttr = NULL)
 
 \item{labelAttr}{The attribute to use to create node labels}
 }
+\value{
+A sigmaNet object with modified node labels.  This object can be called directly
+  to create a visualization, or modified by additional functions.
+}
 \description{
-Add node labels by specifying an attribute from the igraph object.
+Modify the node labels of an existing sigmaNet object by providing an attribute from the
+initial igraph to use as the labels.
+}
+\examples{
+library(igraph)
+library(sigmaNet)
+library(magrittr)
+
+data(lesMis)
+
+l <- layout_nicely(lesMis)
+sig <- sigmaFromIgraph(graph = lesMis, layout = l) \%>\%
+  addNodeLabels(labelAttr = 'label')
+sig
+
 }

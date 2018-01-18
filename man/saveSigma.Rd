@@ -2,7 +2,7 @@
 % Please edit documentation in R/sigmaAttrs.R
 \name{saveSigma}
 \alias{saveSigma}
-\title{Save sigma widget as html - a wrapper for saveWidget()}
+\title{Save sigmaNet object as html - a wrapper for saveWidget()}
 \usage{
 saveSigma(sigmaObj, fileName = NULL)
 }
@@ -11,6 +11,28 @@ saveSigma(sigmaObj, fileName = NULL)
 
 \item{fileName}{A name for your html output (with or without .html at the end)}
 }
+\value{
+An html file in your working directory (or other specified directory).  This file is a
+  standalone representation of your Sigma.js visualization that can be shared and moved freely.
+  This object will maintain it's interactivity.
+}
 \description{
-Save sigma widget as html - a wrapper for saveWidget()
+Save an sigmaNet object as an html file (without rendering it).  This is especially helpful
+when dealing with very large graphs that could crash your R session if you attempt to render
+them in the Rstudio viewer pane.
+}
+\examples{
+library(igraph)
+library(sigmaNet)
+library(magrittr)
+
+data(lesMis)
+
+l <- layout_nicely(lesMis)
+sig <- sigmaFromIgraph(graph = lesMis, layout = l)
+
+\dontrun{
+saveSigma(sig, fileName = 'myFile.html')
+}
+
 }

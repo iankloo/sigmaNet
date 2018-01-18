@@ -2,7 +2,7 @@
 % Please edit documentation in R/sigmaAttrs.R
 \name{addEdgeColors}
 \alias{addEdgeColors}
-\title{Add edge colors by an attribute or by specifying a single color.}
+\title{Modify the edge colors of a sigmaNet object.}
 \usage{
 addEdgeColors(sigmaObj, oneColor = NULL, colorAttr = NULL,
   colorPal = "Set2")
@@ -16,6 +16,30 @@ addEdgeColors(sigmaObj, oneColor = NULL, colorAttr = NULL,
 
 \item{colorPal}{The color palatte to use - only used if colorAttr is specified}
 }
+\value{
+A sigmaNet object with modified node labels.  This object can be called directly
+  to create a visualization, or modified by additional functions.
+}
 \description{
-Add edge colors by an attribute or by specifying a single color.
+Modify the edge colors of a sigmaNet object by providing either: (1) a single color to use
+for every edge; or (2) an attribute of the initial igraph object that will be used to determine
+color.
+}
+\details{
+If the 2nd option is used, you can also specify a color palette from RColorBrewer.
+}
+\examples{
+library(igraph)
+library(sigmaNet)
+library(magrittr)
+
+data(lesMis)
+
+l <- layout_nicely(lesMis)
+
+#one color for all edges
+sig <- sigmaFromIgraph(graph = lesMis, layout = l) \%>\%
+  addEdgeColors(oneColor = '#D95F02')
+sig
+
 }

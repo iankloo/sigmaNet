@@ -18,6 +18,27 @@ sigmaFromIgraph(graph, layout = NULL, width = NULL, height = NULL,
 
 \item{elementId}{Do not specify, this is used by the htmlwidgets package}
 }
+\value{
+A sigmaNet object (which is an htmlwidget).  This object is meant to be called directly
+  to render a default sigma.js visualization, or it can be passed to other arguments to
+  change visualization attributes (colors, sizes, interactivity, etc.).
+}
 \description{
-Make a basic Sigma graph object from an igraph object
+Create a sigmaNet object from an igraph object.  The sigmaNet object will be a basic visualization
+of the igraph object and is meant to be the starting point for the development of a useful Sigma.js
+visualization.  If you are familiar with the ggplot syntax, this is similar to the basic ggplot()
+function.
+}
+\examples{
+library(igraph)
+library(sigmaNet)
+
+data(lesMis)
+
+l <- layout_nicely(lesMis)
+sig <- sigmaFromIgraph(graph = lesMis, layout = l)
+
+#render basic visualization by calling the object
+sig
+
 }
