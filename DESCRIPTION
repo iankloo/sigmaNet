@@ -1,14 +1,21 @@
 Package: sigmaNet
-Title: Make sigma networks in R
-Version: 0.0.0.9000
+Title: Render Sigma.js Networks in R
+Version: 1.0
 Authors@R: person("Ian", "Kloo", email = "iankloo@gmail.com", role = c("aut", "cre"))
-Description: Create networks in sigmajs from R.  This package is meant for large networks, which are poorly handled in most htmlwidgets.
+Description: Create interactive network visualizations using Sigma.js.  This package is meant to be used in conjunction
+    with igraph, replacing the (somewhat underwhelming) plotting features of the package.  The idea is to quickly render
+    networks, regardless of their size, in a way that allows for easy, iterative modification of aesthetics.  Because 
+    Sigma.js is a javascript library, the visualizations are inherently interactive and are well suited for integration
+    with Shiny apps.  While there are several htmlwidgets focused on network visualization, they tend to underperform on 
+    medium to large sized networks.  Sigma.js was designed for larger network visualizations and this package aims to 
+    make those strengths available to R users.
 Depends: R (>= 3.0.0)
-License: CC0
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports: htmlwidgets,
     igraph,
     jsonlite,
-    RColorBrewer
+    RColorBrewer,
+    magrittr
 RoxygenNote: 6.0.1

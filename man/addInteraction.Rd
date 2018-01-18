@@ -4,12 +4,17 @@
 \alias{addInteraction}
 \title{Add/modify interactivity of the visualization}
 \usage{
-addInteraction(sigmaObj, neighborEvent = "onClick")
+addInteraction(sigmaObj, neighborEvent = "onClick", doubleClickZoom = TRUE,
+  mouseWheelZoom = TRUE)
 }
 \arguments{
 \item{sigmaObj}{A Sigma object - created using the sigmaFromIgraph function}
 
 \item{neighborEvent}{Enable/disable event that highlights a node's neighbors.  Can either be onClick, onHover, or None.}
+
+\item{doubleClickZoom}{Enable/disable zoom event on double click}
+
+\item{mouseWheelZoom}{Enable/disable zoom event on mouse wheel}
 }
 \description{
 Add/modify interactivity of the visualization
