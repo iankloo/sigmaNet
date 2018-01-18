@@ -2,6 +2,9 @@
 #'
 #' @param graph An igraph object
 #' @param layout The output of one of the igraph layout functions.  If not provided, layout_nicely() will be used (note, this will slow things down).
+#' @param width Width of the resulting graph - defaults to fit container, probably leave this alone
+#' @param height Height of the resulting graph - defaults to fit container, probably leave this alone
+#' @param elementId Do not specify, this is used by the htmlwidgets package
 #'
 #' @import htmlwidgets
 #' @export
@@ -28,28 +31,27 @@ sigmaFromIgraph <- function(graph, layout = NULL, width = NULL, height = NULL, e
   nodes$size <- 1
   nodes$x <- as.numeric(nodes$x)
   nodes$y <- as.numeric(nodes$y)
-  
-  nodes$oldLabs <- row.names(nodes)
-  
-  edges <- dplyr::left_join(edges, nodes, by = c('source' = 'oldLabs'))
-  edges <- dplyr::select(edges, id = id.x, source = id.y, target, size = size.x)
-  edges <- dplyr::left_join(edges, nodes, by = c('target' = 'oldLabs'))
-  edges <- dplyr::select(edges, id = id.x, source, target = id.y, size = size.x)
-  
-  nodes$oldLabs <- NULL
+  nodes$color <- '#3182bd'
+  edges$color <- "#636363"
+
+  edges$source <- nodes$id[match(edges$source, nodes$label)]
+  edges$target <- nodes$id[match(edges$target, nodes$label)]
+
   nodes$label <- as.character(nodes$label)
   edges$source <- as.character(edges$source)
   edges$target <- as.character(edges$target)
 
   graphOut <- list(nodes, edges)
   names(graphOut) <- c('nodes','edges')
-  
-  options <- list(minNodeSize = 1, maxNodeSize = 3, minEdgeSize = 3, maxEdgeSize = 1, nodeColor = "#3182bd", edgeColor = "#636363")
-  
+
+  options <- list(minNodeSize = 1, maxNodeSize = 3, minEdgeSize = 3, maxEdgeSize = 1,
+                  neighborEvent = 'onClick', neighborStart = 'clickNode', neighborEnd = 'clickStage',
+                  doubleClickZoom = TRUE, mouseWheelZoom = TRUE)
+
   out <- jsonlite::toJSON(graphOut, pretty = TRUE)
   x <- list(data = out, options = options, graph = graph)
-  
+
   htmlwidgets::createWidget(name='sigmaNet', x, width = width, height = height, package = 'sigmaNet', elementId = elementId)
-  
+
 }
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/sigmaAttrs.R
 \name{addNodeLabels}
 \alias{addNodeLabels}
-\title{Add node labels by specifying an attribute from the igraph object}
+\title{Add node labels by specifying an attribute from the igraph object.}
 \usage{
 addNodeLabels(sigmaObj, labelAttr = NULL)
 }
@@ -12,5 +12,5 @@ addNodeLabels(sigmaObj, labelAttr = NULL)
 \item{labelAttr}{The attribute to use to create node labels}
 }
 \description{
-Add node labels by specifying an attribute from the igraph object
+Add node labels by specifying an attribute from the igraph object.
 }

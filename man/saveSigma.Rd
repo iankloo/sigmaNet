@@ -9,7 +9,7 @@ saveSigma(sigmaObj, fileName = NULL)
 \arguments{
 \item{sigmaObj}{A Sigma object - created using the sigmaFromIgraph function}
 
-\item{file}{A name for your html output (with or without .html at the end)}
+\item{fileName}{A name for your html output (with or without .html at the end)}
 }
 \description{
 Save sigma widget as html - a wrapper for saveWidget()

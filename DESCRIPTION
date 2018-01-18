@@ -8,7 +8,7 @@ License: CC0
 Encoding: UTF-8
 LazyData: true
 Imports: htmlwidgets,
-    dplyr,
     igraph,
-    jsonlite
+    jsonlite,
+    RColorBrewer
 RoxygenNote: 6.0.1

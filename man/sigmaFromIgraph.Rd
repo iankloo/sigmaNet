@@ -11,6 +11,12 @@ sigmaFromIgraph(graph, layout = NULL, width = NULL, height = NULL,
 \item{graph}{An igraph object}
 
 \item{layout}{The output of one of the igraph layout functions.  If not provided, layout_nicely() will be used (note, this will slow things down).}
+
+\item{width}{Width of the resulting graph - defaults to fit container, probably leave this alone}
+
+\item{height}{Height of the resulting graph - defaults to fit container, probably leave this alone}
+
+\item{elementId}{Do not specify, this is used by the htmlwidgets package}
 }
 \description{
 Make a basic Sigma graph object from an igraph object

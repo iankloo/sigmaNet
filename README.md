@@ -34,8 +34,6 @@ layout <- layout_with_fr(karate)
 
 sigmaFromIgraph(karate, layout = layout)
 ```
-![](simpleNetwork.png)
-
 
 If you render this at home, you'll see that you can zoom, pan, and get information on-hover for the nodes.
 
@@ -73,7 +71,7 @@ sig %>%
   addNodeSize(sizeMetric = 'degree', minSize = .001, maxSize = 2) %>%
   addEdgeSize(oneSize = .1)
 ```
-![](bigNetwork.png)
+![](img/bigNetwork.png)
 
 As you can see, this graph still looks great even without transparency.  If you render this at home, you will see that the visualization is still snappy and responsive.  
 
@@ -83,10 +81,6 @@ You can use sigmaNet() output in Shiny using renderSigmaNet() in your server and
 
 ## Features in development
 
-- Add neighborhoods plugin
-- Add filter plugin
-- Node shapes plugin?
-- Options to control interactivity (plugins)
 - GUI to modify aesthetics (shiny gadget)
 
 

@@ -2,12 +2,12 @@
 
 export(addEdgeColors)
 export(addEdgeSize)
+export(addInteraction)
 export(addNodeColors)
 export(addNodeLabels)
 export(addNodeSize)
 export(renderSigmaNet)
 export(saveSigma)
 export(sigmaFromIgraph)
-export(sigmaNet)
 export(sigmaNetOutput)
 import(htmlwidgets)

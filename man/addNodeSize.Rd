@@ -14,11 +14,11 @@ addNodeSize(sigmaObj, minSize = 1, maxSize = 3, sizeMetric = "degree",
 
 \item{maxSize}{The maximum node size on the graph (for scaling)}
 
-\item{sizeVector}{An optional vector with the sizes for each node}
+\item{sizeMetric}{The metric to use when sizing the nodes.  Options are: degree, closeness, betweenness, pageRank, or eigenCentrality.}
+
+\item{sizeVector}{An optional vector with the sizes for each node (overrides sizeMetric and min/maxSize)}
 
 \item{oneSize}{A single size to use for all nodes}
-
-\item{sizeAttr}{An attribute from the original igraph nodes to size the nodes by}
 }
 \description{
 Add node size by either specifying a metric, or supplying your own vector of sizes.

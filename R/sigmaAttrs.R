@@ -10,20 +10,20 @@
 addNodeColors <- function(sigmaObj, oneColor = NULL, colorAttr = NULL, colorPal = 'Dark2'){
   edges <- jsonlite::fromJSON(sigmaObj$x$data)$edges
   nodes <- jsonlite::fromJSON(sigmaObj$x$data)$nodes
-  
+
   if(is.null(oneColor)){
     nodes$tempCol <- igraph::as_data_frame(sigmaObj$x$graph, what = 'vertices')[,colorAttr]
-    suppressWarnings(pal <- brewer.pal(length(unique(nodes[,'tempCol'])), colorPal))
+    suppressWarnings(pal <- RColorBrewer::brewer.pal(length(unique(nodes[,'tempCol'])), colorPal))
     palDF <- data.frame(group = unique(nodes[,'tempCol']), color = pal[1:length(unique(nodes[,'tempCol']))], stringsAsFactors = FALSE)
-    nodes <- dplyr::left_join(nodes, palDF, by = c('tempCol' = 'group'))
+    nodes$color <- palDF$color[match(nodes$tempCol, palDF$group)]
     nodes$tempCol <- NULL
   } else{
     nodes$color <- oneColor
   }
-  
+
   graphOut <- list(nodes, edges)
   names(graphOut) <- c('nodes','edges')
-  
+
   sigmaObj$x$data <- jsonlite::toJSON(graphOut, pretty = TRUE)
   return(sigmaObj)
 }
@@ -32,8 +32,8 @@ addNodeColors <- function(sigmaObj, oneColor = NULL, colorAttr = NULL, colorPal 
 #' @param sigmaObj A Sigma object - created using the sigmaFromIgraph function
 #' @param minSize The minimum node size on the graph (for scaling)
 #' @param maxSize The maximum node size on the graph (for scaling)
-#' @param sizeAttr An attribute from the original igraph nodes to size the nodes by
-#' @param sizeVector An optional vector with the sizes for each node
+#' @param sizeMetric The metric to use when sizing the nodes.  Options are: degree, closeness, betweenness, pageRank, or eigenCentrality.
+#' @param sizeVector An optional vector with the sizes for each node (overrides sizeMetric and min/maxSize)
 #' @param oneSize A single size to use for all nodes
 #'
 #' @import htmlwidgets
@@ -41,7 +41,7 @@ addNodeColors <- function(sigmaObj, oneColor = NULL, colorAttr = NULL, colorPal 
 addNodeSize <- function(sigmaObj, minSize = 1, maxSize = 3, sizeMetric = 'degree', sizeVector = NULL, oneSize = NULL){
   edges <- jsonlite::fromJSON(sigmaObj$x$data)$edges
   nodes <- jsonlite::fromJSON(sigmaObj$x$data)$nodes
-  
+
   if(!is.null(oneSize)){
     nodes$size <- oneSize
     sigmaObj$x$options$minNodeSize <- oneSize
@@ -70,12 +70,12 @@ addNodeSize <- function(sigmaObj, minSize = 1, maxSize = 3, sizeMetric = 'degree
 
   graphOut <- list(nodes, edges)
   names(graphOut) <- c('nodes','edges')
-  
+
   sigmaObj$x$data <- jsonlite::toJSON(graphOut, pretty = TRUE)
   return(sigmaObj)
-  
+
 }
-#' Add node labels by specifying an attribute from the igraph object
+#' Add node labels by specifying an attribute from the igraph object.
 #'
 #' @param sigmaObj A Sigma object - created using the sigmaFromIgraph function
 #' @param labelAttr The attribute to use to create node labels
@@ -85,12 +85,12 @@ addNodeSize <- function(sigmaObj, minSize = 1, maxSize = 3, sizeMetric = 'degree
 addNodeLabels <- function(sigmaObj, labelAttr = NULL){
   edges <- jsonlite::fromJSON(sigmaObj$x$data)$edges
   nodes <- jsonlite::fromJSON(sigmaObj$x$data)$nodes
-  
+
   nodes$label <- as.character(igraph::as_data_frame(sigmaObj$x$graph, what = 'vertices')[,labelAttr])
-  
+
   graphOut <- list(nodes, edges)
   names(graphOut) <- c('nodes','edges')
-  
+
   sigmaObj$x$data <- jsonlite::toJSON(graphOut, pretty = TRUE)
   return(sigmaObj)
 }
@@ -107,7 +107,7 @@ addNodeLabels <- function(sigmaObj, labelAttr = NULL){
 addEdgeSize <- function(sigmaObj, sizeAttr = NULL, minSize = 1, maxSize = 5, oneSize = NULL){
   edges <- jsonlite::fromJSON(sigmaObj$x$data)$edges
   nodes <- jsonlite::fromJSON(sigmaObj$x$data)$nodes
-  
+
   if(!is.null(oneSize)){
     edges$size <- oneSize
     sigmaObj$x$options$minEdgeSize <- oneSize
@@ -117,10 +117,10 @@ addEdgeSize <- function(sigmaObj, sizeAttr = NULL, minSize = 1, maxSize = 5, one
     sigmaObj$x$options$minEdgeSize <- minSize
     sigmaObj$x$options$maxEdgeSize <- maxSize
   }
-  
+
   graphOut <- list(nodes, edges)
   names(graphOut) <- c('nodes','edges')
-  
+
   sigmaObj$x$data <- jsonlite::toJSON(graphOut, pretty = TRUE)
   return(sigmaObj)
 }
@@ -136,27 +136,27 @@ addEdgeSize <- function(sigmaObj, sizeAttr = NULL, minSize = 1, maxSize = 5, one
 addEdgeColors <- function(sigmaObj, oneColor = NULL, colorAttr = NULL, colorPal = 'Set2'){
   edges <- jsonlite::fromJSON(sigmaObj$x$data)$edges
   nodes <- jsonlite::fromJSON(sigmaObj$x$data)$nodes
-  
+
   if(is.null(oneColor)){
     edges$tempCol <- igraph::as_data_frame(sigmaObj$x$graph, what = 'edges')[,colorAttr]
-    suppressWarnings(pal <- brewer.pal(length(unique(edges[,'tempCol'])), colorPal))
+    suppressWarnings(pal <- RColorBrewer::brewer.pal(length(unique(edges[,'tempCol'])), colorPal))
     palDF <- data.frame(group = unique(edges[,'tempCol']), color = pal[1:length(unique(edges[,'tempCol']))], stringsAsFactors = FALSE)
-    edges <- dplyr::left_join(edges, palDF, by = c('tempCol' = 'group'))
+    edges$color <- palDF$color[match(edges$tempCol, palDF$group)]
     edges$tempCol <- NULL
   } else{
     edges$color <- oneColor
   }
-  
+
   graphOut <- list(nodes, edges)
   names(graphOut) <- c('nodes','edges')
-  
+
   sigmaObj$x$data <- jsonlite::toJSON(graphOut, pretty = TRUE)
   return(sigmaObj)
 }
 #' Save sigma widget as html - a wrapper for saveWidget()
 #'
 #' @param sigmaObj A Sigma object - created using the sigmaFromIgraph function
-#' @param file A name for your html output (with or without .html at the end)
+#' @param fileName A name for your html output (with or without .html at the end)
 #'
 #' @import htmlwidgets
 #' @export
@@ -168,4 +168,28 @@ saveSigma <- function(sigmaObj, fileName = NULL){
     fileName <- paste0(fileName, '.html')
   }
   htmlwidgets::saveWidget(sigmaObj, file = fileName)
+}
+#' Add/modify interactivity of the visualization
+#'
+#' @param sigmaObj A Sigma object - created using the sigmaFromIgraph function
+#' @param neighborEvent Enable/disable event that highlights a node's neighbors.  Can either be onClick, onHover, or None.
+#' @param doubleClickZoom Enable/disable zoom event on double click
+#' @param mouseWheelZoom Enable/disable zoom event on mouse wheel
+#'
+#' @import htmlwidgets
+#' @export
+addInteraction <- function(sigmaObj, neighborEvent = 'onClick', doubleClickZoom = TRUE, mouseWheelZoom = TRUE){
+  if(neighborEvent == 'onClick'){
+    sigmaObj$x$options$neighborStart <- 'clickNode'
+    sigmaObj$x$options$neighborEnd <- 'clickStage'
+  } else if(neighborEvent == 'onHover'){
+    sigmaObj$x$options$neighborStart <- 'overNode'
+    sigmaObj$x$options$neighborEnd <- 'outNode'
+  }
+  sigmaObj$x$options$neighborEvent <- neighborEvent
+
+  sigmaObj$x$options$doubleClickZoom <- doubleClickZoom
+  sigmaObj$x$options$mouseWheelZoom <- mouseWheelZoom
+
+  return(sigmaObj)
 }
