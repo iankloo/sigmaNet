@@ -1,18 +1,21 @@
 # sigmaNet
 
-Render igraph networks using Sigma.js - in R!  
+Render `igraph` networks using Sigma.js - in R!  
 
-<a href = 'https://iankloo.github.io/sigmaNet/'>Check out the docs</a>
-
-<strong>More detailed documentation on the way.</strong>
+<a href = 'https://iankloo.github.io/sigmaNet/'>Check out the full docs</a>
 
 ## Why?
 
-Igraph is a great tool for working with networks in R, but it comes up short when creating visualizations.  Igraph uses R's plot() and a less-than-user-friendly set of parameters to create visualizations.  These visualizations are static and can be difficult to work with aesthetically.  For example, node sizes can be given with the vertex.size parameter, but they are then re-scaled by the plot() function behind the scenes.  Finally, plot() output is static and can only be rendered in image formats.
+This package is an R interface to the <a href = 'https://github.com/jacomyal/sigma.js'>Sigma.js</a> javascript library. Sigma.js was built for graph visualization and has significant advantages over other javascript libraries when creating large graph visualizations.  
 
-This package addresses these problems by allowing users to quickly create Sigma.js visualizations from igraph objects.  These visualizations render quickly, even with large numbers of nodes/edges, and allow for a number of different outputs: PNG, PDF, and interactive HTML.  
+Benefits of this package:
 
-If you are only working with small networks, check out the visNetwork package which uses vis.js to draw networks.  The package has a lot of great features, but it is somewhat slow for large networks (10s of thousands of nodes) and can be sluggish once rendered.  This is because vis.js (and thus visNetwork) use canvas to render graphs.  Canvas is much faster than SVG-based graphics (like D3), but is slower than Webgl (used by Sigma.js).
+1. Use familiar, well documented `igraph` objects to make visualizations
+2. Easy "ggplot-like" syntax
+3. Render things quickly - allowing for faster iterative graph building
+4. Render large networks
+5. Maintain interactivity (click, hover, zoom) with sharable html output
+6. Integrate easily with Shiny applications
 
 ## How?
 
@@ -22,68 +25,79 @@ First, install this package:
 devtools::install_github('iankloo/sigmaNet')
 ```
 
-Then, create an igraph network.  Here we'll use the sample "Karate" network from the igraphdata package.
+Then, create an `igraph` network.  Here we'll use the included les Miserables dataset that maps the co-appearances of characters in the novel.
 
-Note, passing a layout to the sigmaFromIgraph() function will dramatically improve speed.
+Note, passing an optional layout to the `sigmaFromIgraph()` function will dramatically improve speed.  Layouts are usually the most computationally intensive task when creating network visualizations.  This package allows you to separate this computation from the aesthetic changes you will likely want to make to your visualization.
 
 ```
 library(sigmaNet)
 library(igraph)
-library(igraphdata)
 
-data(karate)
-layout <- layout_with_fr(karate)
+data(lesMis)
 
-sigmaFromIgraph(karate, layout = layout)
+layout <- layout_with_fr(lesMis)
+sig <- sigmaFromIgraph(lesMis, layout = layout)
+sig
 ```
 
-If you render this at home, you'll see that you can zoom, pan, and get information on-hover for the nodes.
+![](img/simpleGraph.png)
+
+If you render this at home, you'll see that you can zoom, pan, and get information on-hover for the nodes.  This is just a static image to show you the basics.
 
 ## Options
 
-You have a few options available to change the aesthetics of graphs. Options are applied in a similar way to ggplot, but use the pipe operator instead of the "+".  Here is an example showing most of the options you can use:
+You have a few options available to change the aesthetics of graphs. Options are applied in a similar way to `ggplot`, but use the pipe operator instead of the "+".  Here is an example showing most of the options you can use:
 
-(this thing looks terrible if you render it - just showing what options you can change)
 ```
-data(karate)
-layout <- layout_with_fr(karate)
-sig <- sigmaFromIgraph(karate, layout = layout)
+data(lesMis)
 
-sig %>%
-  addNodeColors(colorAttr = 'Faction') %>%
-  addNodeSize(sizeMetric = 'degree', minSize = 1, maxSize = 6) %>%
-  addNodeLabels(labelAttr = 'Faction') %>%
-  addEdgeSize(sizeAttr = 'weight', minSize = .1, maxSize = 5) %>%
-  addEdgeColors(colorAttr = 'weight', colorPal = 'Dark2') 
+clust <- cluster_edge_betweenness(lesMis)$membership
+V(lesMis)$group <- clust
+
+layout <- layout_with_fr(lesMis)
+
+sig <- sigmaFromIgraph(lesMis, layout = layout) %>%
+  addNodeLabels(labelAttr = 'label') %>%
+  addEdgeSize(sizeAttr = 'value', minSize = .1, maxSize = 2) %>%
+  addNodeSize(sizeMetric = 'degree', minSize = 2, maxSize = 8) %>%
+  addNodeColors(colorAttr = 'group', colorPal = 'Set1')
+sig
 ```
 
+![](img/aesGraph.png)
 
-Note: there is no opacity/transparency/alpha attribute!  That is because webgl doesn't support transparency.  To mimic transparency, set your edge size to be small - this works really well.  I know this is a big tradeoff, but it is the only way to render large networks without sacrificing performance.  
-
+Note: there is no opacity/transparency/alpha attribute!  That is because webgl doesn't support transparency.  To mimic transparency, set your edge size to be small - this works really well.  I know this is a big trade off, but it is the only way to render large networks without sacrificing performance.  
 ## Larger Networks
 
-This package was built to address the specific challenges of creating compelling visualizations with large networks.  Here is an example of a larger network than we've been using
+This package was built to address the specific challenges of creating compelling visualizations with large networks.  Here is an example of a larger network than we've been using (created using a graph-generating function in `igraph`):
 
 ```
-data(immuno)
-layout <- layout_with_fr(immuno)
-sig <- sigmaFromIgraph(immuno, layout = layout)
-sig %>% 
-  addNodeColors('#D95F02') %>%
-  addNodeSize(sizeMetric = 'degree', minSize = .001, maxSize = 2) %>%
-  addEdgeSize(oneSize = .1)
-```
-![](img/bigNetwork.png)
+g <- sample_pa(10000)
 
-As you can see, this graph still looks great even without transparency.  If you render this at home, you will see that the visualization is still snappy and responsive.  
+layout <- layout_with_fr(g)
+sig <- sigmaFromIgraph(g, layout = layout)
+sig %>%
+  addNodeSize(oneSize = .5) %>%
+  addEdgeSize(oneSize = .2)
+```
+
+![](img/bigGraph.png)
+
+While we can debate the usefulness of a "hairball" graph like this, you can see that `sigmaNet` has no problem rendering a graph with 10,000 nodes nearly instantly.  If you render this at home, you will also see that the graph maintains its interactivity with little to no lag.
 
 ## Shiny Support
 
-You can use sigmaNet() output in Shiny using renderSigmaNet() in your server and sigmaNetOutput() in your ui.  See the shiny docs for more general info about Shiny - these functions drop-in just like the basic plotting examples.  
+You can use `sigmaNet` in Shiny using `renderSigmaNet()` in your server and `sigmaNetOutput()` in your ui.  See the <a href = 'https://shiny.rstudio.com/tutorial/'>Shiny docs</a> for more general info about Shiny - these functions drop-in just like the basic plotting examples.  
+
+## A Note on Browsers
+
+This package uses a renderer that detects whether or not your browser supports webgl.  If it does, webgl will be used to render the visualizations.  If not, canvas will be used.  Webgl is MUCH faster than canvas (especially with large graphs), so if you notice some performance issues, try using a modern browser that supports webgl.  All but the most out-of-date browsers support webgl (except maybe Opera?), so this shouldn't be an issue for many.
 
 ## Features in development
 
-- GUI to modify aesthetics (shiny gadget)
+- GUI to modify aesthetics (Shiny gadget)
+
+Write an "issue" on the <a href = "https://github.com/iankloo/sigmaNet/issues">github page</a> for this package if you want to see additional features.
 
 
 

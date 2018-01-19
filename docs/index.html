@@ -71,74 +71,91 @@
     <div id="sigmanet" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#sigmanet" class="anchor"></a>sigmaNet</h1></div>
-<p>Render igraph networks using Sigma.js - in R!</p>
-<p><strong>More detailed documentation on the way.</strong></p>
+<p>Render <code>igraph</code> networks using Sigma.js - in R!</p>
+<p><a href="https://iankloo.github.io/sigmaNet/">Check out the full docs</a></p>
 <div id="why" class="section level2">
 <h2 class="hasAnchor">
 <a href="#why" class="anchor"></a>Why?</h2>
-<p>Igraph is a great tool for working with networks in R, but it comes up short when creating visualizations. Igraph uses R’s plot() and a less-than-user-friendly set of parameters to create visualizations. These visualizations are static and can be difficult to work with aesthetically. For example, node sizes can be given with the vertex.size parameter, but they are then re-scaled by the plot() function behind the scenes. Finally, plot() output is static and can only be rendered in image formats.</p>
-<p>This package addresses these problems by allowing users to quickly create Sigma.js visualizations from igraph objects. These visualizations render quickly, even with large numbers of nodes/edges, and allow for a number of different outputs: PNG, PDF, and interactive HTML.</p>
-<p>If you are only working with small networks, check out the visNetwork package which uses vis.js to draw networks. The package has a lot of great features, but it is somewhat slow for large networks (10s of thousands of nodes) and can be sluggish once rendered. This is because vis.js (and thus visNetwork) use canvas to render graphs. Canvas is much faster than SVG-based graphics (like D3), but is slower than Webgl (used by Sigma.js).</p>
+<p>This package is an R interface to the <a href="https://github.com/jacomyal/sigma.js">Sigma.js</a> javascript library. Sigma.js was built for graph visualization and has significant advantages over other javascript libraries when creating large graph visualizations.</p>
+<p>Benefits of this package:</p>
+<ol>
+<li>Use familiar, well documented <code>igraph</code> objects to make visualizations</li>
+<li>Easy “ggplot-like” syntax</li>
+<li>Render things quickly - allowing for faster iterative graph building</li>
+<li>Render large networks</li>
+<li>Maintain interactivity (click, hover, zoom) with sharable html output</li>
+<li>Integrate easily with Shiny applications</li>
+</ol>
 </div>
 <div id="how" class="section level2">
 <h2 class="hasAnchor">
 <a href="#how" class="anchor"></a>How?</h2>
 <p>First, install this package:</p>
 <pre><code><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">devtools::install_github('iankloo/sigmaNet')</a></code></pre>
-<p>Then, create an igraph network. Here we’ll use the sample “Karate” network from the igraphdata package.</p>
-<p>Note, passing a layout to the sigmaFromIgraph() function will dramatically improve speed.</p>
+<p>Then, create an <code>igraph</code> network. Here we’ll use the included les Miserables dataset that maps the co-appearances of characters in the novel.</p>
+<p>Note, passing an optional layout to the <code><a href="reference/sigmaFromIgraph.html">sigmaFromIgraph()</a></code> function will dramatically improve speed. Layouts are usually the most computationally intensive task when creating network visualizations. This package allows you to separate this computation from the aesthetic changes you will likely want to make to your visualization.</p>
 <pre><code>library(sigmaNet)
 library(igraph)
-library(igraphdata)
 
-data(karate)
-layout &lt;- layout_with_fr(karate)
+data(lesMis)
 
-sigmaFromIgraph(karate, layout = layout)</code></pre>
-<p>If you render this at home, you’ll see that you can zoom, pan, and get information on-hover for the nodes.</p>
+layout &lt;- layout_with_fr(lesMis)
+sig &lt;- sigmaFromIgraph(lesMis, layout = layout)
+sig</code></pre>
+<p><img src="img/simpleGraph.png"></p>
+<p>If you render this at home, you’ll see that you can zoom, pan, and get information on-hover for the nodes. This is just a static image to show you the basics.</p>
 </div>
 <div id="options" class="section level2">
 <h2 class="hasAnchor">
 <a href="#options" class="anchor"></a>Options</h2>
-<p>You have a few options available to change the aesthetics of graphs. Options are applied in a similar way to ggplot, but use the pipe operator instead of the “+”. Here is an example showing most of the options you can use:</p>
-<p>(this thing looks terrible if you render it - just showing what options you can change)</p>
-<pre><code>data(karate)
-layout &lt;- layout_with_fr(karate)
-sig &lt;- sigmaFromIgraph(karate, layout = layout)
+<p>You have a few options available to change the aesthetics of graphs. Options are applied in a similar way to <code>ggplot</code>, but use the pipe operator instead of the “+”. Here is an example showing most of the options you can use:</p>
+<pre><code>data(lesMis)
 
-sig %&gt;%
-  addNodeColors(colorAttr = 'Faction') %&gt;%
-  addNodeSize(sizeMetric = 'degree', minSize = 1, maxSize = 6) %&gt;%
-  addNodeLabels(labelAttr = 'Faction') %&gt;%
-  addEdgeSize(sizeAttr = 'weight', minSize = .1, maxSize = 5) %&gt;%
-  addEdgeColors(colorAttr = 'weight', colorPal = 'Dark2') </code></pre>
-<p>Note: there is no opacity/transparency/alpha attribute! That is because webgl doesn’t support transparency. To mimic transparency, set your edge size to be small - this works really well. I know this is a big tradeoff, but it is the only way to render large networks without sacrificing performance.</p>
+clust &lt;- cluster_edge_betweenness(lesMis)$membership
+V(lesMis)$group &lt;- clust
+
+layout &lt;- layout_with_fr(lesMis)
+
+sig &lt;- sigmaFromIgraph(lesMis, layout = layout) %&gt;%
+  addNodeLabels(labelAttr = 'label') %&gt;%
+  addEdgeSize(sizeAttr = 'value', minSize = .1, maxSize = 2) %&gt;%
+  addNodeSize(sizeMetric = 'degree', minSize = 2, maxSize = 8) %&gt;%
+  addNodeColors(colorAttr = 'group', colorPal = 'Set1')
+sig</code></pre>
+<p><img src="img/aesGraph.png"></p>
+<p>Note: there is no opacity/transparency/alpha attribute! That is because webgl doesn’t support transparency. To mimic transparency, set your edge size to be small - this works really well. I know this is a big trade off, but it is the only way to render large networks without sacrificing performance.</p>
 </div>
 <div id="larger-networks" class="section level2">
 <h2 class="hasAnchor">
 <a href="#larger-networks" class="anchor"></a>Larger Networks</h2>
-<p>This package was built to address the specific challenges of creating compelling visualizations with large networks. Here is an example of a larger network than we’ve been using</p>
-<pre><code>data(immuno)
-layout &lt;- layout_with_fr(immuno)
-sig &lt;- sigmaFromIgraph(immuno, layout = layout)
-sig %&gt;% 
-  addNodeColors('#D95F02') %&gt;%
-  addNodeSize(sizeMetric = 'degree', minSize = .001, maxSize = 2) %&gt;%
-  addEdgeSize(oneSize = .1)</code></pre>
-<p><img src="img/bigNetwork.png"></p>
-<p>As you can see, this graph still looks great even without transparency. If you render this at home, you will see that the visualization is still snappy and responsive.</p>
+<p>This package was built to address the specific challenges of creating compelling visualizations with large networks. Here is an example of a larger network than we’ve been using (created using a graph-generating function in <code>igraph</code>):</p>
+<pre><code>g &lt;- sample_pa(10000)
+
+layout &lt;- layout_with_fr(g)
+sig &lt;- sigmaFromIgraph(g, layout = layout)
+sig %&gt;%
+  addNodeSize(oneSize = .5) %&gt;%
+  addEdgeSize(oneSize = .2)</code></pre>
+<p><img src="img/bigGraph.png"></p>
+<p>While we can debate the usefulness of a “hairball” graph like this, you can see that <code>sigmaNet</code> has no problem rendering a graph with 10,000 nodes nearly instantly. If you render this at home, you will also see that the graph maintains its interactivity with little to no lag.</p>
 </div>
 <div id="shiny-support" class="section level2">
 <h2 class="hasAnchor">
 <a href="#shiny-support" class="anchor"></a>Shiny Support</h2>
-<p>You can use sigmaNet() output in Shiny using renderSigmaNet() in your server and sigmaNetOutput() in your ui. See the shiny docs for more general info about Shiny - these functions drop-in just like the basic plotting examples.</p>
+<p>You can use <code>sigmaNet</code> in Shiny using <code><a href="reference/renderSigmaNet.html">renderSigmaNet()</a></code> in your server and <code><a href="reference/sigmaNetOutput.html">sigmaNetOutput()</a></code> in your ui. See the <a href="https://shiny.rstudio.com/tutorial/">Shiny docs</a> for more general info about Shiny - these functions drop-in just like the basic plotting examples.</p>
+</div>
+<div id="a-note-on-browsers" class="section level2">
+<h2 class="hasAnchor">
+<a href="#a-note-on-browsers" class="anchor"></a>A Note on Browsers</h2>
+<p>This package uses a renderer that detects whether or not your browser supports webgl. If it does, webgl will be used to render the visualizations. If not, canvas will be used. Webgl is MUCH faster than canvas (especially with large graphs), so if you notice some performance issues, try using a modern browser that supports webgl. All but the most out-of-date browsers support webgl (except maybe Opera?), so this shouldn’t be an issue for many.</p>
 </div>
 <div id="features-in-development" class="section level2">
 <h2 class="hasAnchor">
 <a href="#features-in-development" class="anchor"></a>Features in development</h2>
 <ul>
-<li>GUI to modify aesthetics (shiny gadget)</li>
+<li>GUI to modify aesthetics (Shiny gadget)</li>
 </ul>
+<p>Write an “issue” on the <a href="https://github.com/iankloo/sigmaNet/issues">github page</a> for this package if you want to see additional features.</p>
 </div>
 </div>
   </div>
