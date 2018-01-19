@@ -2,6 +2,8 @@
 
 Render igraph networks using Sigma.js - in R!  
 
+<a href = 'https://iankloo.github.io/sigmaNet/'>Check out the docs</a>
+
 <strong>More detailed documentation on the way.</strong>
 
 ## Why?
