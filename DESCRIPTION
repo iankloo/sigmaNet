@@ -2,6 +2,7 @@ Package: sigmaNet
 Title: Render Sigma.js Networks in R
 Version: 1.0
 Authors@R: person("Ian", "Kloo", email = "iankloo@gmail.com", role = c("aut", "cre"))
+Maintainer: Ian Kloo <iankloo@gmail.com>
 URL: https://github.com/iankloo/sigmaNet
 BugReports: https://github.com/iankloo/sigmaNet/issues
 Description: Create interactive network visualizations using Sigma.js.  This package is meant to be used in conjunction
@@ -20,4 +21,7 @@ Imports: htmlwidgets,
     jsonlite,
     RColorBrewer
 RoxygenNote: 6.0.1
-Suggests: magrittr
+Suggests: magrittr,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

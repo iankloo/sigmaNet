@@ -1,0 +1,170 @@
+---
+title: "Getting Started with SigmaNet"
+author: "Ian Kloo"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+`sigmaNet` is a package for rendering graphs created using the `igraph` package.  This guide will walk through the basics of the package by showing how to build and modify a visualization using sample data.  First, I will address some conceptual things.
+
+## Why use Igraph Objects?
+
+`igraph` is an awesome tool for creating graphs and it contains many features that I didn't want to (poorly) recreate in this package.  This package aims to be good at visualization and nothing else.  Even if you don't like to use `igraph` for your graph manipulation, there is almost certainly a 1 or 2 line way to get your graph into an `igraph` object.
+
+In the interest of accepting a common input to the visualization function, this package (for now at least) only accepts `igraph` objects.
+
+## Why another graph visualization library?
+
+`igraph` is a great tool for making graphs, but it isn't great at visualizing them.  Anyone who has struggled with the `plot()` function can attest to this.  There are a number of tools out there for making visualizations from `igraph` objects such as `networkD3` and `visNetwork`, but these packages are poorly suited for visualizing large networks.  
+
+`networkD3`, `visNetwork`, and this package are all conceptually similar: they provide an R interface to a javascript visualization library.  Because these javascript libraries have different strengths, there are use cases for each.  
+
+In general, D3.js (used by `networkD3`) is great a creating interactive visualizations with up to hundreds of objects.  This size limitation comes from the fact that D3.js creates SVG objects which take up space in the DOM.  Every object you add (e.g., every node or edge) creates an additional burden on your browser.  The advantage of using SVG is that you can easily create interactivity that is impossible elsewhere.  There are ways to forego SVG in D3.js and use canvas instead, but there is a big trade-off in ease-of-use.  All of this makes D3.js a great choice for many visualization types, but not for large graphs.
+
+Vis.js (used by `visNetwork`) works well with more objects than D3.js because it uses the canvas instead of SVG objects.  This makes things much faster, but sacrifices ease-of-use/flexibility to some degree.  I used the visNetwork package extensively for small to medium sized graphs, but found that it was too slow when rendering large graphs.  
+
+Sigma.js (used by this package) is specifically built for visualizing graphs.  It is able to use webgl instead of canvas or SVG which allows it to visualize much larger graphs.  Again, there is a trade-off: Sigma.js is somewhat more difficult to use and is less flexible.  For example, webgl doesn't support opacity and makes it more difficult to render different shapes.  Sigma.js is, however, the only way to reliably render large graphs.
+
+The aim of this package is to make it easy to make Sigma.js visualizations through R.  `sigmaNet` does the hard work of configuring Sigma.js , allowing you to leverage the strengths of Sigma.js without dealing with the (often difficult) configuration of a javascript visualization.
+
+## SigmaNet Concept
+
+This package uses the same idea as packages like `ggplot`: you create a basic visualization and change it by adding/removing attributes with additional functions.  Instead of using the "+" in `ggplot`, this package recommends using the "%>%" or "pipe operator" from the `magrittr` package.  
+
+The idea is to create a sigmaNet object with the `sigmaFromIgraph` function.  Then, you call various functions to control the aesthetics of the visualization.  All of these functions take a `sigmaNet` object as the first argument - making them compatible with the `magrittr` workflow.
+
+## Example
+
+Lets use the included les Miserables dataset for an example.  This dataset is a graph showing the co-appearances of the characters in les Miserables (the novel).  Let's read-in the to get started:
+
+```{r}
+library(sigmaNet)
+library(igraph)
+library(magrittr)
+
+data(lesMis)
+class(lesMis)
+```
+
+Let's check out the attributes of the nodes (called vertices in `igraph`) and edges:
+
+```{r}
+list.vertex.attributes(lesMis)
+```
+```{r}
+list.edge.attributes(lesMis)
+```
+
+OK, so each node has an ID and a label, and each edge has a value.  The value is equal to the number of co-appearances 2 characters had.  
+
+Now, lets make a `sigmaNet` object.  We could do that like this:
+
+```{r}
+sig <- sigmaFromIgraph(lesMis)
+```
+
+This, however, might not be a great idea. If we don't provide our own layout, `sigmaFromIgraph` will re-create a new layout for us every time we call the function.  This is fine in this case, because the graph is relatively small, but consider creating and providing your own layouts for bigger graphs.  This will save you a lot of time because re-learning a layout can take a few minutes with large graphs.
+
+Here's how I recommend going forward:
+
+```{r}
+l <- layout_nicely(lesMis)
+sig <- sigmaFromIgraph(lesMis, l)
+```
+
+Now, let's render the basic visualization:
+
+```{r}
+sig
+```
+
+Now, we can modify the visualization using the `magrittr` pipe.  First, let's resize the nodes based on degree:
+
+```{r}
+sig %>%
+  addNodeSize(sizeMetric = 'degree', maxSize = 8)
+```
+
+Next, we can use the label attribute to add more informative labels to the nodes:
+
+```{r}
+sig %>%
+  addNodeSize(sizeMetric = 'degree', maxSize = 8) %>%
+  addNodeLabels(labelAttr = 'label')
+```
+
+Next, let's use one of `igraph`'s community detection algorithms to find different clusters of nodes.  We can then add the cluster attribute to the original `igraph` and rebuild our visualization:
+
+```{r}
+clust <- cluster_edge_betweenness(lesMis)$membership
+V(lesMis)$group <- clust
+
+sig <- sigmaFromIgraph(lesMis)
+
+sig %>%
+  addNodeSize(sizeMetric = 'degree', maxSize = 8) %>%
+  addNodeLabels(labelAttr = 'label') %>%
+  addNodeColors(colorAttr = 'group')
+```
+
+We may also want to modify the edge size to reflect edge weights included in the data:
+
+```{r}
+sig %>%
+  addNodeSize(sizeMetric = 'degree', maxSize = 8) %>%
+  addNodeLabels(labelAttr = 'label') %>%
+  addNodeColors(colorAttr = 'group') %>%
+  addEdgeSize(sizeAttr = 'value', minSize = .1, maxSize = 2)
+```
+
+And we might even want to change the edge colors (here I'll change all of them, but you can also color them by an attribute):
+
+```{r}
+sig %>%
+  addNodeSize(sizeMetric = 'degree', maxSize = 8) %>%
+  addNodeLabels(labelAttr = 'label') %>%
+  addNodeColors(colorAttr = 'group') %>%
+  addEdgeSize(sizeAttr = 'value', minSize = .1, maxSize = 2) %>%
+  addEdgeColors(oneColor = '#3182bd')
+```
+
+Now, we might want to add or remove interactivity.  By default, visualizations have the following interactivity: node labels on-hover, highlight neighborhoods on-click, zoom on double-click, and zoom on mouse-wheel.  Let's remove the neighborhoods on-click feature:
+
+```{r}
+sig %>%
+  addNodeSize(sizeMetric = 'degree', maxSize = 8) %>%
+  addNodeLabels(labelAttr = 'label') %>%
+  addNodeColors(colorAttr = 'group') %>%
+  addEdgeSize(sizeAttr = 'value', minSize = .1, maxSize = 2) %>%
+  addEdgeColors(oneColor = '#3182bd') %>%
+  addInteraction(neighborEvent = 'None')
+```
+
+Finally, we can save our work as an html object. This is useful when you are creating a very large graph and don't want to risk crashing your R session.  The output will be an html visualization that maintains all of the interactivity and attributes you've added.
+
+```{r, eval = FALSE}
+sig %>%
+  addNodeSize(sizeMetric = 'degree', maxSize = 8) %>%
+  addNodeLabels(labelAttr = 'label') %>%
+  addNodeColors(colorAttr = 'group') %>%
+  addEdgeSize(sizeAttr = 'value', minSize = .1, maxSize = 2) %>%
+  addEdgeColors(oneColor = '#3182bd') %>%
+  addInteraction(neighborEvent = 'None') %>%
+  saveSigma('mySigmaGraph.html')
+```
+
+## Conclusion
+
+This guide explained why this package exists, when you should use it, and how to use it.  I plan to develop additional features as I spend some time using the functions myself.  Please do not hesitate to request additional features you would find useful here: https://github.com/iankloo/sigmaNet/issues.
+
