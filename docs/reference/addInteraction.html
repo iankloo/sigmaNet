@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Modify the interactivity of a sigmaNet object. — addInteraction • sigmaNet</title>
+<title>Modify the interactivity of a 'sigmaNet' object. — addInteraction • sigmaNet</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -92,11 +92,11 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Modify the interactivity of a sigmaNet object.</h1>
+    <h1>Modify the interactivity of a 'sigmaNet' object.</h1>
     </div>
 
     
-    <p>Modify the interactivity of a sigmaNet object using the below options.  By default, visualizations
+    <p>Modify the interactivity of a 'sigmaNet' object using the below options.  By default, visualizations
 include on-click neighbor events, double-click zoom, and mouse-wheel zoom.  These can all be disabled
 or modified per the below options.</p>
     
@@ -109,7 +109,7 @@ or modified per the below options.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>sigmaObj</th>
-      <td><p>A Sigma object - created using the sigmaFromIgraph function</p></td>
+      <td><p>A 'sigmaNet' object - created using the 'sigmaFromIgraph' function</p></td>
     </tr>
     <tr>
       <th>neighborEvent</th>
@@ -127,7 +127,8 @@ or modified per the below options.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>igraph</span>)
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='fu'>library</span>(<span class='no'>igraph</span>)
 <span class='fu'>library</span>(<span class='no'>sigmaNet</span>)
 <span class='fu'>library</span>(<span class='no'>magrittr</span>)
 
@@ -137,8 +138,9 @@ or modified per the below options.</p>
 <span class='co'>#change neighbor highlighting to on-hover, disable double-click zoom, enable mouse-wheel zoom</span>
 <span class='no'>sig</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sigmaFromIgraph.html'>sigmaFromIgraph</a></span>(<span class='kw'>graph</span> <span class='kw'>=</span> <span class='no'>lesMis</span>, <span class='kw'>layout</span> <span class='kw'>=</span> <span class='no'>l</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'>addInteraction</span>(<span class='kw'>neighborEvent</span> <span class='kw'>=</span> <span class='st'>'onHover'</span>, <span class='kw'>doubleClickZoom</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>mouseWheelZoom</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-<span class='no'>sig</span></div><div class='output co'>#&gt; <span class='error'>Error in yaml.load(readLines(con), error.label = error.label, ...): argument "error.label" is missing, with no default</span></div><div class='input'>
-</div></pre>
+<span class='no'>sig</span>
+
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

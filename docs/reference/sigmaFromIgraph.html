@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Make a basic Sigma graph object from an igraph object — sigmaFromIgraph • sigmaNet</title>
+<title>Make a basic 'sigmaNet' graph object from an 'igraph' object — sigmaFromIgraph • sigmaNet</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -92,13 +92,13 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Make a basic Sigma graph object from an igraph object</h1>
+    <h1>Make a basic 'sigmaNet' graph object from an 'igraph' object</h1>
     </div>
 
     
-    <p>Create a sigmaNet object from an igraph object.  The sigmaNet object will be a basic visualization
-of the igraph object and is meant to be the starting point for the development of a useful Sigma.js
-visualization.  If you are familiar with the ggplot syntax, this is similar to the basic ggplot()
+    <p>Create a 'sigmaNet' object from an 'igraph' object.  The 'sigmaNet' object will be a basic visualization
+of the 'igraph' object and is meant to be the starting point for the development of a useful 'Sigma.js'
+visualization.  If you are familiar with the 'ggplot' syntax, this is similar to the basic 'ggplot'
 function.</p>
     
 
@@ -110,11 +110,11 @@ function.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>graph</th>
-      <td><p>An igraph object</p></td>
+      <td><p>An 'igraph' object</p></td>
     </tr>
     <tr>
       <th>layout</th>
-      <td><p>The output of one of the igraph layout functions.  If not provided, layout_nicely() will be used (note, this will slow things down).</p></td>
+      <td><p>The output of one of the 'igraph' layout functions.  If not provided, layout_nicely() will be used (note, this will slow things down).</p></td>
     </tr>
     <tr>
       <th>width</th>
@@ -126,19 +126,20 @@ function.</p>
     </tr>
     <tr>
       <th>elementId</th>
-      <td><p>Do not specify, this is used by the htmlwidgets package</p></td>
+      <td><p>Do not specify, this is used by the 'htmlwidgets' package</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A sigmaNet object (which is an htmlwidget).  This object is meant to be called directly
-  to render a default sigma.js visualization, or it can be passed to other arguments to
+    <p>A 'sigmaNet' object (which is an 'htmlwidget').  This object is meant to be called directly
+  to render a default 'Sigma.js' visualization, or it can be passed to other arguments to
   change visualization attributes (colors, sizes, interactivity, etc.).</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>igraph</span>)
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='fu'>library</span>(<span class='no'>igraph</span>)
 <span class='fu'>library</span>(<span class='no'>sigmaNet</span>)
 
 <span class='fu'>data</span>(<span class='no'>lesMis</span>)
@@ -147,8 +148,8 @@ function.</p>
 <span class='no'>sig</span> <span class='kw'>&lt;-</span> <span class='fu'>sigmaFromIgraph</span>(<span class='kw'>graph</span> <span class='kw'>=</span> <span class='no'>lesMis</span>, <span class='kw'>layout</span> <span class='kw'>=</span> <span class='no'>l</span>)
 
 <span class='co'>#render basic visualization by calling the object</span>
-<span class='no'>sig</span></div><div class='output co'>#&gt; <span class='error'>Error in yaml.load(readLines(con), error.label = error.label, ...): argument "error.label" is missing, with no default</span></div><div class='input'>
-</div></pre>
+<span class='no'>sig</span>
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

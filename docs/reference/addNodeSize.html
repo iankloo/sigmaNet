@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Modify the node size of a sigmaNet object. — addNodeSize • sigmaNet</title>
+<title>Modify the node size of a 'sigmaNet' object. — addNodeSize • sigmaNet</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -92,11 +92,11 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Modify the node size of a sigmaNet object.</h1>
+    <h1>Modify the node size of a 'sigmaNet' object.</h1>
     </div>
 
     
-    <p>Modify the node size of an existing sigmaNet object by providing one of the following:
+    <p>Modify the node size of an existing 'sigmaNet' object by providing one of the following:
 (1) A single size to use for all nodes; (2) a vector of node sizes (this must be the same
 length as the number of nodes in the graph); or (3) a metric to use to scale the nodes.</p>
     
@@ -109,7 +109,7 @@ length as the number of nodes in the graph); or (3) a metric to use to scale the
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>sigmaObj</th>
-      <td><p>A Sigma object - created using the sigmaFromIgraph function</p></td>
+      <td><p>A 'sigmaNet' object - created using the 'sigmaFromIgraph' function</p></td>
     </tr>
     <tr>
       <th>minSize</th>
@@ -135,7 +135,7 @@ length as the number of nodes in the graph); or (3) a metric to use to scale the
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A sigmaNet object with modified node sizes  This object can be called directly
+    <p>A 'sigmaNet' object with modified node sizes  This object can be called directly
   to create a visualization, or modified by additional functions.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
@@ -145,7 +145,8 @@ the nodes according to your specification, between these min- and max sizes.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>igraph</span>)
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='fu'>library</span>(<span class='no'>igraph</span>)
 <span class='fu'>library</span>(<span class='no'>sigmaNet</span>)
 <span class='fu'>library</span>(<span class='no'>magrittr</span>)
 
@@ -156,17 +157,20 @@ the nodes according to your specification, between these min- and max sizes.</p>
 <span class='co'>#one size for all nodes</span>
 <span class='no'>sig</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sigmaFromIgraph.html'>sigmaFromIgraph</a></span>(<span class='kw'>graph</span> <span class='kw'>=</span> <span class='no'>lesMis</span>, <span class='kw'>layout</span> <span class='kw'>=</span> <span class='no'>l</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'>addNodeSize</span>(<span class='kw'>oneSize</span> <span class='kw'>=</span> <span class='fl'>3</span>)
-<span class='no'>sig</span></div><div class='output co'>#&gt; <span class='error'>Error in yaml.load(readLines(con), error.label = error.label, ...): argument "error.label" is missing, with no default</span></div><div class='input'>
+<span class='no'>sig</span>
+
 <span class='co'>#using a size attribute</span>
 <span class='no'>sig</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sigmaFromIgraph.html'>sigmaFromIgraph</a></span>(<span class='kw'>graph</span> <span class='kw'>=</span> <span class='no'>lesMis</span>, <span class='kw'>layout</span> <span class='kw'>=</span> <span class='no'>l</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'>addNodeSize</span>(<span class='kw'>sizeMetric</span> <span class='kw'>=</span> <span class='st'>'degree'</span>, <span class='kw'>minSize</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>maxSize</span> <span class='kw'>=</span> <span class='fl'>8</span>)
-<span class='no'>sig</span></div><div class='output co'>#&gt; <span class='error'>Error in yaml.load(readLines(con), error.label = error.label, ...): argument "error.label" is missing, with no default</span></div><div class='input'>
+<span class='no'>sig</span>
+
 <span class='co'>#using a vector</span>
 <span class='no'>customSize</span> <span class='kw'>&lt;-</span> <span class='fu'>log10</span>(<span class='fu'><a href='http://www.rdocumentation.org/packages/igraph/topics/degree'>degree</a></span>(<span class='no'>lesMis</span>))
 <span class='no'>sig</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sigmaFromIgraph.html'>sigmaFromIgraph</a></span>(<span class='kw'>graph</span> <span class='kw'>=</span> <span class='no'>lesMis</span>, <span class='kw'>layout</span> <span class='kw'>=</span> <span class='no'>l</span>) <span class='kw'>%&gt;%</span>
  <span class='fu'>addNodeSize</span>(<span class='kw'>sizeVector</span> <span class='kw'>=</span> <span class='no'>customSize</span>)
-<span class='no'>sig</span></div><div class='output co'>#&gt; <span class='error'>Error in yaml.load(readLines(con), error.label = error.label, ...): argument "error.label" is missing, with no default</span></div><div class='input'>
-</div></pre>
+<span class='no'>sig</span>
+
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -2,7 +2,7 @@
 % Please edit documentation in R/sigmaShiny.R
 \name{sigmaNetOutput}
 \alias{sigmaNetOutput}
-\title{Create a UI element for a sigmaNet visualization in Shiny}
+\title{Create a UI element for a 'sigmaNet' visualization in 'Shiny'}
 \usage{
 sigmaNetOutput(outputId, width = "100\%", height = "400px")
 }
@@ -14,5 +14,5 @@ sigmaNetOutput(outputId, width = "100\%", height = "400px")
 \item{height}{The height of the UI element}
 }
 \description{
-Create a UI element for a sigmaNet visualization in Shiny
+Create a UI element for a 'sigmaNet' visualization in 'Shiny'
 }

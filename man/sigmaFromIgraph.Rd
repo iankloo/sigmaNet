@@ -2,31 +2,31 @@
 % Please edit documentation in R/sigmaFromIgraph.R
 \name{sigmaFromIgraph}
 \alias{sigmaFromIgraph}
-\title{Make a basic Sigma graph object from an igraph object}
+\title{Make a basic 'sigmaNet' graph object from an 'igraph' object}
 \usage{
 sigmaFromIgraph(graph, layout = NULL, width = NULL, height = NULL,
   elementId = NULL)
 }
 \arguments{
-\item{graph}{An igraph object}
+\item{graph}{An 'igraph' object}
 
-\item{layout}{The output of one of the igraph layout functions.  If not provided, layout_nicely() will be used (note, this will slow things down).}
+\item{layout}{The output of one of the 'igraph' layout functions.  If not provided, layout_nicely() will be used (note, this will slow things down).}
 
 \item{width}{Width of the resulting graph - defaults to fit container, probably leave this alone}
 
 \item{height}{Height of the resulting graph - defaults to fit container, probably leave this alone}
 
-\item{elementId}{Do not specify, this is used by the htmlwidgets package}
+\item{elementId}{Do not specify, this is used by the 'htmlwidgets' package}
 }
 \value{
-A sigmaNet object (which is an htmlwidget).  This object is meant to be called directly
-  to render a default sigma.js visualization, or it can be passed to other arguments to
+A 'sigmaNet' object (which is an 'htmlwidget').  This object is meant to be called directly
+  to render a default 'Sigma.js' visualization, or it can be passed to other arguments to
   change visualization attributes (colors, sizes, interactivity, etc.).
 }
 \description{
-Create a sigmaNet object from an igraph object.  The sigmaNet object will be a basic visualization
-of the igraph object and is meant to be the starting point for the development of a useful Sigma.js
-visualization.  If you are familiar with the ggplot syntax, this is similar to the basic ggplot()
+Create a 'sigmaNet' object from an 'igraph' object.  The 'sigmaNet' object will be a basic visualization
+of the 'igraph' object and is meant to be the starting point for the development of a useful 'Sigma.js'
+visualization.  If you are familiar with the 'ggplot' syntax, this is similar to the basic 'ggplot'
 function.
 }
 \examples{
@@ -40,5 +40,4 @@ sig <- sigmaFromIgraph(graph = lesMis, layout = l)
 
 #render basic visualization by calling the object
 sig
-
 }

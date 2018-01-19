@@ -2,13 +2,13 @@
 % Please edit documentation in R/sigmaAttrs.R
 \name{addEdgeSize}
 \alias{addEdgeSize}
-\title{Modify the edge size of a sigmaNet object.}
+\title{Modify the edge size of a 'sigmaNet' object.}
 \usage{
 addEdgeSize(sigmaObj, sizeAttr = NULL, minSize = 1, maxSize = 5,
   oneSize = NULL)
 }
 \arguments{
-\item{sigmaObj}{A Sigma object - created using the sigmaFromIgraph function}
+\item{sigmaObj}{A 'sigmaNet' object - created using the 'sigmaFromIgraph' function}
 
 \item{sizeAttr}{The attribute to use to create edge size (width)}
 
@@ -19,11 +19,11 @@ addEdgeSize(sigmaObj, sizeAttr = NULL, minSize = 1, maxSize = 5,
 \item{oneSize}{A single size to use for all edges}
 }
 \value{
-A sigmaNet object with modified node labels.  This object can be called directly
+A 'sigmaNet' object with modified node labels.  This object can be called directly
   to create a visualization, or modified by additional functions.
 }
 \description{
-Modify the edge size of a sigmaNet object by providing one of the following: (1) a single size
+Modify the edge size of a 'sigmaNet' object by providing one of the following: (1) a single size
 to use for all edges; or (2) an attribute in the initial igraph to be used to size the edges.
 }
 \details{

@@ -1,18 +1,18 @@
-#' Modify the node colors of a sigmaNet object.
+#' Modify the node colors of a 'sigmaNet' object.
 #'
-#' Modify the node colors in an existing sigmaNet object by providing one of the following:
+#' Modify the node colors in an existing 'sigmaNet' object by providing one of the following:
 #' (1) a single color to use for all nodes or; (2) a vertex attribute from your original
-#' igraph object.  If you are using a vertex attribute, you can also specify a color palette
-#' from the RColorBrewer package.
+#' 'igraph' object.  If you are using a vertex attribute, you can also specify a color palette
+#' from the 'RColorBrewer' package.
 #'
-#' *It is most useful to use the pipe operator from the magrittr package with this function.
+#' *It is most useful to use the pipe operator from the 'magrittr' package with this function.
 #'
-#' @param sigmaObj A Sigma object - created using the sigmaFromIgraph function
+#' @param sigmaObj A 'sigmaNet' object - created using the 'sigmaFromIgraph' function
 #' @param oneColor A single color to color all of the nodes (hex format)
-#' @param colorAttr An attribute from the original igraph nodes to color the nodes by
+#' @param colorAttr An attribute from the original 'igraph' nodes to color the nodes by
 #' @param colorPal The color palatte to use - only used if colorAttr is specified
 #'
-#' @return A sigmaNet object with modified node colors.  This object can be called directly
+#' @return A 'sigmaNet' object with modified node colors.  This object can be called directly
 #'   to create a visualization, or modified by additional functions.
 #'
 #' @examples
@@ -58,23 +58,23 @@ addNodeColors <- function(sigmaObj, oneColor = NULL, colorAttr = NULL, colorPal 
   sigmaObj$x$data <- jsonlite::toJSON(graphOut, pretty = TRUE)
   return(sigmaObj)
 }
-#' Modify the node size of a sigmaNet object.
+#' Modify the node size of a 'sigmaNet' object.
 #'
-#' Modify the node size of an existing sigmaNet object by providing one of the following:
+#' Modify the node size of an existing 'sigmaNet' object by providing one of the following:
 #' (1) A single size to use for all nodes; (2) a vector of node sizes (this must be the same
 #' length as the number of nodes in the graph); or (3) a metric to use to scale the nodes.
 #'
 #' If using the 2nd or 3rd approach, specifying the minSize and maxSize attributes will scale
 #' the nodes according to your specification, between these min- and max sizes.
 #'
-#' @param sigmaObj A Sigma object - created using the sigmaFromIgraph function
+#' @param sigmaObj A 'sigmaNet' object - created using the 'sigmaFromIgraph' function
 #' @param minSize The minimum node size on the graph (for scaling)
 #' @param maxSize The maximum node size on the graph (for scaling)
 #' @param sizeMetric The metric to use when sizing the nodes.  Options are: degree, closeness, betweenness, pageRank, or eigenCentrality.
 #' @param sizeVector An optional vector with the sizes for each node (overrides sizeMetric and min/maxSize)
 #' @param oneSize A single size to use for all nodes
 #'
-#' @return A sigmaNet object with modified node sizes  This object can be called directly
+#' @return A 'sigmaNet' object with modified node sizes  This object can be called directly
 #'   to create a visualization, or modified by additional functions.
 #'
 #' @examples
@@ -140,15 +140,15 @@ addNodeSize <- function(sigmaObj, minSize = 1, maxSize = 3, sizeMetric = 'degree
   return(sigmaObj)
 
 }
-#' Modify the node labels of a sigmaNet object.
+#' Modify the node labels of a 'sigmaNet' object.
 #'
-#' Modify the node labels of an existing sigmaNet object by providing an attribute from the
-#' initial igraph to use as the labels.
+#' Modify the node labels of an existing 'sigmaNet' object by providing an attribute from the
+#' initial 'igraph' to use as the labels.
 #'
-#' @param sigmaObj A Sigma object - created using the sigmaFromIgraph function
+#' @param sigmaObj A 'sigmaNet' object - created using the 'sigmaFromIgraph' function
 #' @param labelAttr The attribute to use to create node labels
 #'
-#' @return A sigmaNet object with modified node labels.  This object can be called directly
+#' @return A 'sigmaNet' object with modified node labels.  This object can be called directly
 #'   to create a visualization, or modified by additional functions.
 #'
 #' @examples
@@ -176,21 +176,21 @@ addNodeLabels <- function(sigmaObj, labelAttr = NULL){
   sigmaObj$x$data <- jsonlite::toJSON(graphOut, pretty = TRUE)
   return(sigmaObj)
 }
-#' Modify the edge size of a sigmaNet object.
+#' Modify the edge size of a 'sigmaNet' object.
 #'
-#' Modify the edge size of a sigmaNet object by providing one of the following: (1) a single size
+#' Modify the edge size of a 'sigmaNet' object by providing one of the following: (1) a single size
 #' to use for all edges; or (2) an attribute in the initial igraph to be used to size the edges.
 #'
 #' If the 2nd method is used, the minSize and maxSize attribute will control lower and upper bounds
 #' of the scaling function.
 #'
-#' @param sigmaObj A Sigma object - created using the sigmaFromIgraph function
+#' @param sigmaObj A 'sigmaNet' object - created using the 'sigmaFromIgraph' function
 #' @param sizeAttr The attribute to use to create edge size (width)
 #' @param minSize The minimum size of the edges (for scaling)
 #' @param maxSize The maximum size of the edges (for scaling)
 #' @param oneSize A single size to use for all edges
 #'
-#' @return A sigmaNet object with modified node labels.  This object can be called directly
+#' @return A 'sigmaNet' object with modified node labels.  This object can be called directly
 #'   to create a visualization, or modified by additional functions.
 #'
 #' @examples
@@ -233,20 +233,20 @@ addEdgeSize <- function(sigmaObj, sizeAttr = NULL, minSize = 1, maxSize = 5, one
   sigmaObj$x$data <- jsonlite::toJSON(graphOut, pretty = TRUE)
   return(sigmaObj)
 }
-#' Modify the edge colors of a sigmaNet object.
+#' Modify the edge colors of a 'sigmaNet' object.
 #'
-#' Modify the edge colors of a sigmaNet object by providing either: (1) a single color to use
-#' for every edge; or (2) an attribute of the initial igraph object that will be used to determine
+#' Modify the edge colors of a 'sigmaNet' object by providing either: (1) a single color to use
+#' for every edge; or (2) an attribute of the initial 'igraph' object that will be used to determine
 #' color.
 #'
-#' If the 2nd option is used, you can also specify a color palette from RColorBrewer.
+#' If the 2nd option is used, you can also specify a color palette from 'RColorBrewer.'
 #'
-#' @param sigmaObj A Sigma object - created using the sigmaFromIgraph function
+#' @param sigmaObj A 'sigmaNet' object - created using the 'sigmaFromIgraph' function
 #' @param oneColor A single color to color all of the nodes (hex format)
-#' @param colorAttr An attribute from the original igraph nodes to color the nodes by
+#' @param colorAttr An attribute from the original 'igraph' nodes to color the nodes by
 #' @param colorPal The color palatte to use - only used if colorAttr is specified
 #'
-#' @return A sigmaNet object with modified node labels.  This object can be called directly
+#' @return A 'sigmaNet' object with modified node labels.  This object can be called directly
 #'   to create a visualization, or modified by additional functions.
 #'
 #' @examples
@@ -284,17 +284,17 @@ addEdgeColors <- function(sigmaObj, oneColor = NULL, colorAttr = NULL, colorPal 
   sigmaObj$x$data <- jsonlite::toJSON(graphOut, pretty = TRUE)
   return(sigmaObj)
 }
-#' Save sigmaNet object as html - a wrapper for saveWidget()
+#' Save 'sigmaNet' object as html - a wrapper for saveWidget()
 #'
-#' Save an sigmaNet object as an html file (without rendering it).  This is especially helpful
+#' Save an 'sigmaNet' object as an html file (without rendering it).  This is especially helpful
 #' when dealing with very large graphs that could crash your R session if you attempt to render
-#' them in the Rstudio viewer pane.
+#' them in the 'Rstudio' viewer pane.
 #'
-#' @param sigmaObj A Sigma object - created using the sigmaFromIgraph function
+#' @param sigmaObj A 'sigmaNet' object - created using the 'sigmaFromIgraph' function
 #' @param fileName A name for your html output (with or without .html at the end)
 #'
 #' @return An html file in your working directory (or other specified directory).  This file is a
-#'   standalone representation of your Sigma.js visualization that can be shared and moved freely.
+#'   standalone representation of your 'Sigma.js' visualization that can be shared and moved freely.
 #'   This object will maintain it's interactivity.
 #'
 #' @examples
@@ -321,13 +321,13 @@ saveSigma <- function(sigmaObj, fileName = NULL){
   }
   htmlwidgets::saveWidget(sigmaObj, file = fileName)
 }
-#' Modify the interactivity of a sigmaNet object.
+#' Modify the interactivity of a 'sigmaNet' object.
 #'
-#' Modify the interactivity of a sigmaNet object using the below options.  By default, visualizations
+#' Modify the interactivity of a 'sigmaNet' object using the below options.  By default, visualizations
 #' include on-click neighbor events, double-click zoom, and mouse-wheel zoom.  These can all be disabled
 #' or modified per the below options.
 #'
-#' @param sigmaObj A Sigma object - created using the sigmaFromIgraph function
+#' @param sigmaObj A 'sigmaNet' object - created using the 'sigmaFromIgraph' function
 #' @param neighborEvent Enable/disable event that highlights a node's neighbors.  Can either be onClick, onHover, or None.
 #' @param doubleClickZoom Enable/disable zoom event on double click
 #' @param mouseWheelZoom Enable/disable zoom event on mouse wheel

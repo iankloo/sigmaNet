@@ -2,13 +2,13 @@
 % Please edit documentation in R/sigmaAttrs.R
 \name{addInteraction}
 \alias{addInteraction}
-\title{Modify the interactivity of a sigmaNet object.}
+\title{Modify the interactivity of a 'sigmaNet' object.}
 \usage{
 addInteraction(sigmaObj, neighborEvent = "onClick", doubleClickZoom = TRUE,
   mouseWheelZoom = TRUE)
 }
 \arguments{
-\item{sigmaObj}{A Sigma object - created using the sigmaFromIgraph function}
+\item{sigmaObj}{A 'sigmaNet' object - created using the 'sigmaFromIgraph' function}
 
 \item{neighborEvent}{Enable/disable event that highlights a node's neighbors.  Can either be onClick, onHover, or None.}
 
@@ -17,7 +17,7 @@ addInteraction(sigmaObj, neighborEvent = "onClick", doubleClickZoom = TRUE,
 \item{mouseWheelZoom}{Enable/disable zoom event on mouse wheel}
 }
 \description{
-Modify the interactivity of a sigmaNet object using the below options.  By default, visualizations
+Modify the interactivity of a 'sigmaNet' object using the below options.  By default, visualizations
 include on-click neighbor events, double-click zoom, and mouse-wheel zoom.  These can all be disabled
 or modified per the below options.
 }

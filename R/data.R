@@ -1,6 +1,6 @@
-#' Co-appearances of characters in Les Miserables
+#' Co-appearances of characters in "Les Miserables"
 #'
-#' A graph where the nodes are characters in Les Miserables and the 
+#' A graph where the nodes are characters in "Les Miserables" and the
 #' edges are times that the characters appeared together in the novel.
 #'
 #' @format An igraph object with 77 nodes and 254 edges

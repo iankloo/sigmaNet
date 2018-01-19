@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Modify the edge colors of a sigmaNet object. — addEdgeColors • sigmaNet</title>
+<title>Modify the edge colors of a 'sigmaNet' object. — addEdgeColors • sigmaNet</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -92,12 +92,12 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Modify the edge colors of a sigmaNet object.</h1>
+    <h1>Modify the edge colors of a 'sigmaNet' object.</h1>
     </div>
 
     
-    <p>Modify the edge colors of a sigmaNet object by providing either: (1) a single color to use
-for every edge; or (2) an attribute of the initial igraph object that will be used to determine
+    <p>Modify the edge colors of a 'sigmaNet' object by providing either: (1) a single color to use
+for every edge; or (2) an attribute of the initial 'igraph' object that will be used to determine
 color.</p>
     
 
@@ -109,7 +109,7 @@ color.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>sigmaObj</th>
-      <td><p>A Sigma object - created using the sigmaFromIgraph function</p></td>
+      <td><p>A 'sigmaNet' object - created using the 'sigmaFromIgraph' function</p></td>
     </tr>
     <tr>
       <th>oneColor</th>
@@ -117,7 +117,7 @@ color.</p>
     </tr>
     <tr>
       <th>colorAttr</th>
-      <td><p>An attribute from the original igraph nodes to color the nodes by</p></td>
+      <td><p>An attribute from the original 'igraph' nodes to color the nodes by</p></td>
     </tr>
     <tr>
       <th>colorPal</th>
@@ -127,16 +127,17 @@ color.</p>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A sigmaNet object with modified node labels.  This object can be called directly
+    <p>A 'sigmaNet' object with modified node labels.  This object can be called directly
   to create a visualization, or modified by additional functions.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>If the 2nd option is used, you can also specify a color palette from RColorBrewer.</p>
+    <p>If the 2nd option is used, you can also specify a color palette from 'RColorBrewer.'</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>igraph</span>)
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='fu'>library</span>(<span class='no'>igraph</span>)
 <span class='fu'>library</span>(<span class='no'>sigmaNet</span>)
 <span class='fu'>library</span>(<span class='no'>magrittr</span>)
 
@@ -147,8 +148,9 @@ color.</p>
 <span class='co'>#one color for all edges</span>
 <span class='no'>sig</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sigmaFromIgraph.html'>sigmaFromIgraph</a></span>(<span class='kw'>graph</span> <span class='kw'>=</span> <span class='no'>lesMis</span>, <span class='kw'>layout</span> <span class='kw'>=</span> <span class='no'>l</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'>addEdgeColors</span>(<span class='kw'>oneColor</span> <span class='kw'>=</span> <span class='st'>'#D95F02'</span>)
-<span class='no'>sig</span></div><div class='output co'>#&gt; <span class='error'>Error in yaml.load(readLines(con), error.label = error.label, ...): argument "error.label" is missing, with no default</span></div><div class='input'>
-</div></pre>
+<span class='no'>sig</span>
+
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

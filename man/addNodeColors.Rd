@@ -2,32 +2,32 @@
 % Please edit documentation in R/sigmaAttrs.R
 \name{addNodeColors}
 \alias{addNodeColors}
-\title{Modify the node colors of a sigmaNet object.}
+\title{Modify the node colors of a 'sigmaNet' object.}
 \usage{
 addNodeColors(sigmaObj, oneColor = NULL, colorAttr = NULL,
   colorPal = "Dark2")
 }
 \arguments{
-\item{sigmaObj}{A Sigma object - created using the sigmaFromIgraph function}
+\item{sigmaObj}{A 'sigmaNet' object - created using the 'sigmaFromIgraph' function}
 
 \item{oneColor}{A single color to color all of the nodes (hex format)}
 
-\item{colorAttr}{An attribute from the original igraph nodes to color the nodes by}
+\item{colorAttr}{An attribute from the original 'igraph' nodes to color the nodes by}
 
 \item{colorPal}{The color palatte to use - only used if colorAttr is specified}
 }
 \value{
-A sigmaNet object with modified node colors.  This object can be called directly
+A 'sigmaNet' object with modified node colors.  This object can be called directly
   to create a visualization, or modified by additional functions.
 }
 \description{
-Modify the node colors in an existing sigmaNet object by providing one of the following:
+Modify the node colors in an existing 'sigmaNet' object by providing one of the following:
 (1) a single color to use for all nodes or; (2) a vertex attribute from your original
-igraph object.  If you are using a vertex attribute, you can also specify a color palette
-from the RColorBrewer package.
+'igraph' object.  If you are using a vertex attribute, you can also specify a color palette
+from the 'RColorBrewer' package.
 }
 \details{
-*It is most useful to use the pipe operator from the magrittr package with this function.
+*It is most useful to use the pipe operator from the 'magrittr' package with this function.
 }
 \examples{
 library(igraph)

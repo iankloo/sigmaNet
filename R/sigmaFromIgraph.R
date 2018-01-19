@@ -1,18 +1,18 @@
-#' Make a basic Sigma graph object from an igraph object
+#' Make a basic 'sigmaNet' graph object from an 'igraph' object
 #'
-#' Create a sigmaNet object from an igraph object.  The sigmaNet object will be a basic visualization
-#' of the igraph object and is meant to be the starting point for the development of a useful Sigma.js
-#' visualization.  If you are familiar with the ggplot syntax, this is similar to the basic ggplot()
+#' Create a 'sigmaNet' object from an 'igraph' object.  The 'sigmaNet' object will be a basic visualization
+#' of the 'igraph' object and is meant to be the starting point for the development of a useful 'Sigma.js'
+#' visualization.  If you are familiar with the 'ggplot' syntax, this is similar to the basic 'ggplot'
 #' function.
 #'
-#' @param graph An igraph object
-#' @param layout The output of one of the igraph layout functions.  If not provided, layout_nicely() will be used (note, this will slow things down).
+#' @param graph An 'igraph' object
+#' @param layout The output of one of the 'igraph' layout functions.  If not provided, layout_nicely() will be used (note, this will slow things down).
 #' @param width Width of the resulting graph - defaults to fit container, probably leave this alone
 #' @param height Height of the resulting graph - defaults to fit container, probably leave this alone
-#' @param elementId Do not specify, this is used by the htmlwidgets package
+#' @param elementId Do not specify, this is used by the 'htmlwidgets' package
 #'
-#' @return A sigmaNet object (which is an htmlwidget).  This object is meant to be called directly
-#'   to render a default sigma.js visualization, or it can be passed to other arguments to
+#' @return A 'sigmaNet' object (which is an 'htmlwidget').  This object is meant to be called directly
+#'   to render a default 'Sigma.js' visualization, or it can be passed to other arguments to
 #'   change visualization attributes (colors, sizes, interactivity, etc.).
 #'
 #' @examples
@@ -26,7 +26,7 @@
 #'
 #' #render basic visualization by calling the object
 #' sig
-#'
+#' @import htmlwidgets
 #' @export
 
 sigmaFromIgraph <- function(graph, layout = NULL, width = NULL, height = NULL, elementId = NULL){

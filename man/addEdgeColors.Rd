@@ -2,31 +2,31 @@
 % Please edit documentation in R/sigmaAttrs.R
 \name{addEdgeColors}
 \alias{addEdgeColors}
-\title{Modify the edge colors of a sigmaNet object.}
+\title{Modify the edge colors of a 'sigmaNet' object.}
 \usage{
 addEdgeColors(sigmaObj, oneColor = NULL, colorAttr = NULL,
   colorPal = "Set2")
 }
 \arguments{
-\item{sigmaObj}{A Sigma object - created using the sigmaFromIgraph function}
+\item{sigmaObj}{A 'sigmaNet' object - created using the 'sigmaFromIgraph' function}
 
 \item{oneColor}{A single color to color all of the nodes (hex format)}
 
-\item{colorAttr}{An attribute from the original igraph nodes to color the nodes by}
+\item{colorAttr}{An attribute from the original 'igraph' nodes to color the nodes by}
 
 \item{colorPal}{The color palatte to use - only used if colorAttr is specified}
 }
 \value{
-A sigmaNet object with modified node labels.  This object can be called directly
+A 'sigmaNet' object with modified node labels.  This object can be called directly
   to create a visualization, or modified by additional functions.
 }
 \description{
-Modify the edge colors of a sigmaNet object by providing either: (1) a single color to use
-for every edge; or (2) an attribute of the initial igraph object that will be used to determine
+Modify the edge colors of a 'sigmaNet' object by providing either: (1) a single color to use
+for every edge; or (2) an attribute of the initial 'igraph' object that will be used to determine
 color.
 }
 \details{
-If the 2nd option is used, you can also specify a color palette from RColorBrewer.
+If the 2nd option is used, you can also specify a color palette from 'RColorBrewer.'
 }
 \examples{
 library(igraph)

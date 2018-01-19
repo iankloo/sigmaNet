@@ -3,7 +3,7 @@
 \docType{data}
 \name{lesMis}
 \alias{lesMis}
-\title{Co-appearances of characters in Les Miserables}
+\title{Co-appearances of characters in "Les Miserables"}
 \format{An igraph object with 77 nodes and 254 edges
 \describe{
   \item{id}{numeric id of nodes}
@@ -17,7 +17,7 @@ D. E. Knuth, The Stanford GraphBase: A Platform for Combinatorial Computing, Add
 lesMis
 }
 \description{
-A graph where the nodes are characters in Les Miserables and the 
+A graph where the nodes are characters in "Les Miserables" and the
 edges are times that the characters appeared together in the novel.
 }
 \keyword{datasets}

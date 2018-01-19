@@ -2,17 +2,17 @@
 % Please edit documentation in R/sigmaShiny.R
 \name{renderSigmaNet}
 \alias{renderSigmaNet}
-\title{Render a sigmaNet visualization in Shiny}
+\title{Render a 'sigmaNet' visualization in 'Shiny'}
 \usage{
 renderSigmaNet(expr, env = parent.frame(), quoted = FALSE)
 }
 \arguments{
-\item{expr}{An expression that creates a sigmaNet visualization}
+\item{expr}{An expression that creates a 'sigmaNet' visualization}
 
-\item{env}{Defaults to parent.frame() - see shiny docs for more info}
+\item{env}{Defaults to parent.frame() - see 'Shiny' docs for more info}
 
-\item{quoted}{Defaults to FALSE - see shiny docs for more info}
+\item{quoted}{Defaults to FALSE - see 'Shiny docs for more info}
 }
 \description{
-Render a sigmaNet visualization in Shiny
+Render a 'sigmaNet' visualization in 'Shiny'
 }
