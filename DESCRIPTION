@@ -1,11 +1,11 @@
 Package: sigmaNet
 Title: Render Graphs Using 'Sigma.js'
-Version: 1.0.1
+Version: 1.0.2
 Authors@R: person("Ian", "Kloo", email = "iankloo@gmail.com", role = c("aut", "cre"))
 Maintainer: Ian Kloo <iankloo@gmail.com>
 URL: https://github.com/iankloo/sigmaNet
 BugReports: https://github.com/iankloo/sigmaNet/issues
-Description: Create interactive graph visualizations using 'Sigma.js'<http://sigmajs.org/>.  This package is meant to be used in conjunction
+Description: Create interactive graph visualizations using 'Sigma.js' <http://sigmajs.org/>.  This package is meant to be used in conjunction
     with 'igraph', replacing the (somewhat underwhelming) plotting features of the package.  The idea is to quickly render
     graphs, regardless of their size, in a way that allows for easy, iterative modification of aesthetics.  Because 
     'Sigma.js' is a 'javascript' library, the visualizations are inherently interactive and are well suited for integration

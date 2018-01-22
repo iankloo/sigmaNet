@@ -308,7 +308,7 @@ addEdgeColors <- function(sigmaObj, oneColor = NULL, colorAttr = NULL, colorPal 
 #' sig <- sigmaFromIgraph(graph = lesMis, layout = l)
 #'
 #' \dontrun{
-#' saveSigma(sig, fileName = 'myFile.html')
+#' saveSigma(sig, fileName = file.path(tempdir(), 'myFile.html'))
 #' }
 #'
 #' @export
