@@ -1,6 +1,6 @@
 Package: sigmaNet
 Title: Render Graphs Using 'Sigma.js'
-Version: 1.0.2
+Version: 1.0.3
 Authors@R: person("Ian", "Kloo", email = "iankloo@gmail.com", role = c("aut", "cre"))
 Maintainer: Ian Kloo <iankloo@gmail.com>
 URL: https://github.com/iankloo/sigmaNet
