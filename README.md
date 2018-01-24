@@ -1,6 +1,6 @@
 # sigmaNet
 
-Render `igraph` networks using Sigma.js - in R!  
+Render `igraph` networks using Sigma.js - in R - now on CRAN!
 
 <a href = 'https://iankloo.github.io/sigmaNet/'>Check out the full docs</a>
 
@@ -20,6 +20,12 @@ Benefits of this package:
 ## How?
 
 First, install this package:
+
+```
+install.packages('sigmaNet')
+```
+
+Or, use the development version:
 
 ```
 devtools::install_github('iankloo/sigmaNet')

@@ -71,7 +71,7 @@
     <div id="sigmanet" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#sigmanet" class="anchor"></a>sigmaNet</h1></div>
-<p>Render <code>igraph</code> networks using Sigma.js - in R!</p>
+<p>Render <code>igraph</code> networks using Sigma.js - in R - now on CRAN!</p>
 <p><a href="https://iankloo.github.io/sigmaNet/">Check out the full docs</a></p>
 <div id="why" class="section level2">
 <h2 class="hasAnchor">
@@ -91,6 +91,8 @@
 <h2 class="hasAnchor">
 <a href="#how" class="anchor"></a>How?</h2>
 <p>First, install this package:</p>
+<pre><code>install.packages('sigmaNet')</code></pre>
+<p>Or, use the development version:</p>
 <pre><code><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">devtools::install_github('iankloo/sigmaNet')</a></code></pre>
 <p>Then, create an <code>igraph</code> network. Here we’ll use the included les Miserables dataset that maps the co-appearances of characters in the novel.</p>
 <p>Note, passing an optional layout to the <code><a href="reference/sigmaFromIgraph.html">sigmaFromIgraph()</a></code> function will dramatically improve speed. Layouts are usually the most computationally intensive task when creating network visualizations. This package allows you to separate this computation from the aesthetic changes you will likely want to make to your visualization.</p>
@@ -163,6 +165,8 @@ sig %&gt;%
   <div class="col-md-3" id="sidebar">
     <h2>Links</h2>
 <ul class="list-unstyled">
+<li>Download from CRAN at <br><a href="https://cran.r-project.org/package=sigmaNet">https://​cran.r-project.org/​package=sigmaNet</a>
+</li>
 <li>Browse source code at <br><a href="https://github.com/iankloo/sigmaNet">https://​github.com/​iankloo/​sigmaNet</a>
 </li>
 <li>Report a bug at <br><a href="https://github.com/iankloo/sigmaNet/issues">https://​github.com/​iankloo/​sigmaNet/​issues</a>

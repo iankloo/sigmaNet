@@ -135,7 +135,7 @@ them in the 'Rstudio' viewer pane.</p>
 <span class='no'>sig</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sigmaFromIgraph.html'>sigmaFromIgraph</a></span>(<span class='kw'>graph</span> <span class='kw'>=</span> <span class='no'>lesMis</span>, <span class='kw'>layout</span> <span class='kw'>=</span> <span class='no'>l</span>)
 
 <span class='co'># }</span><span class='co'># NOT RUN {</span>
-<span class='fu'>saveSigma</span>(<span class='no'>sig</span>, <span class='kw'>fileName</span> <span class='kw'>=</span> <span class='st'>'myFile.html'</span>)
+<span class='fu'>saveSigma</span>(<span class='no'>sig</span>, <span class='kw'>fileName</span> <span class='kw'>=</span> <span class='fu'>file.path</span>(<span class='fu'>tempdir</span>(), <span class='st'>'myFile.html'</span>))
 <span class='co'># }</span># NOT RUN {
 # }
 </pre>
