@@ -101,6 +101,8 @@ This package uses a renderer that detects whether or not your browser supports w
 
 ## Features in development
 
+- Fix version requirement in CRAN version of app
+- Return node info to R on-click (in shiny app)
 - GUI to modify aesthetics (Shiny gadget)
 
 Write an "issue" on the <a href = "https://github.com/iankloo/sigmaNet/issues">github page</a> for this package if you want to see additional features.
