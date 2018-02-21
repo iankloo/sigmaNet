@@ -22,6 +22,19 @@ HTMLWidgets.widget({
     });
     return {
       renderValue: function(x){
+        // Remove previous occurences of plots in the <div>
+        sigmaID = document.getElementById(el.id)
+        while (sigmaID.firstChild) {
+          //The list is LIVE so it will re-index each call
+          sigmaID.removeChild(sigmaID.firstChild);
+        }
+
+        var s = new sigma({
+          renderer: {
+            container: el.id
+          },
+        })
+
         s.settings('minEdgeSize', x.options.minEdgeSize);
         s.settings('maxEdgeSize', x.options.maxEdgeSize);
         s.settings('minNodeSize', x.options.minNodeSize);
@@ -29,7 +42,6 @@ HTMLWidgets.widget({
         s.settings('doubleClickEnabled', x.options.doubleClickZoom);
         s.settings('mouseWheelEnabled', x.options.mouseWheelZoom);
         s.graph.read(x.data);
-        console.log(x.options.neighborEvent)
         if(x.options.neighborEvent != 'None'){
           s.graph.nodes().forEach(function(n) {
             n.originalColor = n.color;
