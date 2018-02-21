@@ -22,18 +22,20 @@ HTMLWidgets.widget({
     });
     return {
       renderValue: function(x){
-        // Remove previous occurences of plots in the <div>
-        sigmaID = document.getElementById(el.id)
-        while (sigmaID.firstChild) {
-          //The list is LIVE so it will re-index each call
-          sigmaID.removeChild(sigmaID.firstChild);
-        }
+        // Remove previous occurences of plots in the <div> in Shiny app
+        if (HTMLWidgets.shinyMode) {
+          sigmaID = document.getElementById(el.id)
+          while (sigmaID.firstChild) {
+            //The list is LIVE so it will re-index each call
+            sigmaID.removeChild(sigmaID.firstChild);
+          }
 
-        var s = new sigma({
-          renderer: {
-            container: el.id
-          },
-        })
+          s = new sigma({
+            renderer: {
+              container: el.id
+            },
+          })
+        }
 
         s.settings('minEdgeSize', x.options.minEdgeSize);
         s.settings('maxEdgeSize', x.options.maxEdgeSize);
