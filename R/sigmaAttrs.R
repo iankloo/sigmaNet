@@ -44,7 +44,11 @@ addNodeColors <- function(sigmaObj, oneColor = NULL, colorAttr = NULL, colorPal 
 
   if(is.null(oneColor)){
     nodes$tempCol <- igraph::as_data_frame(sigmaObj$x$graph, what = 'vertices')[,colorAttr]
-    suppressWarnings(pal <- RColorBrewer::brewer.pal(length(unique(nodes[,'tempCol'])), colorPal))
+    
+    # If there are more node colors than colors in the chosen palette, interpolate colors to expand the palette
+    pal <- tryCatch(RColorBrewer::brewer.pal(length(unique(nodes[,'tempCol'])), colorPal),  
+      warning = function(w) (grDevices::colorRampPalette(RColorBrewer::brewer.pal(8, colorPal))(length(unique(nodes[,'tempCol'])))))
+
     palDF <- data.frame(group = unique(nodes[,'tempCol']), color = pal[1:length(unique(nodes[,'tempCol']))], stringsAsFactors = FALSE)
     nodes$color <- palDF$color[match(nodes$tempCol, palDF$group)]
     nodes$tempCol <- NULL
@@ -270,7 +274,11 @@ addEdgeColors <- function(sigmaObj, oneColor = NULL, colorAttr = NULL, colorPal 
 
   if(is.null(oneColor)){
     edges$tempCol <- igraph::as_data_frame(sigmaObj$x$graph, what = 'edges')[,colorAttr]
-    suppressWarnings(pal <- RColorBrewer::brewer.pal(length(unique(edges[,'tempCol'])), colorPal))
+    
+    # If there are more edge colors than colors in the chosen palette, interpolate colors to expand the palette
+    pal <- tryCatch(RColorBrewer::brewer.pal(length(unique(edges[,'tempCol'])), colorPal),  
+      warning = function(w) (grDevices::colorRampPalette(RColorBrewer::brewer.pal(8, colorPal))(length(unique(edges[,'tempCol'])))))
+
     palDF <- data.frame(group = unique(edges[,'tempCol']), color = pal[1:length(unique(edges[,'tempCol']))], stringsAsFactors = FALSE)
     edges$color <- palDF$color[match(edges$tempCol, palDF$group)]
     edges$tempCol <- NULL
