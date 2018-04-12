@@ -23,5 +23,6 @@ Imports: htmlwidgets,
 RoxygenNote: 6.0.1
 Suggests: magrittr,
     knitr,
-    rmarkdown
+    rmarkdown,
+    shiny
 VignetteBuilder: knitr

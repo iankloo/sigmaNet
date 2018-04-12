@@ -79,16 +79,9 @@ HTMLWidgets.widget({
           });
 
           // If any interaction is wanted and we're in a 
-          //   Shiny environment, return events to R
+          //   Shiny environment, return events to R         
           if (HTMLWidgets.shinyMode) {
-            var sigmaEvents = ["clickNode","clickNodes","clickEdge",
-              "clickEdges","outEdge","doubleClick",
-              "doubleClickNode","doubleClickNodes","doubleClickEdge",
-              "doubleClickEdges","doubleClickStage","rightClick",
-              "rightClickNode","rightClickNodes","rightClickEdge",
-              "rightClickEdges","rightClickStage","overNode",
-              "overNodes","overEdge","overEdges","outNode",
-              "outNodes","outEdges","clickStage"];
+            var sigmaEvents = x.options.sigmaEvents;
             var nbEvents = sigmaEvents.length;
             for(var event = 0; event < nbEvents; event++){
               var eventName = el.id + "_" + sigmaEvents[event];
