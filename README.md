@@ -94,41 +94,9 @@ While we can debate the usefulness of a "hairball" graph like this, you can see 
 ## Shiny Support
 
 You can use `sigmaNet` in Shiny using `renderSigmaNet()` in your server and `sigmaNetOutput()` in your ui.  See the <a href = 'https://shiny.rstudio.com/tutorial/'>Shiny docs</a> for more general info about Shiny - these functions drop-in just like the basic plotting examples.  
-It is possible to use callbacks to events in Shiny apps. The events handled are the following:  
 
-* clickNode
-* clickNodes
-* clickEdge
-* clickEdges
-* clickStage
-* doubleClick
-* doubleClickNode
-* doubleClickNodes
-* doubleClickEdge
-* doubleClickEdges
-* doubleClickStage
-* rightClick
-* rightClickNode
-* rightClickNodes
-* rightClickEdge
-* rightClickEdges
-* rightClickStage
-* overNode
-* overNodes
-* overEdge
-* overEdges
-* outNode
-* outNodes
-* outEdge
-* outEdges
-
-Before the event occurs, each variable is set by default to -1. They are accessible in the *input* object of the Shiny application with the following name format:
-
-	input$[name of the renderSigmaNet]_[name of the event]
-	
-For instance, to retrieve the label on the last node clicked by the user, in the shiny *renderSigmaNet* called *sigmaOut*, you can use:
-
-	input$sigmaOut_clickNode$data$node$label 
+It is possible to use callbacks to events in Shiny apps. The list of events handled is available on the [sigma.js website](https://github.com/jacomyal/sigma.js/wiki/Events-API).  
+To listen for a specific event, use `addListener()`. Before the event occurs, the corresponding variable is set by default to -1.
 
 ## A Note on Browsers
 
