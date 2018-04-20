@@ -30,7 +30,9 @@
 #' @export
 
 sigmaFromIgraph <- function(graph, layout = NULL, width = NULL, height = NULL, elementId = NULL){
-  edges <- igraph::as_data_frame(graph, what = 'edges')
+  graph_parse <- igraph::as_data_frame(graph, what = 'both')
+
+  edges <- graph_parse$edges
   edges <- edges[, c('from', 'to')]
   edges$id <- 1:nrow(edges)
   edges$size <- 1
@@ -42,7 +44,10 @@ sigmaFromIgraph <- function(graph, layout = NULL, width = NULL, height = NULL, e
   } else {
     l <- layout
   }
-  nodes <- igraph::as_data_frame(graph, what = 'vertices')
+
+  #weird behavior if try to get this from graph_parse object
+  nodes <- graph_parse$vertices
+  #nodes <- igraph::as_data_frame(graph, what = 'vertices')
   nodes$label <- row.names(nodes)
   nodes <- nodes[,'label', drop = FALSE]
   nodes <- cbind(nodes, l)
@@ -69,7 +74,7 @@ sigmaFromIgraph <- function(graph, layout = NULL, width = NULL, height = NULL, e
                   doubleClickZoom = TRUE, mouseWheelZoom = TRUE)
 
   out <- jsonlite::toJSON(graphOut, pretty = TRUE)
-  x <- list(data = out, options = options, graph = graph)
+  x <- list(data = out, options = options, graph = graph_parse)
 
   htmlwidgets::createWidget(name='sigmaNet', x, width = width, height = height, package = 'sigmaNet', elementId = elementId)
 }

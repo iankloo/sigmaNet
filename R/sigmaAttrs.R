@@ -43,10 +43,11 @@ addNodeColors <- function(sigmaObj, oneColor = NULL, colorAttr = NULL, colorPal 
   nodes <- jsonlite::fromJSON(sigmaObj$x$data)$nodes
 
   if(is.null(oneColor)){
-    nodes$tempCol <- igraph::as_data_frame(sigmaObj$x$graph, what = 'vertices')[,colorAttr]
-    
+    #nodes$tempCol <- igraph::as_data_frame(sigmaObj$x$graph, what = 'vertices')[,colorAttr]
+    nodes$tempCol <- sigmaObj$x$graph$vertices[,colorAttr]
+
     # If there are more node colors than colors in the chosen palette, interpolate colors to expand the palette
-    pal <- tryCatch(RColorBrewer::brewer.pal(length(unique(nodes[,'tempCol'])), colorPal),  
+    pal <- tryCatch(RColorBrewer::brewer.pal(length(unique(nodes[,'tempCol'])), colorPal),
       warning = function(w) (grDevices::colorRampPalette(RColorBrewer::brewer.pal(8, colorPal))(length(unique(nodes[,'tempCol'])))))
 
     palDF <- data.frame(group = unique(nodes[,'tempCol']), color = pal[1:length(unique(nodes[,'tempCol']))], stringsAsFactors = FALSE)
@@ -120,16 +121,17 @@ addNodeSize <- function(sigmaObj, minSize = 1, maxSize = 3, sizeMetric = 'degree
     sigmaObj$x$options$minNodeSize <- minSize
     sigmaObj$x$options$maxNodeSize <- maxSize
   } else{
+    tmp_graph <- igraph::graph_from_data_frame(sigmaObj$x$graph$edges)
     if(sizeMetric == 'degree'){
-      nodes$size <- igraph::degree(sigmaObj$x$graph)
+      nodes$size <- igraph::degree(tmp_graph)
     } else if(sizeMetric == 'closeness'){
-      nodes$size <- igraph::closeness(sigmaObj$x$graph)
+      nodes$size <- igraph::closeness(tmp_graph)
     } else if(sizeMetric == 'betweenness'){
-      nodes$size <- igraph::betweenness(sigmaObj$x$graph)
+      nodes$size <- igraph::betweenness(tmp_graph)
     } else if(sizeMetric == 'pageRank'){
-      nodes$size <- igraph::page_rank(sigmaObj$x$graph)$vector
+      nodes$size <- igraph::page_rank(tmp_graph)$vector
     } else if(sizeMetric == 'eigenCentrality'){
-      nodes$size <- igraph::eigen_centrality(sigmaObj$x$graph)$vector
+      nodes$size <- igraph::eigen_centrality(tmp_graph)$vector
     } else{
       stop('sizeMetric can only be one of: degree, closeness, betweenness, pageRank, or eigenCentrality.')
     }
@@ -172,7 +174,8 @@ addNodeLabels <- function(sigmaObj, labelAttr = NULL){
   edges <- jsonlite::fromJSON(sigmaObj$x$data)$edges
   nodes <- jsonlite::fromJSON(sigmaObj$x$data)$nodes
 
-  nodes$label <- as.character(igraph::as_data_frame(sigmaObj$x$graph, what = 'vertices')[,labelAttr])
+  #nodes$label <- as.character(igraph::as_data_frame(sigmaObj$x$graph, what = 'vertices')[,labelAttr])
+  nodes$label <- as.character(sigmaObj$x$graph$vertices[,labelAttr])
 
   graphOut <- list(nodes, edges)
   names(graphOut) <- c('nodes','edges')
@@ -226,7 +229,8 @@ addEdgeSize <- function(sigmaObj, sizeAttr = NULL, minSize = 1, maxSize = 5, one
     sigmaObj$x$options$minEdgeSize <- oneSize
     sigmaObj$x$options$maxEdgeSize <- oneSize
   } else{
-    edges$size <- as.character(igraph::as_data_frame(sigmaObj$x$graph, what = 'edges')[,sizeAttr])
+    #edges$size <- as.character(igraph::as_data_frame(sigmaObj$x$graph, what = 'edges')[,sizeAttr])
+    edges$size <- as.character(sigmaObj$x$graph$edges[,sizeAttr])
     sigmaObj$x$options$minEdgeSize <- minSize
     sigmaObj$x$options$maxEdgeSize <- maxSize
   }
@@ -273,10 +277,11 @@ addEdgeColors <- function(sigmaObj, oneColor = NULL, colorAttr = NULL, colorPal 
   nodes <- jsonlite::fromJSON(sigmaObj$x$data)$nodes
 
   if(is.null(oneColor)){
-    edges$tempCol <- igraph::as_data_frame(sigmaObj$x$graph, what = 'edges')[,colorAttr]
-    
+    #edges$tempCol <- igraph::as_data_frame(sigmaObj$x$graph, what = 'edges')[,colorAttr]
+    edges$tempCol <- sigmaObj$x$graph$edges[,colorAttr]
+
     # If there are more edge colors than colors in the chosen palette, interpolate colors to expand the palette
-    pal <- tryCatch(RColorBrewer::brewer.pal(length(unique(edges[,'tempCol'])), colorPal),  
+    pal <- tryCatch(RColorBrewer::brewer.pal(length(unique(edges[,'tempCol'])), colorPal),
       warning = function(w) (grDevices::colorRampPalette(RColorBrewer::brewer.pal(8, colorPal))(length(unique(edges[,'tempCol'])))))
 
     palDF <- data.frame(group = unique(edges[,'tempCol']), color = pal[1:length(unique(edges[,'tempCol']))], stringsAsFactors = FALSE)
@@ -372,13 +377,13 @@ addInteraction <- function(sigmaObj, neighborEvent = 'onClick', doubleClickZoom 
 #' Modify the interactivity between 'shiny' and a 'sigmaNet' object.
 #'
 #' Modify the interactivity between 'shiny' and a 'sigmaNet' object, listening to the events listed.
-#' By adding these listeners, the corresponding events will update variables accessible in the 'shiny' 
-#' environment as 'input$sigmaNetRenderer_eventName' where 'sigmaNetRenderer' is the name of the object 
+#' By adding these listeners, the corresponding events will update variables accessible in the 'shiny'
+#' environment as 'input$sigmaNetRenderer_eventName' where 'sigmaNetRenderer' is the name of the object
 #' created by calling the 'renderSigmaNet' function and 'eventName' the event required.
 #' The default value, used before the first occurence of the event, is -1.
 #'
 #' @param sigmaObj A 'sigmaNet' object - created using the 'sigmaFromIgraph' function
-#' @param listeners List of events to be listened 
+#' @param listeners List of events to be listened
 
 #'
 #' @examples
@@ -387,17 +392,17 @@ addInteraction <- function(sigmaObj, neighborEvent = 'onClick', doubleClickZoom 
 #' library(sigmaNet)
 #' library(magrittr)
 #' library(shiny)
-#' 
+#'
 #' data(lesMis)
 #' l <- layout_nicely(lesMis)
-#' 
+#'
 #' shinyServer <- function(input, output) {
 #'    output$sigma <- renderSigmaNet({
 #'      sig <- sigmaFromIgraph(graph = lesMis, layout = l) %>%
 #'        addListener(c('clickNode', 'clickEdge'))
 #'      return(sig)
 #'    })
-#' 
+#'
 #'    output$clickLabel <- renderText({
 #'      # The value of this variable will be -1 until
 #'      # a node is clicked on
@@ -413,7 +418,7 @@ addInteraction <- function(sigmaObj, neighborEvent = 'onClick', doubleClickZoom 
 #'    server = shinyServer
 #' )
 #' }
-#' 
+#'
 #' @import jsonlite
 #'
 #' @export
