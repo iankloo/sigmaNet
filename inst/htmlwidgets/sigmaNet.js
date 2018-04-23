@@ -34,6 +34,7 @@ HTMLWidgets.widget({
               container: el.id
             },
           })
+          s.refresh();
         }
 
         s.settings('minEdgeSize', x.options.minEdgeSize);
@@ -78,20 +79,18 @@ HTMLWidgets.widget({
             s.refresh();
           });
 
-          // If any interaction is wanted and we're in a 
-          //   Shiny environment, return events to R         
-          if (HTMLWidgets.shinyMode) {
-            var sigmaEvents = x.options.sigmaEvents;
-            var nbEvents = sigmaEvents.length;
-            for(var event = 0; event < nbEvents; event++){
-              var eventName = el.id + "_" + sigmaEvents[event];
-              // Return -1 as default, before events occured
-              Shiny.onInputChange(eventName, -1);
-              s.bind(sigmaEvents[event], function(e) {
-                name = el.id + "_" + e.type;
-                Shiny.onInputChange(
-                  name, e);
-              });
+          if(HTMLWidgets.shinyMode){
+            if(x.options.sigmaEvents){
+              if(x.options.sigmaEvents == 'clickNode'){
+                s.bind("clickNode", function(d){
+                  Shiny.onInputChange('node_data', d.data.node)
+                })
+              }
+              if(x.options.sigmaEvents == 'hoverNode'){
+                s.bind("overNode", function(d){
+                  Shiny.onInputChange('node_data', d.data.node)
+                })
+              }
             }
           }
         }

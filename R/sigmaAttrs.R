@@ -374,17 +374,10 @@ addInteraction <- function(sigmaObj, neighborEvent = 'onClick', doubleClickZoom 
 
   return(sigmaObj)
 }
-#' Modify the interactivity between 'shiny' and a 'sigmaNet' object.
-#'
-#' Modify the interactivity between 'shiny' and a 'sigmaNet' object, listening to the events listed.
-#' By adding these listeners, the corresponding events will update variables accessible in the 'shiny'
-#' environment as 'input$sigmaNetRenderer_eventName' where 'sigmaNetRenderer' is the name of the object
-#' created by calling the 'renderSigmaNet' function and 'eventName' the event required.
-#' The default value, used before the first occurence of the event, is -1.
+#' Add a "listener" to report data from a 'sigmaNet' object in 'Shiny' back to the R session.
 #'
 #' @param sigmaObj A 'sigmaNet' object - created using the 'sigmaFromIgraph' function
-#' @param listeners List of events to be listened
-
+#' @param listener Either "clickNode" to listen to node clicks or "hoverNode" to listen to node hover
 #'
 #' @examples
 #' \dontrun{
@@ -399,14 +392,12 @@ addInteraction <- function(sigmaObj, neighborEvent = 'onClick', doubleClickZoom 
 #' shinyServer <- function(input, output) {
 #'    output$sigma <- renderSigmaNet({
 #'      sig <- sigmaFromIgraph(graph = lesMis, layout = l) %>%
-#'        addListener(c('clickNode', 'clickEdge'))
+#'        addListener('clickNode')
 #'      return(sig)
 #'    })
 #'
 #'    output$clickLabel <- renderText({
-#'      # The value of this variable will be -1 until
-#'      # a node is clicked on
-#'      return(typeof(input$sigma_clickNode))
+#'      return(input$node_data)
 #'    })
 #' }
 #'
@@ -422,7 +413,7 @@ addInteraction <- function(sigmaObj, neighborEvent = 'onClick', doubleClickZoom 
 #' @import jsonlite
 #'
 #' @export
-addListener <- function(sigmaObj, listeners = c()){
-  sigmaObj$x$options$sigmaEvents <- toJSON(listeners)
+addListener <- function(sigmaObj, listener){
+  sigmaObj$x$options$sigmaEvents <- toJSON(listener)
   return(sigmaObj)
 }
