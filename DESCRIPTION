@@ -1,6 +1,6 @@
 Package: sigmaNet
 Title: Render Graphs Using 'Sigma.js'
-Version: 1.0.3
+Version: 1.1.0
 Authors@R: person("Ian", "Kloo", email = "iankloo@gmail.com", role = c("aut", "cre"))
 Maintainer: Ian Kloo <iankloo@gmail.com>
 URL: https://github.com/iankloo/sigmaNet
@@ -12,7 +12,7 @@ Description: Create interactive graph visualizations using 'Sigma.js' <http://si
     with 'Shiny' apps.  While there are several 'htmlwidgets' focused on network visualization, they tend to underperform on 
     medium to large sized graphs.  'Sigma.js' was designed for larger network visualizations and this package aims to 
     make those strengths available to 'R' users.
-Depends: R (>= 3.0.0)
+Depends: R (>= 2.10)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

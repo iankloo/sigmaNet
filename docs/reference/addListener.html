@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Save 'sigmaNet' object as html - a wrapper for saveWidget() — saveSigma • sigmaNet</title>
+<title>Add a "listener" to report data from a 'sigmaNet' object in 'Shiny' back to the R session. — addListener • sigmaNet</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -92,16 +92,14 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Save 'sigmaNet' object as html - a wrapper for saveWidget()</h1>
+    <h1>Add a "listener" to report data from a 'sigmaNet' object in 'Shiny' back to the R session.</h1>
     </div>
 
     
-    <p>Save an 'sigmaNet' object as an html file (without rendering it).  This is especially helpful
-when dealing with very large graphs that could crash your R session if you attempt to render
-them in the 'Rstudio' viewer pane.</p>
+    <p>Add a "listener" to report data from a 'sigmaNet' object in 'Shiny' back to the R session.</p>
     
 
-    <pre class="usage"><span class='fu'>saveSigma</span>(<span class='no'>sigmaObj</span>, <span class='kw'>fileName</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>addListener</span>(<span class='no'>sigmaObj</span>, <span class='no'>listener</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -111,40 +109,18 @@ them in the 'Rstudio' viewer pane.</p>
       <td><p>A 'sigmaNet' object - created using the 'sigmaFromIgraph' function</p></td>
     </tr>
     <tr>
-      <th>fileName</th>
-      <td><p>A name for your html output (with or without .html at the end)</p></td>
+      <th>listener</th>
+      <td><p>Either "clickNode" to listen to node clicks or "hoverNode" to listen to node hover</p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An html file in your working directory (or other specified directory).  This file is a
-  standalone representation of your 'Sigma.js' visualization that can be shared and moved freely.
-  This object will maintain it's interactivity.</p>
-    
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>igraph</span>)
-<span class='fu'>library</span>(<span class='no'>sigmaNet</span>)
-<span class='fu'>library</span>(<span class='no'>magrittr</span>)
-
-<span class='fu'>data</span>(<span class='no'>lesMis</span>)
-
-<span class='no'>l</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/igraph/topics/layout_nicely'>layout_nicely</a></span>(<span class='no'>lesMis</span>)
-<span class='no'>sig</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sigmaFromIgraph.html'>sigmaFromIgraph</a></span>(<span class='kw'>graph</span> <span class='kw'>=</span> <span class='no'>lesMis</span>, <span class='kw'>layout</span> <span class='kw'>=</span> <span class='no'>l</span>)</div><span class='co'># NOT RUN {</span>
-<span class='fu'>saveSigma</span>(<span class='no'>sig</span>, <span class='kw'>fileName</span> <span class='kw'>=</span> <span class='fu'>file.path</span>(<span class='fu'>tempdir</span>(), <span class='st'>'myFile.html'</span>))
-<span class='co'># }</span><div class='input'>
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+                </ul>
 
   </div>
 </div>

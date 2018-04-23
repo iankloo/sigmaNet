@@ -145,6 +145,33 @@ sig %&gt;%
 <h2 class="hasAnchor">
 <a href="#shiny-support" class="anchor"></a>Shiny Support</h2>
 <p>You can use <code>sigmaNet</code> in Shiny using <code><a href="reference/renderSigmaNet.html">renderSigmaNet()</a></code> in your server and <code><a href="reference/sigmaNetOutput.html">sigmaNetOutput()</a></code> in your ui. See the <a href="https://shiny.rstudio.com/tutorial/">Shiny docs</a> for more general info about Shiny - these functions drop-in just like the basic plotting examples.</p>
+<p>Use the <code>addListner()</code> function to specify a Shiny listener. Current options are “clickNode” and “hoverNode”. These are pretty self-explanitory - the first returns information about a node on-click and the second does the same on-hover.</p>
+<p>Here’s a minimal Shiny app that sends the result of an on-click event to a text box:</p>
+<pre><code>library(sigmaNet)
+library(shiny)
+library(magrittr)
+
+data(lesMis)
+
+ui &lt;- fluidPage(
+  sigmaNetOutput('network', height = '600px'),
+  textOutput('text')
+)
+
+server &lt;- function(input, output) {
+  output$text &lt;- renderText({
+    req(input$node_data)
+    paste0('You clicked on: ', input$node_data$label)
+  })
+  
+  output$network &lt;- renderSigmaNet({
+    sigmaNet::sigmaFromIgraph(lesMis) %&gt;%
+      addNodeLabels(labelAttr = 'label') %&gt;%
+      addListener('clickNode')
+  })
+}
+
+shinyApp(ui, server)</code></pre>
 </div>
 <div id="a-note-on-browsers" class="section level2">
 <h2 class="hasAnchor">

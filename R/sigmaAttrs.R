@@ -379,41 +379,8 @@ addInteraction <- function(sigmaObj, neighborEvent = 'onClick', doubleClickZoom 
 #' @param sigmaObj A 'sigmaNet' object - created using the 'sigmaFromIgraph' function
 #' @param listener Either "clickNode" to listen to node clicks or "hoverNode" to listen to node hover
 #'
-#' @examples
-#' \dontrun{
-#' library(igraph)
-#' library(sigmaNet)
-#' library(magrittr)
-#' library(shiny)
-#'
-#' data(lesMis)
-#' l <- layout_nicely(lesMis)
-#'
-#' shinyServer <- function(input, output) {
-#'    output$sigma <- renderSigmaNet({
-#'      sig <- sigmaFromIgraph(graph = lesMis, layout = l) %>%
-#'        addListener('clickNode')
-#'      return(sig)
-#'    })
-#'
-#'    output$clickLabel <- renderText({
-#'      return(input$node_data)
-#'    })
-#' }
-#'
-#' shinyApp(
-#'  ui = fluidPage(
-#'           sigmaNetOutput("sigma"),
-#'           textOutput("clickLabel")
-#'         ),
-#'    server = shinyServer
-#' )
-#' }
-#'
-#' @import jsonlite
-#'
 #' @export
 addListener <- function(sigmaObj, listener){
-  sigmaObj$x$options$sigmaEvents <- toJSON(listener)
+  sigmaObj$x$options$sigmaEvents <- listener
   return(sigmaObj)
 }

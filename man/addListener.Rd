@@ -2,53 +2,15 @@
 % Please edit documentation in R/sigmaAttrs.R
 \name{addListener}
 \alias{addListener}
-\title{Modify the interactivity between 'shiny' and a 'sigmaNet' object.}
+\title{Add a "listener" to report data from a 'sigmaNet' object in 'Shiny' back to the R session.}
 \usage{
-addListener(sigmaObj, listeners = c())
+addListener(sigmaObj, listener)
 }
 \arguments{
 \item{sigmaObj}{A 'sigmaNet' object - created using the 'sigmaFromIgraph' function}
 
-\item{listeners}{List of events to be listened}
+\item{listener}{Either "clickNode" to listen to node clicks or "hoverNode" to listen to node hover}
 }
 \description{
-Modify the interactivity between 'shiny' and a 'sigmaNet' object, listening to the events listed.
-By adding these listeners, the corresponding events will update variables accessible in the 'shiny'
-environment as 'input$sigmaNetRenderer_eventName' where 'sigmaNetRenderer' is the name of the object
-created by calling the 'renderSigmaNet' function and 'eventName' the event required.
-The default value, used before the first occurence of the event, is -1.
-}
-\examples{
-\dontrun{
-library(igraph)
-library(sigmaNet)
-library(magrittr)
-library(shiny)
-
-data(lesMis)
-l <- layout_nicely(lesMis)
-
-shinyServer <- function(input, output) {
-   output$sigma <- renderSigmaNet({
-     sig <- sigmaFromIgraph(graph = lesMis, layout = l) \%>\%
-       addListener(c('clickNode', 'clickEdge'))
-     return(sig)
-   })
-
-   output$clickLabel <- renderText({
-     # The value of this variable will be -1 until
-     # a node is clicked on
-     return(typeof(input$sigma_clickNode))
-   })
-}
-
-shinyApp(
- ui = fluidPage(
-          sigmaNetOutput("sigma"),
-          textOutput("clickLabel")
-        ),
-   server = shinyServer
-)
-}
-
+Add a "listener" to report data from a 'sigmaNet' object in 'Shiny' back to the R session.
 }

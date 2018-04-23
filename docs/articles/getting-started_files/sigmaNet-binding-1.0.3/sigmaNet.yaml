@@ -1,0 +1,6 @@
+dependencies:
+  - name: sigma
+    version: 1.2.1
+    src: htmlwidgets/lib/sigma-1.2.1
+    script:
+      - sigma.min.js

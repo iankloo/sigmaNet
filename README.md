@@ -95,8 +95,37 @@ While we can debate the usefulness of a "hairball" graph like this, you can see 
 
 You can use `sigmaNet` in Shiny using `renderSigmaNet()` in your server and `sigmaNetOutput()` in your ui.  See the <a href = 'https://shiny.rstudio.com/tutorial/'>Shiny docs</a> for more general info about Shiny - these functions drop-in just like the basic plotting examples.  
 
-It is possible to use callbacks to events in Shiny apps. The list of events handled is available on the [sigma.js website](https://github.com/jacomyal/sigma.js/wiki/Events-API).  
-To listen for a specific event, use `addListener()`. Before the event occurs, the corresponding variable is set by default to -1.
+Use the `addListner()` function to specify a Shiny listener.  Current options are "clickNode" and "hoverNode".  These are pretty self-explanitory - the first returns information about a node on-click and the second does the same on-hover.  
+
+Here's a minimal Shiny app that sends the result of an on-click event to a text box:
+
+```
+library(sigmaNet)
+library(shiny)
+library(magrittr)
+
+data(lesMis)
+
+ui <- fluidPage(
+  sigmaNetOutput('network', height = '600px'),
+  textOutput('text')
+)
+
+server <- function(input, output) {
+  output$text <- renderText({
+    req(input$node_data)
+    paste0('You clicked on: ', input$node_data$label)
+  })
+  
+  output$network <- renderSigmaNet({
+    sigmaNet::sigmaFromIgraph(lesMis) %>%
+      addNodeLabels(labelAttr = 'label') %>%
+      addListener('clickNode')
+  })
+}
+
+shinyApp(ui, server)
+```
 
 ## A Note on Browsers
 
@@ -104,8 +133,6 @@ This package uses a renderer that detects whether or not your browser supports w
 
 ## Features in development
 
-- Fix version requirement in CRAN version of app
-- Return node info to R on-click (in shiny app)
 - GUI to modify aesthetics (Shiny gadget)
 
 Write an "issue" on the <a href = "https://github.com/iankloo/sigmaNet/issues">github page</a> for this package if you want to see additional features.
