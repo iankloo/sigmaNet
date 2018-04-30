@@ -121,7 +121,7 @@ addNodeSize <- function(sigmaObj, minSize = 1, maxSize = 3, sizeMetric = 'degree
     sigmaObj$x$options$minNodeSize <- minSize
     sigmaObj$x$options$maxNodeSize <- maxSize
   } else{
-    tmp_graph <- igraph::graph_from_data_frame(sigmaObj$x$graph$edges)
+    tmp_graph <- igraph::graph_from_data_frame(sigmaObj$x$graph)
     if(sizeMetric == 'degree'){
       nodes$size <- igraph::degree(tmp_graph)
     } else if(sizeMetric == 'closeness'){
