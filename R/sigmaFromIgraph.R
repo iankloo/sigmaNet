@@ -30,6 +30,7 @@
 #' @export
 
 sigmaFromIgraph <- function(graph, layout = NULL, width = NULL, height = NULL, elementId = NULL){
+  directedFlag <- is.directed(graph)
   graph_parse <- igraph::as_data_frame(graph, what = 'both')
 
   edges <- graph_parse$edges
@@ -68,10 +69,12 @@ sigmaFromIgraph <- function(graph, layout = NULL, width = NULL, height = NULL, e
 
   graphOut <- list(nodes, edges)
   names(graphOut) <- c('nodes','edges')
-
+  
+  graphOut$directed <- directedFlag
+  
   options <- list(minNodeSize = 1, maxNodeSize = 3, minEdgeSize = 3, maxEdgeSize = 1,
                   neighborEvent = 'onClick', neighborStart = 'clickNode', neighborEnd = 'clickStage',
-                  doubleClickZoom = TRUE, mouseWheelZoom = TRUE)
+                  doubleClickZoom = TRUE, mouseWheelZoom = TRUE, edgeArrows = 'def')
 
   out <- jsonlite::toJSON(graphOut, pretty = TRUE)
   x <- list(data = out, options = options, graph = graph_parse)
