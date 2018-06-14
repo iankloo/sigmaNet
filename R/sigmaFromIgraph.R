@@ -30,7 +30,7 @@
 #' @export
 
 sigmaFromIgraph <- function(graph, layout = NULL, width = NULL, height = NULL, elementId = NULL){
-  directedFlag <- is.directed(graph)
+  directedFlag <- igraph::is.directed(graph)
   graph_parse <- igraph::as_data_frame(graph, what = 'both')
 
   edges <- graph_parse$edges
