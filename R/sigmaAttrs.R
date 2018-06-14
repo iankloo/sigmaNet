@@ -132,9 +132,9 @@ addNodeSize <- function(sigmaObj, minSize = 1, maxSize = 3, sizeMetric = 'degree
     } else if(sizeMetric == 'betweenness'){
       nodes$size <- igraph::betweenness(tmp_graph, directed = directed)
     } else if(sizeMetric == 'pageRank'){
-      nodes$size <- igraph::page_rank(tmp_graph)$vector
+      nodes$size <- igraph::page_rank(tmp_graph, directed = directed)$vector
     } else if(sizeMetric == 'eigenCentrality'){
-      nodes$size <- igraph::eigen_centrality(tmp_graph)$vector
+      nodes$size <- igraph::eigen_centrality(tmp_graph, directed = directed)$vector
     } else{
       stop('sizeMetric can only be one of: degree, closeness, betweenness, pageRank, or eigenCentrality.')
     }
