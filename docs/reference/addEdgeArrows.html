@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Modify the node labels of a 'sigmaNet' object. — addNodeLabels • sigmaNet</title>
+<title>Add edge arrows to a 'sigmaNet' object. — addEdgeArrows • sigmaNet</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,10 +30,10 @@
 
 
 
-<meta property="og:title" content="Modify the node labels of a 'sigmaNet' object. — addNodeLabels" />
+<meta property="og:title" content="Add edge arrows to a 'sigmaNet' object. — addEdgeArrows" />
 
-<meta property="og:description" content="Modify the node labels of an existing 'sigmaNet' object by providing an attribute from the
-initial 'igraph' to use as the labels." />
+<meta property="og:description" content="Add edge arrows to a directed graph.  Due to complexities of writing custom renderers in webGL, we are stuck with one
+arrow:edge size ratio.  In other words, you can only affect the edge arrow size by making the edges bigger." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -110,19 +110,19 @@ initial 'igraph' to use as the labels." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Modify the node labels of a 'sigmaNet' object.</h1>
+    <h1>Add edge arrows to a 'sigmaNet' object.</h1>
     <small class="dont-index">Source: <a href='https://github.com/iankloo/sigmaNet/blob/master/R/sigmaAttrs.R'><code>R/sigmaAttrs.R</code></a></small>
-    <div class="hidden name"><code>addNodeLabels.Rd</code></div>
+    <div class="hidden name"><code>addEdgeArrows.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Modify the node labels of an existing 'sigmaNet' object by providing an attribute from the
-initial 'igraph' to use as the labels.</p>
+    <p>Add edge arrows to a directed graph.  Due to complexities of writing custom renderers in webGL, we are stuck with one
+arrow:edge size ratio.  In other words, you can only affect the edge arrow size by making the edges bigger.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>addNodeLabels</span>(<span class='no'>sigmaObj</span>, <span class='kw'>labelAttr</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>addEdgeArrows</span>(<span class='no'>sigmaObj</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -131,29 +131,33 @@ initial 'igraph' to use as the labels.</p>
       <th>sigmaObj</th>
       <td><p>A 'sigmaNet' object - created using the 'sigmaFromIgraph' function</p></td>
     </tr>
-    <tr>
-      <th>labelAttr</th>
-      <td><p>The attribute to use to create node labels</p></td>
-    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A 'sigmaNet' object with modified node labels.  This object can be called directly
+    <p>A 'sigmaNet' object with added edge arrows.  This object can be called directly
   to create a visualization, or modified by additional functions.</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This is only applicable for directed graphs - if you run this on an undirected graph, you'll get an error.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>igraph</span>)
-<span class='fu'>library</span>(<span class='no'>sigmaNet</span>)
+    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>igraph</span>)</div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Attaching package: ‘igraph’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:stats’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    decompose, spectrum</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:base’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    union</span></div><div class='input'><span class='fu'>library</span>(<span class='no'>sigmaNet</span>)
 <span class='fu'>library</span>(<span class='no'>magrittr</span>)
 
-<span class='fu'>data</span>(<span class='no'>lesMis</span>)
-
-<span class='no'>l</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/igraph/topics/layout_nicely'>layout_nicely</a></span>(<span class='no'>lesMis</span>)
-<span class='no'>sig</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sigmaFromIgraph.html'>sigmaFromIgraph</a></span>(<span class='kw'>graph</span> <span class='kw'>=</span> <span class='no'>lesMis</span>, <span class='kw'>layout</span> <span class='kw'>=</span> <span class='no'>l</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'>addNodeLabels</span>(<span class='kw'>labelAttr</span> <span class='kw'>=</span> <span class='st'>'label'</span>)
-<span class='no'>sig</span></div></pre>
+<span class='no'>g</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/igraph/topics/graph_from_literal'>graph.formula</a></span>(<span class='no'>A</span>-+<span class='no'>B</span>,<span class='no'>B</span>-+<span class='no'>C</span>,<span class='no'>A</span>-+<span class='no'>C</span>)
+<span class='no'>layout</span> <span class='kw'>&lt;-</span> <span class='fu'>matrix</span>(<span class='fu'>c</span>(<span class='fl'>2</span>,<span class='fl'>1</span>, <span class='fl'>1</span>,<span class='fl'>0</span>, <span class='fl'>3</span>,<span class='fl'>0</span>),<span class='kw'>byrow</span><span class='kw'>=</span><span class='fl'>TRUE</span>,<span class='kw'>nrow</span><span class='kw'>=</span><span class='fl'>3</span>)
+<span class='no'>sig</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='sigmaFromIgraph.html'>sigmaFromIgraph</a></span>(<span class='no'>g</span>, <span class='kw'>layout</span> <span class='kw'>=</span> <span class='no'>layout</span>)
+<span class='no'>sig</span> <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='addEdgeSize.html'>addEdgeSize</a></span>(<span class='kw'>oneSize</span> <span class='kw'>=</span> <span class='fl'>6</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'>addEdgeArrows</span>()</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -161,6 +165,8 @@ initial 'igraph' to use as the labels.</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
