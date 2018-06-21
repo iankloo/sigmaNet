@@ -41,9 +41,9 @@
 addNodeColors <- function(sigmaObj, oneColor = NULL, colorAttr = NULL, colorPal = 'Dark2'){
   edges <- jsonlite::fromJSON(sigmaObj$x$data)$edges
   nodes <- jsonlite::fromJSON(sigmaObj$x$data)$nodes
+  directed <- jsonlite::fromJSON(sigmaObj$x$data)$directed
 
   if(is.null(oneColor)){
-    #nodes$tempCol <- igraph::as_data_frame(sigmaObj$x$graph, what = 'vertices')[,colorAttr]
     nodes$tempCol <- sigmaObj$x$graph$vertices[,colorAttr]
 
     # If there are more node colors than colors in the chosen palette, interpolate colors to expand the palette
@@ -57,9 +57,9 @@ addNodeColors <- function(sigmaObj, oneColor = NULL, colorAttr = NULL, colorPal 
     nodes$color <- oneColor
   }
 
-  graphOut <- list(nodes, edges)
-  names(graphOut) <- c('nodes','edges')
-
+  graphOut <- list(nodes, edges, directed)
+  names(graphOut) <- c('nodes','edges', 'directed')
+  
   sigmaObj$x$data <- jsonlite::toJSON(graphOut, pretty = TRUE)
   return(sigmaObj)
 }
@@ -111,7 +111,8 @@ addNodeColors <- function(sigmaObj, oneColor = NULL, colorAttr = NULL, colorPal 
 addNodeSize <- function(sigmaObj, minSize = 1, maxSize = 3, sizeMetric = 'degree', sizeVector = NULL, oneSize = NULL){
   edges <- jsonlite::fromJSON(sigmaObj$x$data)$edges
   nodes <- jsonlite::fromJSON(sigmaObj$x$data)$nodes
-
+  directed <- jsonlite::fromJSON(sigmaObj$x$data)$directed
+  
   if(!is.null(oneSize)){
     nodes$size <- oneSize
     sigmaObj$x$options$minNodeSize <- oneSize
@@ -122,18 +123,18 @@ addNodeSize <- function(sigmaObj, minSize = 1, maxSize = 3, sizeMetric = 'degree
     sigmaObj$x$options$maxNodeSize <- maxSize
   } else{
     tmp_graph <- igraph::graph_from_data_frame(d = edges,
-                                               directed = FALSE,
+                                               directed = directed,
                                                vertices = nodes$id)
     if(sizeMetric == 'degree'){
       nodes$size <- igraph::degree(tmp_graph)
     } else if(sizeMetric == 'closeness'){
       nodes$size <- igraph::closeness(tmp_graph)
     } else if(sizeMetric == 'betweenness'){
-      nodes$size <- igraph::betweenness(tmp_graph)
+      nodes$size <- igraph::betweenness(tmp_graph, directed = directed)
     } else if(sizeMetric == 'pageRank'){
-      nodes$size <- igraph::page_rank(tmp_graph)$vector
+      nodes$size <- igraph::page_rank(tmp_graph, directed = directed)$vector
     } else if(sizeMetric == 'eigenCentrality'){
-      nodes$size <- igraph::eigen_centrality(tmp_graph)$vector
+      nodes$size <- igraph::eigen_centrality(tmp_graph, directed = directed)$vector
     } else{
       stop('sizeMetric can only be one of: degree, closeness, betweenness, pageRank, or eigenCentrality.')
     }
@@ -141,9 +142,9 @@ addNodeSize <- function(sigmaObj, minSize = 1, maxSize = 3, sizeMetric = 'degree
     sigmaObj$x$options$maxNodeSize <- maxSize
   }
 
-  graphOut <- list(nodes, edges)
-  names(graphOut) <- c('nodes','edges')
-
+  graphOut <- list(nodes, edges, directed)
+  names(graphOut) <- c('nodes','edges', 'directed')
+  
   sigmaObj$x$data <- jsonlite::toJSON(graphOut, pretty = TRUE)
   return(sigmaObj)
 
@@ -175,12 +176,13 @@ addNodeSize <- function(sigmaObj, minSize = 1, maxSize = 3, sizeMetric = 'degree
 addNodeLabels <- function(sigmaObj, labelAttr = NULL){
   edges <- jsonlite::fromJSON(sigmaObj$x$data)$edges
   nodes <- jsonlite::fromJSON(sigmaObj$x$data)$nodes
+  directed <- jsonlite::fromJSON(sigmaObj$x$data)$directed
 
   #nodes$label <- as.character(igraph::as_data_frame(sigmaObj$x$graph, what = 'vertices')[,labelAttr])
   nodes$label <- as.character(sigmaObj$x$graph$vertices[,labelAttr])
 
-  graphOut <- list(nodes, edges)
-  names(graphOut) <- c('nodes','edges')
+  graphOut <- list(nodes, edges, directed)
+  names(graphOut) <- c('nodes','edges', 'directed')
 
   sigmaObj$x$data <- jsonlite::toJSON(graphOut, pretty = TRUE)
   return(sigmaObj)
@@ -225,6 +227,7 @@ addNodeLabels <- function(sigmaObj, labelAttr = NULL){
 addEdgeSize <- function(sigmaObj, sizeAttr = NULL, minSize = 1, maxSize = 5, oneSize = NULL){
   edges <- jsonlite::fromJSON(sigmaObj$x$data)$edges
   nodes <- jsonlite::fromJSON(sigmaObj$x$data)$nodes
+  directed <- jsonlite::fromJSON(sigmaObj$x$data)$directed
 
   if(!is.null(oneSize)){
     edges$size <- oneSize
@@ -237,9 +240,9 @@ addEdgeSize <- function(sigmaObj, sizeAttr = NULL, minSize = 1, maxSize = 5, one
     sigmaObj$x$options$maxEdgeSize <- maxSize
   }
 
-  graphOut <- list(nodes, edges)
-  names(graphOut) <- c('nodes','edges')
-
+  graphOut <- list(nodes, edges, directed)
+  names(graphOut) <- c('nodes','edges', 'directed')
+  
   sigmaObj$x$data <- jsonlite::toJSON(graphOut, pretty = TRUE)
   return(sigmaObj)
 }
@@ -277,6 +280,7 @@ addEdgeSize <- function(sigmaObj, sizeAttr = NULL, minSize = 1, maxSize = 5, one
 addEdgeColors <- function(sigmaObj, oneColor = NULL, colorAttr = NULL, colorPal = 'Set2'){
   edges <- jsonlite::fromJSON(sigmaObj$x$data)$edges
   nodes <- jsonlite::fromJSON(sigmaObj$x$data)$nodes
+  directed <- jsonlite::fromJSON(sigmaObj$x$data)$directed
 
   if(is.null(oneColor)){
     #edges$tempCol <- igraph::as_data_frame(sigmaObj$x$graph, what = 'edges')[,colorAttr]
@@ -293,10 +297,43 @@ addEdgeColors <- function(sigmaObj, oneColor = NULL, colorAttr = NULL, colorPal 
     edges$color <- oneColor
   }
 
-  graphOut <- list(nodes, edges)
-  names(graphOut) <- c('nodes','edges')
-
+  graphOut <- list(nodes, edges, directed)
+  names(graphOut) <- c('nodes','edges', 'directed')
+  
   sigmaObj$x$data <- jsonlite::toJSON(graphOut, pretty = TRUE)
+  return(sigmaObj)
+}
+#' Add edge arrows to a 'sigmaNet' object.
+#'
+#' Add edge arrows to a directed graph.  Due to complexities of writing custom renderers in webGL, we are stuck with one
+#' arrow:edge size ratio.  In other words, you can only affect the edge arrow size by making the edges bigger.
+#' 
+#' This is only applicable for directed graphs - if you run this on an undirected graph, you'll get an error.
+#'
+#' @param sigmaObj A 'sigmaNet' object - created using the 'sigmaFromIgraph' function
+#'
+#' @return A 'sigmaNet' object with added edge arrows.  This object can be called directly
+#'   to create a visualization, or modified by additional functions.
+#'
+#' @examples
+#' library(igraph)
+#' library(sigmaNet)
+#' library(magrittr)
+#'
+#' g <- graph.formula(A-+B,B-+C,A-+C)
+#' layout <- matrix(c(2,1, 1,0, 3,0),byrow=TRUE,nrow=3)
+#' sig <- sigmaFromIgraph(g, layout = layout)
+#' sig %>%
+#'   addEdgeSize(oneSize = 6) %>%
+#'   addEdgeArrows()
+#'
+#' @export
+addEdgeArrows <- function(sigmaObj){
+  if(jsonlite::fromJSON(sigmaObj$x$data)$directed == FALSE){
+    stop('addEdgeArrows is only valid for directed graphs - you can specify that your graph is directed when you initialize your igraph object.')
+  } else{
+    sigmaObj$x$options$edgeArrows <- 'arrow'
+  }
   return(sigmaObj)
 }
 #' Save 'sigmaNet' object as html - a wrapper for saveWidget()

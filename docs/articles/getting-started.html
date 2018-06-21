@@ -8,14 +8,17 @@
 <title>Getting Started with SigmaNet • sigmaNet</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Getting Started with SigmaNet">
+<meta property="og:description" content="">
+<meta name="twitter:card" content="summary">
+<!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
 <body>
-    <div class="container template-vignette">
+    <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -24,8 +27,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">sigmaNet</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">sigmaNet</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.1.0</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
@@ -66,18 +73,21 @@
 <!--/.navbar -->
 
       
-      </header><script src="getting-started_files/htmlwidgets-1.2/htmlwidgets.js"></script><script src="getting-started_files/sigma-1.2.1/sigma.min.js"></script><script src="getting-started_files/sigmaNet-binding-1.0.3/sigmaNet.js"></script><div class="row">
-  <div class="col-md-9">
+      </header><script src="getting-started_files/htmlwidgets-1.2/htmlwidgets.js"></script><script src="getting-started_files/sigma-1.2.1/sigma.min.js"></script><script src="getting-started_files/sigmaNet-binding-1.1.0/sigmaNet.js"></script><div class="row">
+  <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Getting Started with SigmaNet</h1>
                         <h4 class="author">Ian Kloo</h4>
             
-            <h4 class="date">2018-04-23</h4>
-          </div>
+            <h4 class="date">2018-06-21</h4>
+      
+      <small class="dont-index">Source: <a href="https://github.com/iankloo/sigmaNet/blob/master/vignettes/getting-started.Rmd"><code>vignettes/getting-started.Rmd</code></a></small>
+      <div class="hidden name"><code>getting-started.Rmd</code></div>
+
+    </div>
 
     
     
-<div class="contents">
 <p>‘sigmaNet’ is a package for rendering graphs created using the ‘igraph’ package. This guide will walk through the basics of the package by showing how to build and modify a visualization using sample data. First, I will address some conceptual things.</p>
 <div id="why-use-igraph-objects" class="section level2">
 <h2 class="hasAnchor">
@@ -134,621 +144,621 @@
 sig &lt;-<span class="st"> </span><span class="kw"><a href="../reference/sigmaFromIgraph.html">sigmaFromIgraph</a></span>(lesMis, l)</code></pre></div>
 <p>Now, let’s render the basic visualization:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sig</code></pre></div>
-<div id="htmlwidget-281916f1d4bbc4ed3249" style="width:672px;height:480px;" class="sigmaNet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-281916f1d4bbc4ed3249">{"x":{"data":{
+<div id="htmlwidget-b0e1c914fb3720bfdd9e" style="width:700px;height:432.632880098888px;" class="sigmaNet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b0e1c914fb3720bfdd9e">{"x":{"data":{
   "nodes": [
     {
       "label": "1",
-      "x": 10.3438,
-      "y": 2.2167,
+      "x": -8.0966,
+      "y": 3.0229,
       "id": 1,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "2",
-      "x": 13.2858,
-      "y": 1.7275,
+      "x": -10.8551,
+      "y": 2.2316,
       "id": 2,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "3",
-      "x": 7.9214,
-      "y": 2.3938,
+      "x": -5.7644,
+      "y": 2.3071,
       "id": 3,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "4",
-      "x": 7.9107,
-      "y": 1.7864,
+      "x": -5.9099,
+      "y": 1.7155,
       "id": 4,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "5",
-      "x": 12.8032,
-      "y": 1.0975,
+      "x": -10.7547,
+      "y": 4.5435,
       "id": 5,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "6",
-      "x": 12.316,
-      "y": 3.8147,
+      "x": -10.2956,
+      "y": 3.8357,
       "id": 6,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "7",
-      "x": 12.332,
-      "y": 0.4808,
+      "x": -10.3775,
+      "y": 2.7907,
       "id": 7,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "8",
-      "x": 12.5285,
-      "y": 2.2237,
+      "x": -9.4572,
+      "y": 5.3532,
       "id": 8,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "9",
-      "x": 13.2549,
-      "y": 2.661,
+      "x": -11.0714,
+      "y": 3.4284,
       "id": 9,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "10",
-      "x": 12.9731,
-      "y": 3.4265,
+      "x": -9.9933,
+      "y": 4.8055,
       "id": 10,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "11",
-      "x": 5.8184,
-      "y": -0.1642,
+      "x": -2.283,
+      "y": 3.9838,
       "id": 11,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "12",
-      "x": 4.0193,
-      "y": 2.2992,
+      "x": -2.0705,
+      "y": 0.9796,
       "id": 12,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "13",
-      "x": 4.1918,
-      "y": 5.2004,
+      "x": -1.0345,
+      "y": 3.6571,
       "id": 13,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "14",
-      "x": 5.1481,
-      "y": -0.5787,
+      "x": -4.6127,
+      "y": 3.0023,
       "id": 14,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "15",
-      "x": 6.2859,
-      "y": 3.9744,
+      "x": -3.9886,
+      "y": 3.6878,
       "id": 15,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "16",
-      "x": 6.4719,
-      "y": 0.246,
+      "x": -3.0793,
+      "y": 4.1675,
       "id": 16,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "17",
-      "x": 0.9933,
-      "y": 5.9862,
+      "x": 2.1375,
+      "y": 3.0701,
       "id": 17,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "18",
-      "x": 0.9497,
-      "y": 7.3552,
+      "x": 1.9013,
+      "y": 4.9735,
       "id": 18,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "19",
-      "x": 1.5776,
-      "y": 8.1395,
+      "x": 3.0468,
+      "y": 4.649,
       "id": 19,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "20",
-      "x": 0.767,
-      "y": 7.8354,
+      "x": 2.2459,
+      "y": 4.5856,
       "id": 20,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "21",
-      "x": 1.5934,
-      "y": 7.3984,
+      "x": 2.7279,
+      "y": 5.0288,
       "id": 21,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "22",
-      "x": 1.2533,
-      "y": 7.8418,
+      "x": 2.7311,
+      "y": 4.3253,
       "id": 22,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "23",
-      "x": 1.9681,
-      "y": 7.7763,
+      "x": 2.2917,
+      "y": 5.2395,
       "id": 23,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "24",
-      "x": 2.3235,
-      "y": 5.419,
+      "x": 0.686,
+      "y": 3.0259,
       "id": 24,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "25",
-      "x": 1.4946,
-      "y": 2.9376,
+      "x": 0.4175,
+      "y": 0.4124,
       "id": 25,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "26",
-      "x": 0.9683,
-      "y": 2.1496,
+      "x": 0.6467,
+      "y": -0.4921,
       "id": 26,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "27",
-      "x": 1.4673,
-      "y": 3.6044,
+      "x": 0.6956,
+      "y": 1.05,
       "id": 27,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "28",
-      "x": 2.7284,
-      "y": 2.5279,
+      "x": -1.0047,
+      "y": 0.1748,
       "id": 28,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "29",
-      "x": 5.1092,
-      "y": 4.7831,
+      "x": -3.9503,
+      "y": -1.0874,
       "id": 29,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "30",
-      "x": 4.8273,
-      "y": 3.0976,
+      "x": -2.4543,
+      "y": 1.9864,
       "id": 30,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "31",
-      "x": 3.7067,
-      "y": 7.1162,
+      "x": 0.069,
+      "y": 5.1473,
       "id": 31,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "32",
-      "x": 3.5185,
-      "y": 4.8575,
+      "x": -0.6675,
+      "y": 2.91,
       "id": 32,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "33",
-      "x": 6.9487,
-      "y": 3.5902,
+      "x": -3.1557,
+      "y": 3.4296,
       "id": 33,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "34",
-      "x": 4.2673,
-      "y": 0.9408,
+      "x": -3.0196,
+      "y": -0.3722,
       "id": 34,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "35",
-      "x": 5.7692,
-      "y": 1.6501,
+      "x": -3.6962,
+      "y": 2.34,
       "id": 35,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "36",
-      "x": 6.085,
-      "y": 2.7706,
+      "x": -3.6138,
+      "y": 1.7416,
       "id": 36,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "37",
-      "x": 5.7552,
-      "y": 2.256,
+      "x": -4.1898,
+      "y": 2.0649,
       "id": 37,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "38",
-      "x": 6.4117,
-      "y": 2.3219,
+      "x": -4.2817,
+      "y": 1.4951,
       "id": 38,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "39",
-      "x": 6.3011,
-      "y": 1.7864,
+      "x": -3.8922,
+      "y": 1.1794,
       "id": 39,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "40",
-      "x": -1.8601,
-      "y": 2.6838,
+      "x": 3.5241,
+      "y": -0.9101,
       "id": 40,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "41",
-      "x": -2.3928,
-      "y": 1.8537,
+      "x": 3.6793,
+      "y": -1.9117,
       "id": 41,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "42",
-      "x": 0.6335,
-      "y": 1.1277,
+      "x": 0.5728,
+      "y": -1.5802,
       "id": 42,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "43",
-      "x": -0.5115,
-      "y": 2.3686,
+      "x": 2.071,
+      "y": -0.7952,
       "id": 43,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "44",
-      "x": 3.339,
-      "y": 3.5399,
+      "x": -1.007,
+      "y": 1.4173,
       "id": 44,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "45",
-      "x": 5.97,
-      "y": 4.7123,
+      "x": -4.6913,
+      "y": -0.4474,
       "id": 45,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "46",
-      "x": 6.9011,
-      "y": 7.2311,
+      "x": -6.3276,
+      "y": -2.7437,
       "id": 46,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "47",
-      "x": -0.5028,
-      "y": -7.2848,
+      "x": 0.0035,
+      "y": -9.9985,
       "id": 47,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "48",
-      "x": 0.065,
-      "y": -4.6035,
+      "x": -0.0968,
+      "y": -7.2421,
       "id": 48,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "49",
-      "x": 1.0672,
-      "y": -0.5757,
+      "x": -0.2641,
+      "y": -3.0635,
       "id": 49,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "50",
-      "x": 0.5054,
-      "y": 3.4507,
+      "x": 1.5421,
+      "y": 0.6737,
       "id": 50,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "51",
-      "x": -0.3678,
-      "y": 4.8968,
+      "x": 2.8593,
+      "y": 1.5983,
       "id": 51,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "52",
-      "x": -0.1297,
-      "y": 3.8902,
+      "x": 2.3347,
+      "y": 0.883,
       "id": 52,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "53",
-      "x": -2.9882,
-      "y": 4.2227,
+      "x": 5.0845,
+      "y": 0.1938,
       "id": 53,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "54",
-      "x": -2.6502,
-      "y": 5.7973,
+      "x": 5.3939,
+      "y": 1.7995,
       "id": 54,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "55",
-      "x": -0.7328,
-      "y": 3.6431,
+      "x": 2.7225,
+      "y": 0.3267,
       "id": 55,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "56",
-      "x": 0.1233,
-      "y": 1.692,
+      "x": 1.3382,
+      "y": -1.1622,
       "id": 56,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "57",
-      "x": -1.7756,
-      "y": 3.3738,
+      "x": 3.6458,
+      "y": -0.1854,
       "id": 57,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "58",
-      "x": -1.1763,
-      "y": -0.2875,
+      "x": 1.9275,
+      "y": -3.4169,
       "id": 58,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "59",
-      "x": 0.786,
-      "y": 0.1774,
+      "x": 0.1868,
+      "y": -2.4054,
       "id": 59,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "60",
-      "x": -0.7882,
-      "y": -0.6439,
+      "x": 1.3784,
+      "y": -3.2655,
       "id": 60,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "61",
-      "x": -0.6424,
-      "y": -1.4747,
+      "x": 1.0325,
+      "y": -4.4358,
       "id": 61,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "62",
-      "x": -0.6282,
-      "y": -0.2427,
+      "x": 1.4866,
+      "y": -3.6856,
       "id": 62,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "63",
-      "x": -0.1573,
-      "y": -0.3762,
+      "x": 0.9054,
+      "y": -3.254,
       "id": 63,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "64",
-      "x": -0.4301,
-      "y": -0.841,
+      "x": 1.066,
+      "y": -3.8081,
       "id": 64,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "65",
-      "x": 0.582,
-      "y": -0.2342,
+      "x": 0.3137,
+      "y": -2.7933,
       "id": 65,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "66",
-      "x": -0.0554,
-      "y": -0.8801,
+      "x": 0.6877,
+      "y": -3.679,
       "id": 66,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "67",
-      "x": -0.1611,
-      "y": -1.5879,
+      "x": 0.5385,
+      "y": -4.3846,
       "id": 67,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "68",
-      "x": -3.9027,
-      "y": -1.7804,
+      "x": 4.0873,
+      "y": -5.6287,
       "id": 68,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "69",
-      "x": 1.8537,
-      "y": 1.2548,
+      "x": -0.5071,
+      "y": -1.0261,
       "id": 69,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "70",
-      "x": 2.2392,
-      "y": 1.3249,
+      "x": -0.8874,
+      "y": -0.8842,
       "id": 70,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "71",
-      "x": 1.9129,
-      "y": 1.7102,
+      "x": -0.4704,
+      "y": -0.5885,
       "id": 71,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "72",
-      "x": 2.354,
-      "y": 0.8421,
+      "x": -1.1454,
+      "y": -1.294,
       "id": 72,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "73",
-      "x": 2.8795,
-      "y": 3.8928,
+      "x": -0.5945,
+      "y": 1.8222,
       "id": 73,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "74",
-      "x": 1.592,
-      "y": -3.6009,
+      "x": -0.9244,
+      "y": -6.1109,
       "id": 74,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "75",
-      "x": 0.8152,
-      "y": -3.6338,
+      "x": -1.6464,
+      "y": -5.8296,
       "id": 75,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "76",
-      "x": 1.6291,
-      "y": 0.4287,
+      "x": -0.6818,
+      "y": -1.9493,
       "id": 76,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "77",
-      "x": 0.4226,
-      "y": -1.7428,
+      "x": -0.0543,
+      "y": -4.3596,
       "id": 77,
       "size": 1,
       "color": "#3182bd"
@@ -2533,625 +2543,626 @@ sig &lt;-<span class="st"> </span><span class="kw"><a href="../reference/sigmaFr
       "size": 1,
       "color": "#636363"
     }
-  ]
-},"options":{"minNodeSize":1,"maxNodeSize":3,"minEdgeSize":3,"maxEdgeSize":1,"neighborEvent":"onClick","neighborStart":"clickNode","neighborEnd":"clickStage","doubleClickZoom":true,"mouseWheelZoom":true},"graph":{"vertices":{"id":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76],"label":["Myriel","Napoleon","MlleBaptistine","MmeMagloire","CountessDeLo","Geborand","Champtercier","Cravatte","Count","OldMan","Labarre","Valjean","Marguerite","MmeDeR","Isabeau","Gervais","Tholomyes","Listolier","Fameuil","Blacheville","Favourite","Dahlia","Zephine","Fantine","MmeThenardier","Thenardier","Cosette","Javert","Fauchelevent","Bamatabois","Perpetue","Simplice","Scaufflaire","Woman1","Judge","Champmathieu","Brevet","Chenildieu","Cochepaille","Pontmercy","Boulatruelle","Eponine","Anzelma","Woman2","MotherInnocent","Gribier","Jondrette","MmeBurgon","Gavroche","Gillenormand","Magnon","MlleGillenormand","MmePontmercy","MlleVaubois","LtGillenormand","Marius","BaronessT","Mabeuf","Enjolras","Combeferre","Prouvaire","Feuilly","Courfeyrac","Bahorel","Bossuet","Joly","Grantaire","MotherPlutarch","Gueulemer","Babet","Claquesous","Montparnasse","Toussaint","Child1","Child2","Brujon","MmeHucheloup"]},"edges":{"from":[1,1,1,3,1,1,1,1,1,1,11,4,3,1,12,12,12,12,17,17,18,17,18,19,17,18,19,20,17,18,19,20,21,17,18,19,20,21,22,17,18,19,20,21,22,23,13,12,24,12,25,24,12,25,12,17,26,12,24,26,25,27,12,28,24,28,12,24,31,12,24,28,12,12,28,12,30,12,35,30,35,36,12,30,35,36,37,12,30,35,36,37,38,12,30,26,26,25,26,42,26,25,12,27,28,29,12,29,47,48,26,28,12,27,12,50,25,50,27,12,52,40,52,52,50,27,52,50,40,55,27,12,17,26,42,49,50,56,56,42,49,56,49,28,58,12,59,56,49,58,49,59,60,49,59,61,60,58,56,56,59,60,49,58,42,62,61,60,49,63,58,59,62,61,56,56,63,49,64,59,62,61,60,58,12,64,65,49,63,59,62,61,60,58,56,65,59,60,63,66,49,64,62,61,58,26,12,25,28,49,42,26,69,12,25,28,49,42,26,70,69,12,25,28,42,59,28,70,69,71,12,49,42,26,27,28,12,49,49,74,70,69,26,49,42,71,72,65,66,67,64,63,49,59],"to":[2,3,4,4,5,6,7,8,9,10,12,12,12,12,13,14,15,16,18,19,19,20,20,20,21,21,21,21,22,22,22,22,22,23,23,23,23,23,23,24,24,24,24,24,24,24,24,24,25,25,26,26,26,27,27,27,27,28,28,28,28,28,29,29,30,30,30,31,32,32,32,32,33,34,34,35,35,36,36,36,37,37,37,37,38,38,38,38,38,39,39,39,39,39,39,40,41,42,42,43,43,43,44,44,44,45,45,46,48,49,49,49,49,50,50,51,51,52,52,52,53,53,54,55,55,55,56,56,56,56,56,56,56,56,56,56,57,57,58,58,58,59,59,59,59,59,60,60,60,60,61,61,61,62,62,62,62,62,62,63,63,63,63,63,63,63,63,64,64,64,64,64,64,64,64,65,65,65,65,65,65,65,65,65,65,66,66,66,66,66,66,66,66,66,66,67,67,67,67,67,67,67,67,67,68,69,69,69,69,69,69,70,70,70,70,70,70,70,71,71,71,71,71,71,71,71,72,72,72,72,72,72,72,72,73,73,73,74,75,75,76,76,76,76,76,76,76,77,77,77,77,77,77,77],"value":[1,8,10,6,1,1,1,1,2,1,1,3,3,5,1,1,1,1,4,4,4,4,4,4,3,3,3,4,3,3,3,3,5,3,3,3,3,4,4,3,3,3,3,4,4,4,2,9,2,7,13,1,12,4,31,1,1,17,5,5,1,1,8,1,1,1,2,1,2,3,2,1,1,2,1,3,2,3,3,2,2,2,2,1,2,2,2,2,1,2,2,2,2,2,1,1,1,2,3,2,2,1,3,1,1,3,1,2,1,2,1,1,1,3,2,1,1,9,2,2,1,1,1,2,1,1,6,12,1,1,21,19,1,2,5,4,1,1,1,1,1,7,7,6,1,4,15,5,6,2,1,4,2,2,6,2,5,1,1,9,17,13,7,2,1,6,3,5,5,6,2,4,3,2,1,5,12,5,4,10,6,2,9,1,1,5,7,3,5,5,5,2,5,1,2,3,3,1,2,2,1,1,1,1,3,5,1,1,1,1,1,6,6,1,1,2,1,1,4,4,4,1,1,1,1,1,1,2,2,2,1,1,1,1,2,1,1,2,2,3,3,3,3,1,1,1,1,1,1,1,1,1,1,1]}}},"evals":[],"jsHooks":[]}</script><p>Now, we can modify the visualization using the ‘magrittr’ pipe. First, let’s resize the nodes based on degree:</p>
+  ],
+  "directed": [false]
+},"options":{"minNodeSize":1,"maxNodeSize":3,"minEdgeSize":3,"maxEdgeSize":1,"neighborEvent":"onClick","neighborStart":"clickNode","neighborEnd":"clickStage","doubleClickZoom":true,"mouseWheelZoom":true,"edgeArrows":"def"},"graph":{"vertices":{"id":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76],"label":["Myriel","Napoleon","MlleBaptistine","MmeMagloire","CountessDeLo","Geborand","Champtercier","Cravatte","Count","OldMan","Labarre","Valjean","Marguerite","MmeDeR","Isabeau","Gervais","Tholomyes","Listolier","Fameuil","Blacheville","Favourite","Dahlia","Zephine","Fantine","MmeThenardier","Thenardier","Cosette","Javert","Fauchelevent","Bamatabois","Perpetue","Simplice","Scaufflaire","Woman1","Judge","Champmathieu","Brevet","Chenildieu","Cochepaille","Pontmercy","Boulatruelle","Eponine","Anzelma","Woman2","MotherInnocent","Gribier","Jondrette","MmeBurgon","Gavroche","Gillenormand","Magnon","MlleGillenormand","MmePontmercy","MlleVaubois","LtGillenormand","Marius","BaronessT","Mabeuf","Enjolras","Combeferre","Prouvaire","Feuilly","Courfeyrac","Bahorel","Bossuet","Joly","Grantaire","MotherPlutarch","Gueulemer","Babet","Claquesous","Montparnasse","Toussaint","Child1","Child2","Brujon","MmeHucheloup"]},"edges":{"from":[1,1,1,3,1,1,1,1,1,1,11,4,3,1,12,12,12,12,17,17,18,17,18,19,17,18,19,20,17,18,19,20,21,17,18,19,20,21,22,17,18,19,20,21,22,23,13,12,24,12,25,24,12,25,12,17,26,12,24,26,25,27,12,28,24,28,12,24,31,12,24,28,12,12,28,12,30,12,35,30,35,36,12,30,35,36,37,12,30,35,36,37,38,12,30,26,26,25,26,42,26,25,12,27,28,29,12,29,47,48,26,28,12,27,12,50,25,50,27,12,52,40,52,52,50,27,52,50,40,55,27,12,17,26,42,49,50,56,56,42,49,56,49,28,58,12,59,56,49,58,49,59,60,49,59,61,60,58,56,56,59,60,49,58,42,62,61,60,49,63,58,59,62,61,56,56,63,49,64,59,62,61,60,58,12,64,65,49,63,59,62,61,60,58,56,65,59,60,63,66,49,64,62,61,58,26,12,25,28,49,42,26,69,12,25,28,49,42,26,70,69,12,25,28,42,59,28,70,69,71,12,49,42,26,27,28,12,49,49,74,70,69,26,49,42,71,72,65,66,67,64,63,49,59],"to":[2,3,4,4,5,6,7,8,9,10,12,12,12,12,13,14,15,16,18,19,19,20,20,20,21,21,21,21,22,22,22,22,22,23,23,23,23,23,23,24,24,24,24,24,24,24,24,24,25,25,26,26,26,27,27,27,27,28,28,28,28,28,29,29,30,30,30,31,32,32,32,32,33,34,34,35,35,36,36,36,37,37,37,37,38,38,38,38,38,39,39,39,39,39,39,40,41,42,42,43,43,43,44,44,44,45,45,46,48,49,49,49,49,50,50,51,51,52,52,52,53,53,54,55,55,55,56,56,56,56,56,56,56,56,56,56,57,57,58,58,58,59,59,59,59,59,60,60,60,60,61,61,61,62,62,62,62,62,62,63,63,63,63,63,63,63,63,64,64,64,64,64,64,64,64,65,65,65,65,65,65,65,65,65,65,66,66,66,66,66,66,66,66,66,66,67,67,67,67,67,67,67,67,67,68,69,69,69,69,69,69,70,70,70,70,70,70,70,71,71,71,71,71,71,71,71,72,72,72,72,72,72,72,72,73,73,73,74,75,75,76,76,76,76,76,76,76,77,77,77,77,77,77,77],"value":[1,8,10,6,1,1,1,1,2,1,1,3,3,5,1,1,1,1,4,4,4,4,4,4,3,3,3,4,3,3,3,3,5,3,3,3,3,4,4,3,3,3,3,4,4,4,2,9,2,7,13,1,12,4,31,1,1,17,5,5,1,1,8,1,1,1,2,1,2,3,2,1,1,2,1,3,2,3,3,2,2,2,2,1,2,2,2,2,1,2,2,2,2,2,1,1,1,2,3,2,2,1,3,1,1,3,1,2,1,2,1,1,1,3,2,1,1,9,2,2,1,1,1,2,1,1,6,12,1,1,21,19,1,2,5,4,1,1,1,1,1,7,7,6,1,4,15,5,6,2,1,4,2,2,6,2,5,1,1,9,17,13,7,2,1,6,3,5,5,6,2,4,3,2,1,5,12,5,4,10,6,2,9,1,1,5,7,3,5,5,5,2,5,1,2,3,3,1,2,2,1,1,1,1,3,5,1,1,1,1,1,6,6,1,1,2,1,1,4,4,4,1,1,1,1,1,1,2,2,2,1,1,1,1,2,1,1,2,2,3,3,3,3,1,1,1,1,1,1,1,1,1,1,1]}}},"evals":[],"jsHooks":[]}</script><p>Now, we can modify the visualization using the ‘magrittr’ pipe. First, let’s resize the nodes based on degree:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sig <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/addNodeSize.html">addNodeSize</a></span>(<span class="dt">sizeMetric =</span> <span class="st">'degree'</span>, <span class="dt">maxSize =</span> <span class="dv">8</span>)</code></pre></div>
-<div id="htmlwidget-070b70b56dd38fdd28f0" style="width:672px;height:480px;" class="sigmaNet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-070b70b56dd38fdd28f0">{"x":{"data":{
+<div id="htmlwidget-a206292c5802181a11d0" style="width:700px;height:432.632880098888px;" class="sigmaNet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a206292c5802181a11d0">{"x":{"data":{
   "nodes": [
     {
       "label": "1",
-      "x": 10.3438,
-      "y": 2.2167,
+      "x": -8.0966,
+      "y": 3.0229,
       "id": 1,
       "size": 10,
       "color": "#3182bd"
     },
     {
       "label": "2",
-      "x": 13.2858,
-      "y": 1.7275,
+      "x": -10.8551,
+      "y": 2.2316,
       "id": 2,
-      "size": 3,
-      "color": "#3182bd"
-    },
-    {
-      "label": "3",
-      "x": 7.9214,
-      "y": 2.3938,
-      "id": 3,
       "size": 1,
       "color": "#3182bd"
     },
     {
+      "label": "3",
+      "x": -5.7644,
+      "y": 2.3071,
+      "id": 3,
+      "size": 3,
+      "color": "#3182bd"
+    },
+    {
       "label": "4",
-      "x": 7.9107,
-      "y": 1.7864,
+      "x": -5.9099,
+      "y": 1.7155,
       "id": 4,
       "size": 3,
       "color": "#3182bd"
     },
     {
       "label": "5",
-      "x": 12.8032,
-      "y": 1.0975,
+      "x": -10.7547,
+      "y": 4.5435,
       "id": 5,
+      "size": 1,
+      "color": "#3182bd"
+    },
+    {
+      "label": "6",
+      "x": -10.2956,
+      "y": 3.8357,
+      "id": 6,
+      "size": 1,
+      "color": "#3182bd"
+    },
+    {
+      "label": "7",
+      "x": -10.3775,
+      "y": 2.7907,
+      "id": 7,
+      "size": 1,
+      "color": "#3182bd"
+    },
+    {
+      "label": "8",
+      "x": -9.4572,
+      "y": 5.3532,
+      "id": 8,
+      "size": 1,
+      "color": "#3182bd"
+    },
+    {
+      "label": "9",
+      "x": -11.0714,
+      "y": 3.4284,
+      "id": 9,
+      "size": 1,
+      "color": "#3182bd"
+    },
+    {
+      "label": "10",
+      "x": -9.9933,
+      "y": 4.8055,
+      "id": 10,
+      "size": 1,
+      "color": "#3182bd"
+    },
+    {
+      "label": "11",
+      "x": -2.283,
+      "y": 3.9838,
+      "id": 11,
+      "size": 1,
+      "color": "#3182bd"
+    },
+    {
+      "label": "12",
+      "x": -2.0705,
+      "y": 0.9796,
+      "id": 12,
       "size": 36,
       "color": "#3182bd"
     },
     {
-      "label": "6",
-      "x": 12.316,
-      "y": 3.8147,
-      "id": 6,
-      "size": 9,
-      "color": "#3182bd"
-    },
-    {
-      "label": "7",
-      "x": 12.332,
-      "y": 0.4808,
-      "id": 7,
-      "size": 7,
-      "color": "#3182bd"
-    },
-    {
-      "label": "8",
-      "x": 12.5285,
-      "y": 2.2237,
-      "id": 8,
-      "size": 7,
-      "color": "#3182bd"
-    },
-    {
-      "label": "9",
-      "x": 13.2549,
-      "y": 2.661,
-      "id": 9,
-      "size": 7,
-      "color": "#3182bd"
-    },
-    {
-      "label": "10",
-      "x": 12.9731,
-      "y": 3.4265,
-      "id": 10,
-      "size": 7,
-      "color": "#3182bd"
-    },
-    {
-      "label": "11",
-      "x": 5.8184,
-      "y": -0.1642,
-      "id": 11,
-      "size": 7,
-      "color": "#3182bd"
-    },
-    {
-      "label": "12",
-      "x": 4.0193,
-      "y": 2.2992,
-      "id": 12,
-      "size": 7,
-      "color": "#3182bd"
-    },
-    {
       "label": "13",
-      "x": 4.1918,
-      "y": 5.2004,
+      "x": -1.0345,
+      "y": 3.6571,
       "id": 13,
       "size": 2,
       "color": "#3182bd"
     },
     {
       "label": "14",
-      "x": 5.1481,
-      "y": -0.5787,
+      "x": -4.6127,
+      "y": 3.0023,
       "id": 14,
-      "size": 15,
+      "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "15",
-      "x": 6.2859,
-      "y": 3.9744,
+      "x": -3.9886,
+      "y": 3.6878,
       "id": 15,
-      "size": 11,
+      "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "16",
-      "x": 6.4719,
-      "y": 0.246,
+      "x": -3.0793,
+      "y": 4.1675,
       "id": 16,
-      "size": 16,
+      "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "17",
-      "x": 0.9933,
-      "y": 5.9862,
+      "x": 2.1375,
+      "y": 3.0701,
       "id": 17,
-      "size": 11,
+      "size": 9,
       "color": "#3182bd"
     },
     {
       "label": "18",
-      "x": 0.9497,
-      "y": 7.3552,
+      "x": 1.9013,
+      "y": 4.9735,
       "id": 18,
-      "size": 17,
+      "size": 7,
       "color": "#3182bd"
     },
     {
       "label": "19",
-      "x": 1.5776,
-      "y": 8.1395,
+      "x": 3.0468,
+      "y": 4.649,
       "id": 19,
-      "size": 2,
+      "size": 7,
       "color": "#3182bd"
     },
     {
       "label": "20",
-      "x": 0.767,
-      "y": 7.8354,
+      "x": 2.2459,
+      "y": 4.5856,
       "id": 20,
-      "size": 8,
+      "size": 7,
       "color": "#3182bd"
     },
     {
       "label": "21",
-      "x": 1.5934,
-      "y": 7.3984,
+      "x": 2.7279,
+      "y": 5.0288,
       "id": 21,
-      "size": 6,
+      "size": 7,
       "color": "#3182bd"
     },
     {
       "label": "22",
-      "x": 1.2533,
-      "y": 7.8418,
+      "x": 2.7311,
+      "y": 4.3253,
       "id": 22,
-      "size": 6,
+      "size": 7,
       "color": "#3182bd"
     },
     {
       "label": "23",
-      "x": 1.9681,
-      "y": 7.7763,
+      "x": 2.2917,
+      "y": 5.2395,
       "id": 23,
-      "size": 6,
+      "size": 7,
       "color": "#3182bd"
     },
     {
       "label": "24",
-      "x": 2.3235,
-      "y": 5.419,
+      "x": 0.686,
+      "y": 3.0259,
       "id": 24,
-      "size": 6,
+      "size": 15,
       "color": "#3182bd"
     },
     {
       "label": "25",
-      "x": 1.4946,
-      "y": 2.9376,
+      "x": 0.4175,
+      "y": 0.4124,
       "id": 25,
       "size": 11,
       "color": "#3182bd"
     },
     {
       "label": "26",
-      "x": 0.9683,
-      "y": 2.1496,
+      "x": 0.6467,
+      "y": -0.4921,
       "id": 26,
-      "size": 4,
+      "size": 16,
       "color": "#3182bd"
     },
     {
       "label": "27",
-      "x": 1.4673,
-      "y": 3.6044,
+      "x": 0.6956,
+      "y": 1.05,
       "id": 27,
-      "size": 1,
+      "size": 11,
       "color": "#3182bd"
     },
     {
       "label": "28",
-      "x": 2.7284,
-      "y": 2.5279,
+      "x": -1.0047,
+      "y": 0.1748,
       "id": 28,
-      "size": 2,
+      "size": 17,
       "color": "#3182bd"
     },
     {
       "label": "29",
-      "x": 5.1092,
-      "y": 4.7831,
+      "x": -3.9503,
+      "y": -1.0874,
       "id": 29,
-      "size": 7,
+      "size": 4,
       "color": "#3182bd"
     },
     {
       "label": "30",
-      "x": 4.8273,
-      "y": 3.0976,
+      "x": -2.4543,
+      "y": 1.9864,
       "id": 30,
-      "size": 7,
+      "size": 8,
       "color": "#3182bd"
     },
     {
       "label": "31",
-      "x": 3.7067,
-      "y": 7.1162,
+      "x": 0.069,
+      "y": 5.1473,
       "id": 31,
-      "size": 3,
+      "size": 2,
       "color": "#3182bd"
     },
     {
       "label": "32",
-      "x": 3.5185,
-      "y": 4.8575,
+      "x": -0.6675,
+      "y": 2.91,
       "id": 32,
       "size": 4,
       "color": "#3182bd"
     },
     {
       "label": "33",
-      "x": 6.9487,
-      "y": 3.5902,
+      "x": -3.1557,
+      "y": 3.4296,
       "id": 33,
-      "size": 22,
+      "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "34",
-      "x": 4.2673,
-      "y": 0.9408,
+      "x": -3.0196,
+      "y": -0.3722,
       "id": 34,
-      "size": 19,
-      "color": "#3182bd"
-    },
-    {
-      "label": "35",
-      "x": 5.7692,
-      "y": 1.6501,
-      "id": 35,
-      "size": 11,
-      "color": "#3182bd"
-    },
-    {
-      "label": "36",
-      "x": 6.085,
-      "y": 2.7706,
-      "id": 36,
-      "size": 15,
-      "color": "#3182bd"
-    },
-    {
-      "label": "37",
-      "x": 5.7552,
-      "y": 2.256,
-      "id": 37,
-      "size": 11,
-      "color": "#3182bd"
-    },
-    {
-      "label": "38",
-      "x": 6.4117,
-      "y": 2.3219,
-      "id": 38,
-      "size": 9,
-      "color": "#3182bd"
-    },
-    {
-      "label": "39",
-      "x": 6.3011,
-      "y": 1.7864,
-      "id": 39,
-      "size": 11,
-      "color": "#3182bd"
-    },
-    {
-      "label": "40",
-      "x": -1.8601,
-      "y": 2.6838,
-      "id": 40,
-      "size": 13,
-      "color": "#3182bd"
-    },
-    {
-      "label": "41",
-      "x": -2.3928,
-      "y": 1.8537,
-      "id": 41,
-      "size": 12,
-      "color": "#3182bd"
-    },
-    {
-      "label": "42",
-      "x": 0.6335,
-      "y": 1.1277,
-      "id": 42,
-      "size": 13,
-      "color": "#3182bd"
-    },
-    {
-      "label": "43",
-      "x": -0.5115,
-      "y": 2.3686,
-      "id": 43,
-      "size": 12,
-      "color": "#3182bd"
-    },
-    {
-      "label": "44",
-      "x": 3.339,
-      "y": 3.5399,
-      "id": 44,
-      "size": 10,
-      "color": "#3182bd"
-    },
-    {
-      "label": "45",
-      "x": 5.97,
-      "y": 4.7123,
-      "id": 45,
-      "size": 10,
-      "color": "#3182bd"
-    },
-    {
-      "label": "46",
-      "x": 6.9011,
-      "y": 7.2311,
-      "id": 46,
-      "size": 10,
-      "color": "#3182bd"
-    },
-    {
-      "label": "47",
-      "x": -0.5028,
-      "y": -7.2848,
-      "id": 47,
       "size": 2,
       "color": "#3182bd"
     },
     {
+      "label": "35",
+      "x": -3.6962,
+      "y": 2.34,
+      "id": 35,
+      "size": 6,
+      "color": "#3182bd"
+    },
+    {
+      "label": "36",
+      "x": -3.6138,
+      "y": 1.7416,
+      "id": 36,
+      "size": 6,
+      "color": "#3182bd"
+    },
+    {
+      "label": "37",
+      "x": -4.1898,
+      "y": 2.0649,
+      "id": 37,
+      "size": 6,
+      "color": "#3182bd"
+    },
+    {
+      "label": "38",
+      "x": -4.2817,
+      "y": 1.4951,
+      "id": 38,
+      "size": 6,
+      "color": "#3182bd"
+    },
+    {
+      "label": "39",
+      "x": -3.8922,
+      "y": 1.1794,
+      "id": 39,
+      "size": 6,
+      "color": "#3182bd"
+    },
+    {
+      "label": "40",
+      "x": 3.5241,
+      "y": -0.9101,
+      "id": 40,
+      "size": 3,
+      "color": "#3182bd"
+    },
+    {
+      "label": "41",
+      "x": 3.6793,
+      "y": -1.9117,
+      "id": 41,
+      "size": 1,
+      "color": "#3182bd"
+    },
+    {
+      "label": "42",
+      "x": 0.5728,
+      "y": -1.5802,
+      "id": 42,
+      "size": 11,
+      "color": "#3182bd"
+    },
+    {
+      "label": "43",
+      "x": 2.071,
+      "y": -0.7952,
+      "id": 43,
+      "size": 3,
+      "color": "#3182bd"
+    },
+    {
+      "label": "44",
+      "x": -1.007,
+      "y": 1.4173,
+      "id": 44,
+      "size": 3,
+      "color": "#3182bd"
+    },
+    {
+      "label": "45",
+      "x": -4.6913,
+      "y": -0.4474,
+      "id": 45,
+      "size": 2,
+      "color": "#3182bd"
+    },
+    {
+      "label": "46",
+      "x": -6.3276,
+      "y": -2.7437,
+      "id": 46,
+      "size": 1,
+      "color": "#3182bd"
+    },
+    {
+      "label": "47",
+      "x": 0.0035,
+      "y": -9.9985,
+      "id": 47,
+      "size": 1,
+      "color": "#3182bd"
+    },
+    {
       "label": "48",
-      "x": 0.065,
-      "y": -4.6035,
+      "x": -0.0968,
+      "y": -7.2421,
       "id": 48,
-      "size": 9,
+      "size": 2,
       "color": "#3182bd"
     },
     {
       "label": "49",
-      "x": 1.0672,
-      "y": -0.5757,
+      "x": -0.2641,
+      "y": -3.0635,
       "id": 49,
-      "size": 10,
+      "size": 22,
       "color": "#3182bd"
     },
     {
       "label": "50",
-      "x": 0.5054,
-      "y": 3.4507,
+      "x": 1.5421,
+      "y": 0.6737,
       "id": 50,
-      "size": 1,
+      "size": 7,
       "color": "#3182bd"
     },
     {
       "label": "51",
-      "x": -0.3678,
-      "y": 4.8968,
+      "x": 2.8593,
+      "y": 1.5983,
       "id": 51,
-      "size": 1,
+      "size": 2,
       "color": "#3182bd"
     },
     {
       "label": "52",
-      "x": -0.1297,
-      "y": 3.8902,
+      "x": 2.3347,
+      "y": 0.883,
       "id": 52,
-      "size": 1,
+      "size": 7,
       "color": "#3182bd"
     },
     {
       "label": "53",
-      "x": -2.9882,
-      "y": 4.2227,
+      "x": 5.0845,
+      "y": 0.1938,
       "id": 53,
-      "size": 1,
+      "size": 2,
       "color": "#3182bd"
     },
     {
       "label": "54",
-      "x": -2.6502,
-      "y": 5.7973,
+      "x": 5.3939,
+      "y": 1.7995,
       "id": 54,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "55",
-      "x": -0.7328,
-      "y": 3.6431,
+      "x": 2.7225,
+      "y": 0.3267,
       "id": 55,
-      "size": 1,
-      "color": "#3182bd"
-    },
-    {
-      "label": "56",
-      "x": 0.1233,
-      "y": 1.692,
-      "id": 56,
-      "size": 1,
-      "color": "#3182bd"
-    },
-    {
-      "label": "57",
-      "x": -1.7756,
-      "y": 3.3738,
-      "id": 57,
-      "size": 1,
-      "color": "#3182bd"
-    },
-    {
-      "label": "58",
-      "x": -1.1763,
-      "y": -0.2875,
-      "id": 58,
-      "size": 1,
-      "color": "#3182bd"
-    },
-    {
-      "label": "59",
-      "x": 0.786,
-      "y": 0.1774,
-      "id": 59,
-      "size": 1,
-      "color": "#3182bd"
-    },
-    {
-      "label": "60",
-      "x": -0.7882,
-      "y": -0.6439,
-      "id": 60,
       "size": 4,
       "color": "#3182bd"
     },
     {
+      "label": "56",
+      "x": 1.3382,
+      "y": -1.1622,
+      "id": 56,
+      "size": 19,
+      "color": "#3182bd"
+    },
+    {
+      "label": "57",
+      "x": 3.6458,
+      "y": -0.1854,
+      "id": 57,
+      "size": 2,
+      "color": "#3182bd"
+    },
+    {
+      "label": "58",
+      "x": 1.9275,
+      "y": -3.4169,
+      "id": 58,
+      "size": 11,
+      "color": "#3182bd"
+    },
+    {
+      "label": "59",
+      "x": 0.1868,
+      "y": -2.4054,
+      "id": 59,
+      "size": 15,
+      "color": "#3182bd"
+    },
+    {
+      "label": "60",
+      "x": 1.3784,
+      "y": -3.2655,
+      "id": 60,
+      "size": 11,
+      "color": "#3182bd"
+    },
+    {
       "label": "61",
-      "x": -0.6424,
-      "y": -1.4747,
+      "x": 1.0325,
+      "y": -4.4358,
       "id": 61,
-      "size": 1,
+      "size": 9,
       "color": "#3182bd"
     },
     {
       "label": "62",
-      "x": -0.6282,
-      "y": -0.2427,
+      "x": 1.4866,
+      "y": -3.6856,
       "id": 62,
-      "size": 2,
+      "size": 11,
       "color": "#3182bd"
     },
     {
       "label": "63",
-      "x": -0.1573,
-      "y": -0.3762,
+      "x": 0.9054,
+      "y": -3.254,
       "id": 63,
-      "size": 6,
+      "size": 13,
       "color": "#3182bd"
     },
     {
       "label": "64",
-      "x": -0.4301,
-      "y": -0.841,
+      "x": 1.066,
+      "y": -3.8081,
       "id": 64,
-      "size": 1,
+      "size": 12,
       "color": "#3182bd"
     },
     {
       "label": "65",
-      "x": 0.582,
-      "y": -0.2342,
+      "x": 0.3137,
+      "y": -2.7933,
       "id": 65,
-      "size": 3,
+      "size": 13,
       "color": "#3182bd"
     },
     {
       "label": "66",
-      "x": -0.0554,
-      "y": -0.8801,
+      "x": 0.6877,
+      "y": -3.679,
       "id": 66,
-      "size": 3,
+      "size": 12,
       "color": "#3182bd"
     },
     {
       "label": "67",
-      "x": -0.1611,
-      "y": -1.5879,
+      "x": 0.5385,
+      "y": -4.3846,
       "id": 67,
-      "size": 2,
+      "size": 10,
       "color": "#3182bd"
     },
     {
       "label": "68",
-      "x": -3.9027,
-      "y": -1.7804,
+      "x": 4.0873,
+      "y": -5.6287,
       "id": 68,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "69",
-      "x": 1.8537,
-      "y": 1.2548,
+      "x": -0.5071,
+      "y": -1.0261,
       "id": 69,
-      "size": 2,
+      "size": 10,
       "color": "#3182bd"
     },
     {
       "label": "70",
-      "x": 2.2392,
-      "y": 1.3249,
+      "x": -0.8874,
+      "y": -0.8842,
       "id": 70,
-      "size": 2,
+      "size": 10,
       "color": "#3182bd"
     },
     {
       "label": "71",
-      "x": 1.9129,
-      "y": 1.7102,
+      "x": -0.4704,
+      "y": -0.5885,
       "id": 71,
-      "size": 1,
+      "size": 10,
       "color": "#3182bd"
     },
     {
       "label": "72",
-      "x": 2.354,
-      "y": 0.8421,
+      "x": -1.1454,
+      "y": -1.294,
       "id": 72,
-      "size": 2,
+      "size": 9,
       "color": "#3182bd"
     },
     {
       "label": "73",
-      "x": 2.8795,
-      "y": 3.8928,
+      "x": -0.5945,
+      "y": 1.8222,
       "id": 73,
-      "size": 1,
-      "color": "#3182bd"
-    },
-    {
-      "label": "74",
-      "x": 1.592,
-      "y": -3.6009,
-      "id": 74,
       "size": 3,
       "color": "#3182bd"
     },
     {
+      "label": "74",
+      "x": -0.9244,
+      "y": -6.1109,
+      "id": 74,
+      "size": 2,
+      "color": "#3182bd"
+    },
+    {
       "label": "75",
-      "x": 0.8152,
-      "y": -3.6338,
+      "x": -1.6464,
+      "y": -5.8296,
       "id": 75,
       "size": 2,
       "color": "#3182bd"
     },
     {
       "label": "76",
-      "x": 1.6291,
-      "y": 0.4287,
+      "x": -0.6818,
+      "y": -1.9493,
       "id": 76,
       "size": 7,
       "color": "#3182bd"
     },
     {
       "label": "77",
-      "x": 0.4226,
-      "y": -1.7428,
+      "x": -0.0543,
+      "y": -4.3596,
       "id": 77,
       "size": 7,
       "color": "#3182bd"
@@ -4936,626 +4947,627 @@ sig &lt;-<span class="st"> </span><span class="kw"><a href="../reference/sigmaFr
       "size": 1,
       "color": "#636363"
     }
-  ]
-},"options":{"minNodeSize":1,"maxNodeSize":8,"minEdgeSize":3,"maxEdgeSize":1,"neighborEvent":"onClick","neighborStart":"clickNode","neighborEnd":"clickStage","doubleClickZoom":true,"mouseWheelZoom":true},"graph":{"vertices":{"id":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76],"label":["Myriel","Napoleon","MlleBaptistine","MmeMagloire","CountessDeLo","Geborand","Champtercier","Cravatte","Count","OldMan","Labarre","Valjean","Marguerite","MmeDeR","Isabeau","Gervais","Tholomyes","Listolier","Fameuil","Blacheville","Favourite","Dahlia","Zephine","Fantine","MmeThenardier","Thenardier","Cosette","Javert","Fauchelevent","Bamatabois","Perpetue","Simplice","Scaufflaire","Woman1","Judge","Champmathieu","Brevet","Chenildieu","Cochepaille","Pontmercy","Boulatruelle","Eponine","Anzelma","Woman2","MotherInnocent","Gribier","Jondrette","MmeBurgon","Gavroche","Gillenormand","Magnon","MlleGillenormand","MmePontmercy","MlleVaubois","LtGillenormand","Marius","BaronessT","Mabeuf","Enjolras","Combeferre","Prouvaire","Feuilly","Courfeyrac","Bahorel","Bossuet","Joly","Grantaire","MotherPlutarch","Gueulemer","Babet","Claquesous","Montparnasse","Toussaint","Child1","Child2","Brujon","MmeHucheloup"]},"edges":{"from":[1,1,1,3,1,1,1,1,1,1,11,4,3,1,12,12,12,12,17,17,18,17,18,19,17,18,19,20,17,18,19,20,21,17,18,19,20,21,22,17,18,19,20,21,22,23,13,12,24,12,25,24,12,25,12,17,26,12,24,26,25,27,12,28,24,28,12,24,31,12,24,28,12,12,28,12,30,12,35,30,35,36,12,30,35,36,37,12,30,35,36,37,38,12,30,26,26,25,26,42,26,25,12,27,28,29,12,29,47,48,26,28,12,27,12,50,25,50,27,12,52,40,52,52,50,27,52,50,40,55,27,12,17,26,42,49,50,56,56,42,49,56,49,28,58,12,59,56,49,58,49,59,60,49,59,61,60,58,56,56,59,60,49,58,42,62,61,60,49,63,58,59,62,61,56,56,63,49,64,59,62,61,60,58,12,64,65,49,63,59,62,61,60,58,56,65,59,60,63,66,49,64,62,61,58,26,12,25,28,49,42,26,69,12,25,28,49,42,26,70,69,12,25,28,42,59,28,70,69,71,12,49,42,26,27,28,12,49,49,74,70,69,26,49,42,71,72,65,66,67,64,63,49,59],"to":[2,3,4,4,5,6,7,8,9,10,12,12,12,12,13,14,15,16,18,19,19,20,20,20,21,21,21,21,22,22,22,22,22,23,23,23,23,23,23,24,24,24,24,24,24,24,24,24,25,25,26,26,26,27,27,27,27,28,28,28,28,28,29,29,30,30,30,31,32,32,32,32,33,34,34,35,35,36,36,36,37,37,37,37,38,38,38,38,38,39,39,39,39,39,39,40,41,42,42,43,43,43,44,44,44,45,45,46,48,49,49,49,49,50,50,51,51,52,52,52,53,53,54,55,55,55,56,56,56,56,56,56,56,56,56,56,57,57,58,58,58,59,59,59,59,59,60,60,60,60,61,61,61,62,62,62,62,62,62,63,63,63,63,63,63,63,63,64,64,64,64,64,64,64,64,65,65,65,65,65,65,65,65,65,65,66,66,66,66,66,66,66,66,66,66,67,67,67,67,67,67,67,67,67,68,69,69,69,69,69,69,70,70,70,70,70,70,70,71,71,71,71,71,71,71,71,72,72,72,72,72,72,72,72,73,73,73,74,75,75,76,76,76,76,76,76,76,77,77,77,77,77,77,77],"value":[1,8,10,6,1,1,1,1,2,1,1,3,3,5,1,1,1,1,4,4,4,4,4,4,3,3,3,4,3,3,3,3,5,3,3,3,3,4,4,3,3,3,3,4,4,4,2,9,2,7,13,1,12,4,31,1,1,17,5,5,1,1,8,1,1,1,2,1,2,3,2,1,1,2,1,3,2,3,3,2,2,2,2,1,2,2,2,2,1,2,2,2,2,2,1,1,1,2,3,2,2,1,3,1,1,3,1,2,1,2,1,1,1,3,2,1,1,9,2,2,1,1,1,2,1,1,6,12,1,1,21,19,1,2,5,4,1,1,1,1,1,7,7,6,1,4,15,5,6,2,1,4,2,2,6,2,5,1,1,9,17,13,7,2,1,6,3,5,5,6,2,4,3,2,1,5,12,5,4,10,6,2,9,1,1,5,7,3,5,5,5,2,5,1,2,3,3,1,2,2,1,1,1,1,3,5,1,1,1,1,1,6,6,1,1,2,1,1,4,4,4,1,1,1,1,1,1,2,2,2,1,1,1,1,2,1,1,2,2,3,3,3,3,1,1,1,1,1,1,1,1,1,1,1]}}},"evals":[],"jsHooks":[]}</script><p>Next, we can use the label attribute to add more informative labels to the nodes:</p>
+  ],
+  "directed": [false]
+},"options":{"minNodeSize":1,"maxNodeSize":8,"minEdgeSize":3,"maxEdgeSize":1,"neighborEvent":"onClick","neighborStart":"clickNode","neighborEnd":"clickStage","doubleClickZoom":true,"mouseWheelZoom":true,"edgeArrows":"def"},"graph":{"vertices":{"id":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76],"label":["Myriel","Napoleon","MlleBaptistine","MmeMagloire","CountessDeLo","Geborand","Champtercier","Cravatte","Count","OldMan","Labarre","Valjean","Marguerite","MmeDeR","Isabeau","Gervais","Tholomyes","Listolier","Fameuil","Blacheville","Favourite","Dahlia","Zephine","Fantine","MmeThenardier","Thenardier","Cosette","Javert","Fauchelevent","Bamatabois","Perpetue","Simplice","Scaufflaire","Woman1","Judge","Champmathieu","Brevet","Chenildieu","Cochepaille","Pontmercy","Boulatruelle","Eponine","Anzelma","Woman2","MotherInnocent","Gribier","Jondrette","MmeBurgon","Gavroche","Gillenormand","Magnon","MlleGillenormand","MmePontmercy","MlleVaubois","LtGillenormand","Marius","BaronessT","Mabeuf","Enjolras","Combeferre","Prouvaire","Feuilly","Courfeyrac","Bahorel","Bossuet","Joly","Grantaire","MotherPlutarch","Gueulemer","Babet","Claquesous","Montparnasse","Toussaint","Child1","Child2","Brujon","MmeHucheloup"]},"edges":{"from":[1,1,1,3,1,1,1,1,1,1,11,4,3,1,12,12,12,12,17,17,18,17,18,19,17,18,19,20,17,18,19,20,21,17,18,19,20,21,22,17,18,19,20,21,22,23,13,12,24,12,25,24,12,25,12,17,26,12,24,26,25,27,12,28,24,28,12,24,31,12,24,28,12,12,28,12,30,12,35,30,35,36,12,30,35,36,37,12,30,35,36,37,38,12,30,26,26,25,26,42,26,25,12,27,28,29,12,29,47,48,26,28,12,27,12,50,25,50,27,12,52,40,52,52,50,27,52,50,40,55,27,12,17,26,42,49,50,56,56,42,49,56,49,28,58,12,59,56,49,58,49,59,60,49,59,61,60,58,56,56,59,60,49,58,42,62,61,60,49,63,58,59,62,61,56,56,63,49,64,59,62,61,60,58,12,64,65,49,63,59,62,61,60,58,56,65,59,60,63,66,49,64,62,61,58,26,12,25,28,49,42,26,69,12,25,28,49,42,26,70,69,12,25,28,42,59,28,70,69,71,12,49,42,26,27,28,12,49,49,74,70,69,26,49,42,71,72,65,66,67,64,63,49,59],"to":[2,3,4,4,5,6,7,8,9,10,12,12,12,12,13,14,15,16,18,19,19,20,20,20,21,21,21,21,22,22,22,22,22,23,23,23,23,23,23,24,24,24,24,24,24,24,24,24,25,25,26,26,26,27,27,27,27,28,28,28,28,28,29,29,30,30,30,31,32,32,32,32,33,34,34,35,35,36,36,36,37,37,37,37,38,38,38,38,38,39,39,39,39,39,39,40,41,42,42,43,43,43,44,44,44,45,45,46,48,49,49,49,49,50,50,51,51,52,52,52,53,53,54,55,55,55,56,56,56,56,56,56,56,56,56,56,57,57,58,58,58,59,59,59,59,59,60,60,60,60,61,61,61,62,62,62,62,62,62,63,63,63,63,63,63,63,63,64,64,64,64,64,64,64,64,65,65,65,65,65,65,65,65,65,65,66,66,66,66,66,66,66,66,66,66,67,67,67,67,67,67,67,67,67,68,69,69,69,69,69,69,70,70,70,70,70,70,70,71,71,71,71,71,71,71,71,72,72,72,72,72,72,72,72,73,73,73,74,75,75,76,76,76,76,76,76,76,77,77,77,77,77,77,77],"value":[1,8,10,6,1,1,1,1,2,1,1,3,3,5,1,1,1,1,4,4,4,4,4,4,3,3,3,4,3,3,3,3,5,3,3,3,3,4,4,3,3,3,3,4,4,4,2,9,2,7,13,1,12,4,31,1,1,17,5,5,1,1,8,1,1,1,2,1,2,3,2,1,1,2,1,3,2,3,3,2,2,2,2,1,2,2,2,2,1,2,2,2,2,2,1,1,1,2,3,2,2,1,3,1,1,3,1,2,1,2,1,1,1,3,2,1,1,9,2,2,1,1,1,2,1,1,6,12,1,1,21,19,1,2,5,4,1,1,1,1,1,7,7,6,1,4,15,5,6,2,1,4,2,2,6,2,5,1,1,9,17,13,7,2,1,6,3,5,5,6,2,4,3,2,1,5,12,5,4,10,6,2,9,1,1,5,7,3,5,5,5,2,5,1,2,3,3,1,2,2,1,1,1,1,3,5,1,1,1,1,1,6,6,1,1,2,1,1,4,4,4,1,1,1,1,1,1,2,2,2,1,1,1,1,2,1,1,2,2,3,3,3,3,1,1,1,1,1,1,1,1,1,1,1]}}},"evals":[],"jsHooks":[]}</script><p>Next, we can use the label attribute to add more informative labels to the nodes:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sig <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/addNodeSize.html">addNodeSize</a></span>(<span class="dt">sizeMetric =</span> <span class="st">'degree'</span>, <span class="dt">maxSize =</span> <span class="dv">8</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/addNodeLabels.html">addNodeLabels</a></span>(<span class="dt">labelAttr =</span> <span class="st">'label'</span>)</code></pre></div>
-<div id="htmlwidget-a46e83f72820da0bb54e" style="width:672px;height:480px;" class="sigmaNet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-a46e83f72820da0bb54e">{"x":{"data":{
+<div id="htmlwidget-673bc838f6da295e9963" style="width:700px;height:432.632880098888px;" class="sigmaNet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-673bc838f6da295e9963">{"x":{"data":{
   "nodes": [
     {
       "label": "Myriel",
-      "x": 10.3438,
-      "y": 2.2167,
+      "x": -8.0966,
+      "y": 3.0229,
       "id": 1,
       "size": 10,
       "color": "#3182bd"
     },
     {
       "label": "Napoleon",
-      "x": 13.2858,
-      "y": 1.7275,
+      "x": -10.8551,
+      "y": 2.2316,
       "id": 2,
-      "size": 3,
-      "color": "#3182bd"
-    },
-    {
-      "label": "MlleBaptistine",
-      "x": 7.9214,
-      "y": 2.3938,
-      "id": 3,
       "size": 1,
       "color": "#3182bd"
     },
     {
+      "label": "MlleBaptistine",
+      "x": -5.7644,
+      "y": 2.3071,
+      "id": 3,
+      "size": 3,
+      "color": "#3182bd"
+    },
+    {
       "label": "MmeMagloire",
-      "x": 7.9107,
-      "y": 1.7864,
+      "x": -5.9099,
+      "y": 1.7155,
       "id": 4,
       "size": 3,
       "color": "#3182bd"
     },
     {
       "label": "CountessDeLo",
-      "x": 12.8032,
-      "y": 1.0975,
+      "x": -10.7547,
+      "y": 4.5435,
       "id": 5,
-      "size": 36,
+      "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "Geborand",
-      "x": 12.316,
-      "y": 3.8147,
+      "x": -10.2956,
+      "y": 3.8357,
       "id": 6,
-      "size": 9,
+      "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "Champtercier",
-      "x": 12.332,
-      "y": 0.4808,
+      "x": -10.3775,
+      "y": 2.7907,
       "id": 7,
-      "size": 7,
+      "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "Cravatte",
-      "x": 12.5285,
-      "y": 2.2237,
+      "x": -9.4572,
+      "y": 5.3532,
       "id": 8,
-      "size": 7,
+      "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "Count",
-      "x": 13.2549,
-      "y": 2.661,
+      "x": -11.0714,
+      "y": 3.4284,
       "id": 9,
-      "size": 7,
+      "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "OldMan",
-      "x": 12.9731,
-      "y": 3.4265,
+      "x": -9.9933,
+      "y": 4.8055,
       "id": 10,
-      "size": 7,
+      "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "Labarre",
-      "x": 5.8184,
-      "y": -0.1642,
+      "x": -2.283,
+      "y": 3.9838,
       "id": 11,
-      "size": 7,
+      "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "Valjean",
-      "x": 4.0193,
-      "y": 2.2992,
+      "x": -2.0705,
+      "y": 0.9796,
       "id": 12,
-      "size": 7,
+      "size": 36,
       "color": "#3182bd"
     },
     {
       "label": "Marguerite",
-      "x": 4.1918,
-      "y": 5.2004,
+      "x": -1.0345,
+      "y": 3.6571,
       "id": 13,
       "size": 2,
       "color": "#3182bd"
     },
     {
       "label": "MmeDeR",
-      "x": 5.1481,
-      "y": -0.5787,
+      "x": -4.6127,
+      "y": 3.0023,
       "id": 14,
-      "size": 15,
+      "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "Isabeau",
-      "x": 6.2859,
-      "y": 3.9744,
+      "x": -3.9886,
+      "y": 3.6878,
       "id": 15,
-      "size": 11,
+      "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "Gervais",
-      "x": 6.4719,
-      "y": 0.246,
+      "x": -3.0793,
+      "y": 4.1675,
       "id": 16,
-      "size": 16,
+      "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "Tholomyes",
-      "x": 0.9933,
-      "y": 5.9862,
+      "x": 2.1375,
+      "y": 3.0701,
       "id": 17,
-      "size": 11,
+      "size": 9,
       "color": "#3182bd"
     },
     {
       "label": "Listolier",
-      "x": 0.9497,
-      "y": 7.3552,
+      "x": 1.9013,
+      "y": 4.9735,
       "id": 18,
-      "size": 17,
+      "size": 7,
       "color": "#3182bd"
     },
     {
       "label": "Fameuil",
-      "x": 1.5776,
-      "y": 8.1395,
+      "x": 3.0468,
+      "y": 4.649,
       "id": 19,
-      "size": 2,
+      "size": 7,
       "color": "#3182bd"
     },
     {
       "label": "Blacheville",
-      "x": 0.767,
-      "y": 7.8354,
+      "x": 2.2459,
+      "y": 4.5856,
       "id": 20,
-      "size": 8,
+      "size": 7,
       "color": "#3182bd"
     },
     {
       "label": "Favourite",
-      "x": 1.5934,
-      "y": 7.3984,
+      "x": 2.7279,
+      "y": 5.0288,
       "id": 21,
-      "size": 6,
+      "size": 7,
       "color": "#3182bd"
     },
     {
       "label": "Dahlia",
-      "x": 1.2533,
-      "y": 7.8418,
+      "x": 2.7311,
+      "y": 4.3253,
       "id": 22,
-      "size": 6,
+      "size": 7,
       "color": "#3182bd"
     },
     {
       "label": "Zephine",
-      "x": 1.9681,
-      "y": 7.7763,
+      "x": 2.2917,
+      "y": 5.2395,
       "id": 23,
-      "size": 6,
+      "size": 7,
       "color": "#3182bd"
     },
     {
       "label": "Fantine",
-      "x": 2.3235,
-      "y": 5.419,
+      "x": 0.686,
+      "y": 3.0259,
       "id": 24,
-      "size": 6,
+      "size": 15,
       "color": "#3182bd"
     },
     {
       "label": "MmeThenardier",
-      "x": 1.4946,
-      "y": 2.9376,
+      "x": 0.4175,
+      "y": 0.4124,
       "id": 25,
       "size": 11,
       "color": "#3182bd"
     },
     {
       "label": "Thenardier",
-      "x": 0.9683,
-      "y": 2.1496,
+      "x": 0.6467,
+      "y": -0.4921,
       "id": 26,
-      "size": 4,
+      "size": 16,
       "color": "#3182bd"
     },
     {
       "label": "Cosette",
-      "x": 1.4673,
-      "y": 3.6044,
+      "x": 0.6956,
+      "y": 1.05,
       "id": 27,
-      "size": 1,
+      "size": 11,
       "color": "#3182bd"
     },
     {
       "label": "Javert",
-      "x": 2.7284,
-      "y": 2.5279,
+      "x": -1.0047,
+      "y": 0.1748,
       "id": 28,
-      "size": 2,
+      "size": 17,
       "color": "#3182bd"
     },
     {
       "label": "Fauchelevent",
-      "x": 5.1092,
-      "y": 4.7831,
+      "x": -3.9503,
+      "y": -1.0874,
       "id": 29,
-      "size": 7,
+      "size": 4,
       "color": "#3182bd"
     },
     {
       "label": "Bamatabois",
-      "x": 4.8273,
-      "y": 3.0976,
+      "x": -2.4543,
+      "y": 1.9864,
       "id": 30,
-      "size": 7,
+      "size": 8,
       "color": "#3182bd"
     },
     {
       "label": "Perpetue",
-      "x": 3.7067,
-      "y": 7.1162,
+      "x": 0.069,
+      "y": 5.1473,
       "id": 31,
-      "size": 3,
+      "size": 2,
       "color": "#3182bd"
     },
     {
       "label": "Simplice",
-      "x": 3.5185,
-      "y": 4.8575,
+      "x": -0.6675,
+      "y": 2.91,
       "id": 32,
       "size": 4,
       "color": "#3182bd"
     },
     {
       "label": "Scaufflaire",
-      "x": 6.9487,
-      "y": 3.5902,
+      "x": -3.1557,
+      "y": 3.4296,
       "id": 33,
-      "size": 22,
+      "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "Woman1",
-      "x": 4.2673,
-      "y": 0.9408,
+      "x": -3.0196,
+      "y": -0.3722,
       "id": 34,
-      "size": 19,
-      "color": "#3182bd"
-    },
-    {
-      "label": "Judge",
-      "x": 5.7692,
-      "y": 1.6501,
-      "id": 35,
-      "size": 11,
-      "color": "#3182bd"
-    },
-    {
-      "label": "Champmathieu",
-      "x": 6.085,
-      "y": 2.7706,
-      "id": 36,
-      "size": 15,
-      "color": "#3182bd"
-    },
-    {
-      "label": "Brevet",
-      "x": 5.7552,
-      "y": 2.256,
-      "id": 37,
-      "size": 11,
-      "color": "#3182bd"
-    },
-    {
-      "label": "Chenildieu",
-      "x": 6.4117,
-      "y": 2.3219,
-      "id": 38,
-      "size": 9,
-      "color": "#3182bd"
-    },
-    {
-      "label": "Cochepaille",
-      "x": 6.3011,
-      "y": 1.7864,
-      "id": 39,
-      "size": 11,
-      "color": "#3182bd"
-    },
-    {
-      "label": "Pontmercy",
-      "x": -1.8601,
-      "y": 2.6838,
-      "id": 40,
-      "size": 13,
-      "color": "#3182bd"
-    },
-    {
-      "label": "Boulatruelle",
-      "x": -2.3928,
-      "y": 1.8537,
-      "id": 41,
-      "size": 12,
-      "color": "#3182bd"
-    },
-    {
-      "label": "Eponine",
-      "x": 0.6335,
-      "y": 1.1277,
-      "id": 42,
-      "size": 13,
-      "color": "#3182bd"
-    },
-    {
-      "label": "Anzelma",
-      "x": -0.5115,
-      "y": 2.3686,
-      "id": 43,
-      "size": 12,
-      "color": "#3182bd"
-    },
-    {
-      "label": "Woman2",
-      "x": 3.339,
-      "y": 3.5399,
-      "id": 44,
-      "size": 10,
-      "color": "#3182bd"
-    },
-    {
-      "label": "MotherInnocent",
-      "x": 5.97,
-      "y": 4.7123,
-      "id": 45,
-      "size": 10,
-      "color": "#3182bd"
-    },
-    {
-      "label": "Gribier",
-      "x": 6.9011,
-      "y": 7.2311,
-      "id": 46,
-      "size": 10,
-      "color": "#3182bd"
-    },
-    {
-      "label": "Jondrette",
-      "x": -0.5028,
-      "y": -7.2848,
-      "id": 47,
       "size": 2,
       "color": "#3182bd"
     },
     {
+      "label": "Judge",
+      "x": -3.6962,
+      "y": 2.34,
+      "id": 35,
+      "size": 6,
+      "color": "#3182bd"
+    },
+    {
+      "label": "Champmathieu",
+      "x": -3.6138,
+      "y": 1.7416,
+      "id": 36,
+      "size": 6,
+      "color": "#3182bd"
+    },
+    {
+      "label": "Brevet",
+      "x": -4.1898,
+      "y": 2.0649,
+      "id": 37,
+      "size": 6,
+      "color": "#3182bd"
+    },
+    {
+      "label": "Chenildieu",
+      "x": -4.2817,
+      "y": 1.4951,
+      "id": 38,
+      "size": 6,
+      "color": "#3182bd"
+    },
+    {
+      "label": "Cochepaille",
+      "x": -3.8922,
+      "y": 1.1794,
+      "id": 39,
+      "size": 6,
+      "color": "#3182bd"
+    },
+    {
+      "label": "Pontmercy",
+      "x": 3.5241,
+      "y": -0.9101,
+      "id": 40,
+      "size": 3,
+      "color": "#3182bd"
+    },
+    {
+      "label": "Boulatruelle",
+      "x": 3.6793,
+      "y": -1.9117,
+      "id": 41,
+      "size": 1,
+      "color": "#3182bd"
+    },
+    {
+      "label": "Eponine",
+      "x": 0.5728,
+      "y": -1.5802,
+      "id": 42,
+      "size": 11,
+      "color": "#3182bd"
+    },
+    {
+      "label": "Anzelma",
+      "x": 2.071,
+      "y": -0.7952,
+      "id": 43,
+      "size": 3,
+      "color": "#3182bd"
+    },
+    {
+      "label": "Woman2",
+      "x": -1.007,
+      "y": 1.4173,
+      "id": 44,
+      "size": 3,
+      "color": "#3182bd"
+    },
+    {
+      "label": "MotherInnocent",
+      "x": -4.6913,
+      "y": -0.4474,
+      "id": 45,
+      "size": 2,
+      "color": "#3182bd"
+    },
+    {
+      "label": "Gribier",
+      "x": -6.3276,
+      "y": -2.7437,
+      "id": 46,
+      "size": 1,
+      "color": "#3182bd"
+    },
+    {
+      "label": "Jondrette",
+      "x": 0.0035,
+      "y": -9.9985,
+      "id": 47,
+      "size": 1,
+      "color": "#3182bd"
+    },
+    {
       "label": "MmeBurgon",
-      "x": 0.065,
-      "y": -4.6035,
+      "x": -0.0968,
+      "y": -7.2421,
       "id": 48,
-      "size": 9,
+      "size": 2,
       "color": "#3182bd"
     },
     {
       "label": "Gavroche",
-      "x": 1.0672,
-      "y": -0.5757,
+      "x": -0.2641,
+      "y": -3.0635,
       "id": 49,
-      "size": 10,
+      "size": 22,
       "color": "#3182bd"
     },
     {
       "label": "Gillenormand",
-      "x": 0.5054,
-      "y": 3.4507,
+      "x": 1.5421,
+      "y": 0.6737,
       "id": 50,
-      "size": 1,
+      "size": 7,
       "color": "#3182bd"
     },
     {
       "label": "Magnon",
-      "x": -0.3678,
-      "y": 4.8968,
+      "x": 2.8593,
+      "y": 1.5983,
       "id": 51,
-      "size": 1,
+      "size": 2,
       "color": "#3182bd"
     },
     {
       "label": "MlleGillenormand",
-      "x": -0.1297,
-      "y": 3.8902,
+      "x": 2.3347,
+      "y": 0.883,
       "id": 52,
-      "size": 1,
+      "size": 7,
       "color": "#3182bd"
     },
     {
       "label": "MmePontmercy",
-      "x": -2.9882,
-      "y": 4.2227,
+      "x": 5.0845,
+      "y": 0.1938,
       "id": 53,
-      "size": 1,
+      "size": 2,
       "color": "#3182bd"
     },
     {
       "label": "MlleVaubois",
-      "x": -2.6502,
-      "y": 5.7973,
+      "x": 5.3939,
+      "y": 1.7995,
       "id": 54,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "LtGillenormand",
-      "x": -0.7328,
-      "y": 3.6431,
+      "x": 2.7225,
+      "y": 0.3267,
       "id": 55,
-      "size": 1,
-      "color": "#3182bd"
-    },
-    {
-      "label": "Marius",
-      "x": 0.1233,
-      "y": 1.692,
-      "id": 56,
-      "size": 1,
-      "color": "#3182bd"
-    },
-    {
-      "label": "BaronessT",
-      "x": -1.7756,
-      "y": 3.3738,
-      "id": 57,
-      "size": 1,
-      "color": "#3182bd"
-    },
-    {
-      "label": "Mabeuf",
-      "x": -1.1763,
-      "y": -0.2875,
-      "id": 58,
-      "size": 1,
-      "color": "#3182bd"
-    },
-    {
-      "label": "Enjolras",
-      "x": 0.786,
-      "y": 0.1774,
-      "id": 59,
-      "size": 1,
-      "color": "#3182bd"
-    },
-    {
-      "label": "Combeferre",
-      "x": -0.7882,
-      "y": -0.6439,
-      "id": 60,
       "size": 4,
       "color": "#3182bd"
     },
     {
+      "label": "Marius",
+      "x": 1.3382,
+      "y": -1.1622,
+      "id": 56,
+      "size": 19,
+      "color": "#3182bd"
+    },
+    {
+      "label": "BaronessT",
+      "x": 3.6458,
+      "y": -0.1854,
+      "id": 57,
+      "size": 2,
+      "color": "#3182bd"
+    },
+    {
+      "label": "Mabeuf",
+      "x": 1.9275,
+      "y": -3.4169,
+      "id": 58,
+      "size": 11,
+      "color": "#3182bd"
+    },
+    {
+      "label": "Enjolras",
+      "x": 0.1868,
+      "y": -2.4054,
+      "id": 59,
+      "size": 15,
+      "color": "#3182bd"
+    },
+    {
+      "label": "Combeferre",
+      "x": 1.3784,
+      "y": -3.2655,
+      "id": 60,
+      "size": 11,
+      "color": "#3182bd"
+    },
+    {
       "label": "Prouvaire",
-      "x": -0.6424,
-      "y": -1.4747,
+      "x": 1.0325,
+      "y": -4.4358,
       "id": 61,
-      "size": 1,
+      "size": 9,
       "color": "#3182bd"
     },
     {
       "label": "Feuilly",
-      "x": -0.6282,
-      "y": -0.2427,
+      "x": 1.4866,
+      "y": -3.6856,
       "id": 62,
-      "size": 2,
+      "size": 11,
       "color": "#3182bd"
     },
     {
       "label": "Courfeyrac",
-      "x": -0.1573,
-      "y": -0.3762,
+      "x": 0.9054,
+      "y": -3.254,
       "id": 63,
-      "size": 6,
+      "size": 13,
       "color": "#3182bd"
     },
     {
       "label": "Bahorel",
-      "x": -0.4301,
-      "y": -0.841,
+      "x": 1.066,
+      "y": -3.8081,
       "id": 64,
-      "size": 1,
+      "size": 12,
       "color": "#3182bd"
     },
     {
       "label": "Bossuet",
-      "x": 0.582,
-      "y": -0.2342,
+      "x": 0.3137,
+      "y": -2.7933,
       "id": 65,
-      "size": 3,
+      "size": 13,
       "color": "#3182bd"
     },
     {
       "label": "Joly",
-      "x": -0.0554,
-      "y": -0.8801,
+      "x": 0.6877,
+      "y": -3.679,
       "id": 66,
-      "size": 3,
+      "size": 12,
       "color": "#3182bd"
     },
     {
       "label": "Grantaire",
-      "x": -0.1611,
-      "y": -1.5879,
+      "x": 0.5385,
+      "y": -4.3846,
       "id": 67,
-      "size": 2,
+      "size": 10,
       "color": "#3182bd"
     },
     {
       "label": "MotherPlutarch",
-      "x": -3.9027,
-      "y": -1.7804,
+      "x": 4.0873,
+      "y": -5.6287,
       "id": 68,
       "size": 1,
       "color": "#3182bd"
     },
     {
       "label": "Gueulemer",
-      "x": 1.8537,
-      "y": 1.2548,
+      "x": -0.5071,
+      "y": -1.0261,
       "id": 69,
-      "size": 2,
+      "size": 10,
       "color": "#3182bd"
     },
     {
       "label": "Babet",
-      "x": 2.2392,
-      "y": 1.3249,
+      "x": -0.8874,
+      "y": -0.8842,
       "id": 70,
-      "size": 2,
+      "size": 10,
       "color": "#3182bd"
     },
     {
       "label": "Claquesous",
-      "x": 1.9129,
-      "y": 1.7102,
+      "x": -0.4704,
+      "y": -0.5885,
       "id": 71,
-      "size": 1,
+      "size": 10,
       "color": "#3182bd"
     },
     {
       "label": "Montparnasse",
-      "x": 2.354,
-      "y": 0.8421,
+      "x": -1.1454,
+      "y": -1.294,
       "id": 72,
-      "size": 2,
+      "size": 9,
       "color": "#3182bd"
     },
     {
       "label": "Toussaint",
-      "x": 2.8795,
-      "y": 3.8928,
+      "x": -0.5945,
+      "y": 1.8222,
       "id": 73,
-      "size": 1,
-      "color": "#3182bd"
-    },
-    {
-      "label": "Child1",
-      "x": 1.592,
-      "y": -3.6009,
-      "id": 74,
       "size": 3,
       "color": "#3182bd"
     },
     {
+      "label": "Child1",
+      "x": -0.9244,
+      "y": -6.1109,
+      "id": 74,
+      "size": 2,
+      "color": "#3182bd"
+    },
+    {
       "label": "Child2",
-      "x": 0.8152,
-      "y": -3.6338,
+      "x": -1.6464,
+      "y": -5.8296,
       "id": 75,
       "size": 2,
       "color": "#3182bd"
     },
     {
       "label": "Brujon",
-      "x": 1.6291,
-      "y": 0.4287,
+      "x": -0.6818,
+      "y": -1.9493,
       "id": 76,
       "size": 7,
       "color": "#3182bd"
     },
     {
       "label": "MmeHucheloup",
-      "x": 0.4226,
-      "y": -1.7428,
+      "x": -0.0543,
+      "y": -4.3596,
       "id": 77,
       "size": 7,
       "color": "#3182bd"
@@ -7340,8 +7352,9 @@ sig &lt;-<span class="st"> </span><span class="kw"><a href="../reference/sigmaFr
       "size": 1,
       "color": "#636363"
     }
-  ]
-},"options":{"minNodeSize":1,"maxNodeSize":8,"minEdgeSize":3,"maxEdgeSize":1,"neighborEvent":"onClick","neighborStart":"clickNode","neighborEnd":"clickStage","doubleClickZoom":true,"mouseWheelZoom":true},"graph":{"vertices":{"id":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76],"label":["Myriel","Napoleon","MlleBaptistine","MmeMagloire","CountessDeLo","Geborand","Champtercier","Cravatte","Count","OldMan","Labarre","Valjean","Marguerite","MmeDeR","Isabeau","Gervais","Tholomyes","Listolier","Fameuil","Blacheville","Favourite","Dahlia","Zephine","Fantine","MmeThenardier","Thenardier","Cosette","Javert","Fauchelevent","Bamatabois","Perpetue","Simplice","Scaufflaire","Woman1","Judge","Champmathieu","Brevet","Chenildieu","Cochepaille","Pontmercy","Boulatruelle","Eponine","Anzelma","Woman2","MotherInnocent","Gribier","Jondrette","MmeBurgon","Gavroche","Gillenormand","Magnon","MlleGillenormand","MmePontmercy","MlleVaubois","LtGillenormand","Marius","BaronessT","Mabeuf","Enjolras","Combeferre","Prouvaire","Feuilly","Courfeyrac","Bahorel","Bossuet","Joly","Grantaire","MotherPlutarch","Gueulemer","Babet","Claquesous","Montparnasse","Toussaint","Child1","Child2","Brujon","MmeHucheloup"]},"edges":{"from":[1,1,1,3,1,1,1,1,1,1,11,4,3,1,12,12,12,12,17,17,18,17,18,19,17,18,19,20,17,18,19,20,21,17,18,19,20,21,22,17,18,19,20,21,22,23,13,12,24,12,25,24,12,25,12,17,26,12,24,26,25,27,12,28,24,28,12,24,31,12,24,28,12,12,28,12,30,12,35,30,35,36,12,30,35,36,37,12,30,35,36,37,38,12,30,26,26,25,26,42,26,25,12,27,28,29,12,29,47,48,26,28,12,27,12,50,25,50,27,12,52,40,52,52,50,27,52,50,40,55,27,12,17,26,42,49,50,56,56,42,49,56,49,28,58,12,59,56,49,58,49,59,60,49,59,61,60,58,56,56,59,60,49,58,42,62,61,60,49,63,58,59,62,61,56,56,63,49,64,59,62,61,60,58,12,64,65,49,63,59,62,61,60,58,56,65,59,60,63,66,49,64,62,61,58,26,12,25,28,49,42,26,69,12,25,28,49,42,26,70,69,12,25,28,42,59,28,70,69,71,12,49,42,26,27,28,12,49,49,74,70,69,26,49,42,71,72,65,66,67,64,63,49,59],"to":[2,3,4,4,5,6,7,8,9,10,12,12,12,12,13,14,15,16,18,19,19,20,20,20,21,21,21,21,22,22,22,22,22,23,23,23,23,23,23,24,24,24,24,24,24,24,24,24,25,25,26,26,26,27,27,27,27,28,28,28,28,28,29,29,30,30,30,31,32,32,32,32,33,34,34,35,35,36,36,36,37,37,37,37,38,38,38,38,38,39,39,39,39,39,39,40,41,42,42,43,43,43,44,44,44,45,45,46,48,49,49,49,49,50,50,51,51,52,52,52,53,53,54,55,55,55,56,56,56,56,56,56,56,56,56,56,57,57,58,58,58,59,59,59,59,59,60,60,60,60,61,61,61,62,62,62,62,62,62,63,63,63,63,63,63,63,63,64,64,64,64,64,64,64,64,65,65,65,65,65,65,65,65,65,65,66,66,66,66,66,66,66,66,66,66,67,67,67,67,67,67,67,67,67,68,69,69,69,69,69,69,70,70,70,70,70,70,70,71,71,71,71,71,71,71,71,72,72,72,72,72,72,72,72,73,73,73,74,75,75,76,76,76,76,76,76,76,77,77,77,77,77,77,77],"value":[1,8,10,6,1,1,1,1,2,1,1,3,3,5,1,1,1,1,4,4,4,4,4,4,3,3,3,4,3,3,3,3,5,3,3,3,3,4,4,3,3,3,3,4,4,4,2,9,2,7,13,1,12,4,31,1,1,17,5,5,1,1,8,1,1,1,2,1,2,3,2,1,1,2,1,3,2,3,3,2,2,2,2,1,2,2,2,2,1,2,2,2,2,2,1,1,1,2,3,2,2,1,3,1,1,3,1,2,1,2,1,1,1,3,2,1,1,9,2,2,1,1,1,2,1,1,6,12,1,1,21,19,1,2,5,4,1,1,1,1,1,7,7,6,1,4,15,5,6,2,1,4,2,2,6,2,5,1,1,9,17,13,7,2,1,6,3,5,5,6,2,4,3,2,1,5,12,5,4,10,6,2,9,1,1,5,7,3,5,5,5,2,5,1,2,3,3,1,2,2,1,1,1,1,3,5,1,1,1,1,1,6,6,1,1,2,1,1,4,4,4,1,1,1,1,1,1,2,2,2,1,1,1,1,2,1,1,2,2,3,3,3,3,1,1,1,1,1,1,1,1,1,1,1]}}},"evals":[],"jsHooks":[]}</script><p>Next, let’s use one of ‘igraphs’ community detection algorithms to find different clusters of nodes. We can then add the cluster attribute to the original ‘igraph’ and rebuild our visualization:</p>
+  ],
+  "directed": [false]
+},"options":{"minNodeSize":1,"maxNodeSize":8,"minEdgeSize":3,"maxEdgeSize":1,"neighborEvent":"onClick","neighborStart":"clickNode","neighborEnd":"clickStage","doubleClickZoom":true,"mouseWheelZoom":true,"edgeArrows":"def"},"graph":{"vertices":{"id":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76],"label":["Myriel","Napoleon","MlleBaptistine","MmeMagloire","CountessDeLo","Geborand","Champtercier","Cravatte","Count","OldMan","Labarre","Valjean","Marguerite","MmeDeR","Isabeau","Gervais","Tholomyes","Listolier","Fameuil","Blacheville","Favourite","Dahlia","Zephine","Fantine","MmeThenardier","Thenardier","Cosette","Javert","Fauchelevent","Bamatabois","Perpetue","Simplice","Scaufflaire","Woman1","Judge","Champmathieu","Brevet","Chenildieu","Cochepaille","Pontmercy","Boulatruelle","Eponine","Anzelma","Woman2","MotherInnocent","Gribier","Jondrette","MmeBurgon","Gavroche","Gillenormand","Magnon","MlleGillenormand","MmePontmercy","MlleVaubois","LtGillenormand","Marius","BaronessT","Mabeuf","Enjolras","Combeferre","Prouvaire","Feuilly","Courfeyrac","Bahorel","Bossuet","Joly","Grantaire","MotherPlutarch","Gueulemer","Babet","Claquesous","Montparnasse","Toussaint","Child1","Child2","Brujon","MmeHucheloup"]},"edges":{"from":[1,1,1,3,1,1,1,1,1,1,11,4,3,1,12,12,12,12,17,17,18,17,18,19,17,18,19,20,17,18,19,20,21,17,18,19,20,21,22,17,18,19,20,21,22,23,13,12,24,12,25,24,12,25,12,17,26,12,24,26,25,27,12,28,24,28,12,24,31,12,24,28,12,12,28,12,30,12,35,30,35,36,12,30,35,36,37,12,30,35,36,37,38,12,30,26,26,25,26,42,26,25,12,27,28,29,12,29,47,48,26,28,12,27,12,50,25,50,27,12,52,40,52,52,50,27,52,50,40,55,27,12,17,26,42,49,50,56,56,42,49,56,49,28,58,12,59,56,49,58,49,59,60,49,59,61,60,58,56,56,59,60,49,58,42,62,61,60,49,63,58,59,62,61,56,56,63,49,64,59,62,61,60,58,12,64,65,49,63,59,62,61,60,58,56,65,59,60,63,66,49,64,62,61,58,26,12,25,28,49,42,26,69,12,25,28,49,42,26,70,69,12,25,28,42,59,28,70,69,71,12,49,42,26,27,28,12,49,49,74,70,69,26,49,42,71,72,65,66,67,64,63,49,59],"to":[2,3,4,4,5,6,7,8,9,10,12,12,12,12,13,14,15,16,18,19,19,20,20,20,21,21,21,21,22,22,22,22,22,23,23,23,23,23,23,24,24,24,24,24,24,24,24,24,25,25,26,26,26,27,27,27,27,28,28,28,28,28,29,29,30,30,30,31,32,32,32,32,33,34,34,35,35,36,36,36,37,37,37,37,38,38,38,38,38,39,39,39,39,39,39,40,41,42,42,43,43,43,44,44,44,45,45,46,48,49,49,49,49,50,50,51,51,52,52,52,53,53,54,55,55,55,56,56,56,56,56,56,56,56,56,56,57,57,58,58,58,59,59,59,59,59,60,60,60,60,61,61,61,62,62,62,62,62,62,63,63,63,63,63,63,63,63,64,64,64,64,64,64,64,64,65,65,65,65,65,65,65,65,65,65,66,66,66,66,66,66,66,66,66,66,67,67,67,67,67,67,67,67,67,68,69,69,69,69,69,69,70,70,70,70,70,70,70,71,71,71,71,71,71,71,71,72,72,72,72,72,72,72,72,73,73,73,74,75,75,76,76,76,76,76,76,76,77,77,77,77,77,77,77],"value":[1,8,10,6,1,1,1,1,2,1,1,3,3,5,1,1,1,1,4,4,4,4,4,4,3,3,3,4,3,3,3,3,5,3,3,3,3,4,4,3,3,3,3,4,4,4,2,9,2,7,13,1,12,4,31,1,1,17,5,5,1,1,8,1,1,1,2,1,2,3,2,1,1,2,1,3,2,3,3,2,2,2,2,1,2,2,2,2,1,2,2,2,2,2,1,1,1,2,3,2,2,1,3,1,1,3,1,2,1,2,1,1,1,3,2,1,1,9,2,2,1,1,1,2,1,1,6,12,1,1,21,19,1,2,5,4,1,1,1,1,1,7,7,6,1,4,15,5,6,2,1,4,2,2,6,2,5,1,1,9,17,13,7,2,1,6,3,5,5,6,2,4,3,2,1,5,12,5,4,10,6,2,9,1,1,5,7,3,5,5,5,2,5,1,2,3,3,1,2,2,1,1,1,1,3,5,1,1,1,1,1,6,6,1,1,2,1,1,4,4,4,1,1,1,1,1,1,2,2,2,1,1,1,1,2,1,1,2,2,3,3,3,3,1,1,1,1,1,1,1,1,1,1,1]}}},"evals":[],"jsHooks":[]}</script><p>Next, let’s use one of ‘igraphs’ community detection algorithms to find different clusters of nodes. We can then add the cluster attribute to the original ‘igraph’ and rebuild our visualization:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">clust &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/igraph/topics/cluster_edge_betweenness">cluster_edge_betweenness</a></span>(lesMis)<span class="op">$</span>membership
 <span class="kw"><a href="http://www.rdocumentation.org/packages/igraph/topics/V">V</a></span>(lesMis)<span class="op">$</span>group &lt;-<span class="st"> </span>clust
 
@@ -7351,621 +7364,621 @@ sig <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/addNodeSize.html">addNodeSize</a></span>(<span class="dt">sizeMetric =</span> <span class="st">'degree'</span>, <span class="dt">maxSize =</span> <span class="dv">8</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/addNodeLabels.html">addNodeLabels</a></span>(<span class="dt">labelAttr =</span> <span class="st">'label'</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/addNodeColors.html">addNodeColors</a></span>(<span class="dt">colorAttr =</span> <span class="st">'group'</span>)</code></pre></div>
-<div id="htmlwidget-90ba3a60f114adc2aace" style="width:672px;height:480px;" class="sigmaNet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-90ba3a60f114adc2aace">{"x":{"data":{
+<div id="htmlwidget-b6c5743757ef4ce0dd3d" style="width:700px;height:432.632880098888px;" class="sigmaNet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b6c5743757ef4ce0dd3d">{"x":{"data":{
   "nodes": [
     {
       "label": "Myriel",
-      "x": 9.0177,
-      "y": 5.8005,
+      "x": 2.1601,
+      "y": -5.6088,
       "id": 1,
       "size": 10,
       "color": "#1B9E77"
     },
     {
       "label": "Napoleon",
-      "x": 9.6453,
-      "y": 8.5204,
+      "x": 2.8082,
+      "y": -8.5526,
       "id": 2,
-      "size": 3,
-      "color": "#1B9E77"
-    },
-    {
-      "label": "MlleBaptistine",
-      "x": 7.3005,
-      "y": 4.0494,
-      "id": 3,
       "size": 1,
       "color": "#1B9E77"
     },
     {
+      "label": "MlleBaptistine",
+      "x": 1.5477,
+      "y": -3.2429,
+      "id": 3,
+      "size": 3,
+      "color": "#1B9E77"
+    },
+    {
       "label": "MmeMagloire",
-      "x": 6.9035,
-      "y": 4.503,
+      "x": 0.9845,
+      "y": -3.4666,
       "id": 4,
       "size": 3,
       "color": "#1B9E77"
     },
     {
       "label": "CountessDeLo",
-      "x": 10.9262,
-      "y": 7.3117,
+      "x": 1.299,
+      "y": -8.2073,
       "id": 5,
-      "size": 36,
+      "size": 1,
       "color": "#1B9E77"
     },
     {
       "label": "Geborand",
-      "x": 11.735,
-      "y": 5.7395,
+      "x": 2.9538,
+      "y": -7.7509,
       "id": 6,
-      "size": 9,
+      "size": 1,
       "color": "#1B9E77"
     },
     {
       "label": "Champtercier",
-      "x": 11.4612,
-      "y": 6.4507,
+      "x": 4.5607,
+      "y": -6.936,
       "id": 7,
-      "size": 7,
+      "size": 1,
       "color": "#1B9E77"
     },
     {
       "label": "Cravatte",
-      "x": 11.7135,
-      "y": 7.2252,
+      "x": 2.0503,
+      "y": -8.1904,
       "id": 8,
-      "size": 7,
+      "size": 1,
       "color": "#1B9E77"
     },
     {
       "label": "Count",
-      "x": 10.1062,
-      "y": 7.8609,
+      "x": 3.8185,
+      "y": -8.1141,
       "id": 9,
-      "size": 7,
+      "size": 1,
       "color": "#1B9E77"
     },
     {
       "label": "OldMan",
-      "x": 10.8764,
-      "y": 8.1784,
+      "x": 3.8993,
+      "y": -7.3161,
       "id": 10,
-      "size": 7,
+      "size": 1,
       "color": "#1B9E77"
     },
     {
       "label": "Labarre",
-      "x": 5.0404,
-      "y": 4.6753,
+      "x": -0.4207,
+      "y": -2.8802,
       "id": 11,
-      "size": 7,
+      "size": 1,
       "color": "#A07125"
     },
     {
       "label": "Valjean",
-      "x": 4.1401,
-      "y": 1.7819,
+      "x": -0.1134,
+      "y": 0.2424,
       "id": 12,
-      "size": 7,
+      "size": 36,
       "color": "#A07125"
     },
     {
       "label": "Marguerite",
-      "x": 5.6356,
-      "y": -0.8433,
+      "x": 2.6922,
+      "y": 1.317,
       "id": 13,
       "size": 2,
       "color": "#B16548"
     },
     {
       "label": "MmeDeR",
-      "x": 5.4966,
-      "y": 4.0852,
+      "x": -0.6584,
+      "y": -2.1912,
       "id": 14,
-      "size": 15,
+      "size": 1,
       "color": "#A07125"
     },
     {
       "label": "Isabeau",
-      "x": 7.2943,
-      "y": 2.4239,
+      "x": -1.4111,
+      "y": -2.6219,
       "id": 15,
-      "size": 11,
+      "size": 1,
       "color": "#A07125"
     },
     {
       "label": "Gervais",
-      "x": 6.0352,
-      "y": 3.4728,
+      "x": 1.379,
+      "y": -2.1146,
       "id": 16,
-      "size": 16,
+      "size": 1,
       "color": "#A07125"
     },
     {
       "label": "Tholomyes",
-      "x": 3.1893,
-      "y": -3.0906,
+      "x": 2.2033,
+      "y": 4.5296,
       "id": 17,
-      "size": 11,
+      "size": 9,
       "color": "#B16548"
     },
     {
       "label": "Listolier",
-      "x": 4.2686,
-      "y": -4.7063,
+      "x": 3.795,
+      "y": 5.4671,
       "id": 18,
-      "size": 17,
+      "size": 7,
       "color": "#B16548"
     },
     {
       "label": "Fameuil",
-      "x": 3.8069,
-      "y": -4.3166,
+      "x": 4.1138,
+      "y": 4.3549,
       "id": 19,
-      "size": 2,
+      "size": 7,
       "color": "#B16548"
     },
     {
       "label": "Blacheville",
-      "x": 4.723,
-      "y": -4.6438,
+      "x": 4.3609,
+      "y": 4.7263,
       "id": 20,
-      "size": 8,
+      "size": 7,
       "color": "#B16548"
     },
     {
       "label": "Favourite",
-      "x": 4.3484,
-      "y": -4.0769,
+      "x": 4.1636,
+      "y": 5.1573,
       "id": 21,
-      "size": 6,
+      "size": 7,
       "color": "#B16548"
     },
     {
       "label": "Dahlia",
-      "x": 3.798,
-      "y": -4.7907,
+      "x": 3.4415,
+      "y": 5.1884,
       "id": 22,
-      "size": 6,
+      "size": 7,
       "color": "#B16548"
     },
     {
       "label": "Zephine",
-      "x": 4.8433,
-      "y": -4.1723,
+      "x": 3.6887,
+      "y": 4.6653,
       "id": 23,
-      "size": 6,
+      "size": 7,
       "color": "#B16548"
     },
     {
       "label": "Fantine",
-      "x": 4.0807,
-      "y": -1.9014,
+      "x": 2.1808,
+      "y": 3.1489,
       "id": 24,
-      "size": 6,
+      "size": 15,
       "color": "#B16548"
     },
     {
       "label": "MmeThenardier",
-      "x": 2.3825,
-      "y": 0.1391,
+      "x": -0.4829,
+      "y": 2.8082,
       "id": 25,
       "size": 11,
       "color": "#8068AE"
     },
     {
       "label": "Thenardier",
-      "x": 1.6299,
-      "y": 0.8377,
+      "x": -1.3416,
+      "y": 3.0476,
       "id": 26,
-      "size": 4,
+      "size": 16,
       "color": "#8068AE"
     },
     {
       "label": "Cosette",
-      "x": 2.5356,
-      "y": -0.5894,
+      "x": 0.1617,
+      "y": 3.0263,
       "id": 27,
-      "size": 1,
+      "size": 11,
       "color": "#D03792"
     },
     {
       "label": "Javert",
-      "x": 2.9461,
-      "y": 1.2066,
+      "x": -0.6903,
+      "y": 1.4475,
       "id": 28,
-      "size": 2,
+      "size": 17,
       "color": "#8068AE"
     },
     {
       "label": "Fauchelevent",
-      "x": 3.4312,
-      "y": 4.3722,
+      "x": -2.339,
+      "y": -1.2703,
       "id": 29,
-      "size": 7,
+      "size": 4,
       "color": "#A66753"
     },
     {
       "label": "Bamatabois",
-      "x": 5.4674,
-      "y": 0.4073,
+      "x": 1.7589,
+      "y": 0.4427,
       "id": 30,
-      "size": 7,
+      "size": 8,
       "color": "#A07125"
     },
     {
       "label": "Perpetue",
-      "x": 6.0862,
-      "y": -2.6992,
+      "x": 4.2326,
+      "y": 2.463,
       "id": 31,
-      "size": 3,
+      "size": 2,
       "color": "#B16548"
     },
     {
       "label": "Simplice",
-      "x": 4.7925,
-      "y": -0.724,
+      "x": 1.9738,
+      "y": 1.7722,
       "id": 32,
       "size": 4,
       "color": "#A07125"
     },
     {
       "label": "Scaufflaire",
-      "x": 6.5811,
-      "y": 2.8228,
+      "x": 0.3749,
+      "y": -2.2761,
       "id": 33,
-      "size": 22,
+      "size": 1,
       "color": "#A07125"
     },
     {
       "label": "Woman1",
-      "x": 4.0554,
-      "y": 3.0026,
+      "x": -0.9539,
+      "y": -0.6344,
       "id": 34,
-      "size": 19,
+      "size": 2,
       "color": "#A07125"
     },
     {
       "label": "Judge",
-      "x": 6.5025,
-      "y": 1.4358,
+      "x": 2.6349,
+      "y": -0.2821,
       "id": 35,
-      "size": 11,
+      "size": 6,
       "color": "#A07125"
     },
     {
       "label": "Champmathieu",
-      "x": 6.3138,
-      "y": 0.9717,
+      "x": 1.7737,
+      "y": -0.961,
       "id": 36,
-      "size": 15,
+      "size": 6,
       "color": "#A07125"
     },
     {
       "label": "Brevet",
-      "x": 6.9903,
-      "y": 1.1793,
+      "x": 2.7107,
+      "y": -0.8031,
       "id": 37,
-      "size": 11,
+      "size": 6,
       "color": "#A07125"
     },
     {
       "label": "Chenildieu",
-      "x": 6.5703,
-      "y": 0.3843,
+      "x": 2.0778,
+      "y": -0.4841,
       "id": 38,
-      "size": 9,
+      "size": 6,
       "color": "#A07125"
     },
     {
       "label": "Cochepaille",
-      "x": 6.9702,
-      "y": 0.6471,
+      "x": 2.2671,
+      "y": -1.1265,
       "id": 39,
-      "size": 11,
+      "size": 6,
       "color": "#A07125"
     },
     {
       "label": "Pontmercy",
-      "x": -0.6465,
-      "y": -1.3632,
+      "x": -1.2437,
+      "y": 5.8447,
       "id": 40,
-      "size": 13,
+      "size": 3,
       "color": "#8068AE"
     },
     {
       "label": "Boulatruelle",
-      "x": 0.7533,
-      "y": 3.9066,
+      "x": -2.7152,
+      "y": 6.1574,
       "id": 41,
-      "size": 12,
+      "size": 1,
       "color": "#7FA718"
     },
     {
       "label": "Eponine",
-      "x": 0.6956,
-      "y": 1.1454,
+      "x": -2.4484,
+      "y": 2.9456,
       "id": 42,
-      "size": 13,
+      "size": 11,
       "color": "#8068AE"
     },
     {
       "label": "Anzelma",
-      "x": 0.7251,
-      "y": -0.44,
+      "x": -1.6946,
+      "y": 4.4861,
       "id": 43,
-      "size": 12,
+      "size": 3,
       "color": "#8068AE"
     },
     {
       "label": "Woman2",
-      "x": 3.9096,
-      "y": -0.0163,
+      "x": 0.8517,
+      "y": 1.7238,
       "id": 44,
-      "size": 10,
+      "size": 3,
       "color": "#D03792"
     },
     {
       "label": "MotherInnocent",
-      "x": 4.214,
-      "y": 4.729,
+      "x": -1.978,
+      "y": -2.0035,
       "id": 45,
-      "size": 10,
+      "size": 2,
       "color": "#A66753"
     },
     {
       "label": "Gribier",
-      "x": 3.338,
-      "y": 7.3084,
+      "x": -4.2348,
+      "y": -3.544,
       "id": 46,
-      "size": 10,
+      "size": 1,
       "color": "#A66753"
     },
     {
       "label": "Jondrette",
-      "x": -6.2827,
-      "y": 5.8817,
+      "x": -10.8515,
+      "y": 3.1141,
       "id": 47,
-      "size": 2,
+      "size": 1,
       "color": "#D9AA04"
     },
     {
       "label": "MmeBurgon",
-      "x": -3.8817,
-      "y": 4.5097,
+      "x": -8.1158,
+      "y": 2.6974,
       "id": 48,
-      "size": 9,
+      "size": 2,
       "color": "#D9AA04"
     },
     {
       "label": "Gavroche",
-      "x": -0.2013,
-      "y": 2.4759,
+      "x": -3.9795,
+      "y": 2.1488,
       "id": 49,
-      "size": 10,
+      "size": 22,
       "color": "#BF8B12"
     },
     {
       "label": "Gillenormand",
-      "x": 1.7088,
-      "y": -0.9932,
+      "x": -0.4646,
+      "y": 3.913,
       "id": 50,
-      "size": 1,
+      "size": 7,
       "color": "#D03792"
     },
     {
       "label": "Magnon",
-      "x": 1.8954,
-      "y": -2.4436,
+      "x": 0.5147,
+      "y": 5.3123,
       "id": 51,
-      "size": 1,
+      "size": 2,
       "color": "#D03792"
     },
     {
       "label": "MlleGillenormand",
-      "x": 1.3055,
-      "y": -1.7067,
+      "x": 0.0905,
+      "y": 4.5502,
       "id": 52,
-      "size": 1,
+      "size": 7,
       "color": "#D03792"
     },
     {
       "label": "MmePontmercy",
-      "x": -0.9668,
-      "y": -3.321,
+      "x": -0.2152,
+      "y": 7.3266,
       "id": 53,
-      "size": 1,
+      "size": 2,
       "color": "#D03792"
     },
     {
       "label": "MlleVaubois",
-      "x": 0.0505,
-      "y": -4.6217,
+      "x": 1.2249,
+      "y": 7.5014,
       "id": 54,
       "size": 1,
       "color": "#D03792"
     },
     {
       "label": "LtGillenormand",
-      "x": 0.6905,
-      "y": -1.8832,
+      "x": -0.5312,
+      "y": 5.0402,
       "id": 55,
-      "size": 1,
+      "size": 4,
       "color": "#D03792"
     },
     {
       "label": "Marius",
-      "x": 0.4144,
-      "y": 0.1326,
+      "x": -2.0769,
+      "y": 3.684,
       "id": 56,
-      "size": 1,
+      "size": 19,
       "color": "#BF8B12"
     },
     {
       "label": "BaronessT",
-      "x": -0.3712,
-      "y": -2.1517,
+      "x": -1.8364,
+      "y": 5.9712,
       "id": 57,
-      "size": 1,
+      "size": 2,
       "color": "#D03792"
     },
     {
       "label": "Mabeuf",
-      "x": -1.7022,
-      "y": 0.8086,
+      "x": -4.2693,
+      "y": 4.2342,
       "id": 58,
-      "size": 1,
+      "size": 11,
       "color": "#BF8B12"
     },
     {
       "label": "Enjolras",
-      "x": 0.1087,
-      "y": 1.6863,
+      "x": -3.3153,
+      "y": 2.5257,
       "id": 59,
-      "size": 1,
+      "size": 15,
       "color": "#BF8B12"
     },
     {
       "label": "Combeferre",
-      "x": -1.7244,
-      "y": 1.2941,
+      "x": -4.4798,
+      "y": 3.8626,
       "id": 60,
-      "size": 4,
+      "size": 11,
       "color": "#BF8B12"
     },
     {
       "label": "Prouvaire",
-      "x": -1.7448,
-      "y": 2.4025,
+      "x": -5.335,
+      "y": 3.3268,
       "id": 61,
-      "size": 1,
+      "size": 9,
       "color": "#BF8B12"
     },
     {
       "label": "Feuilly",
-      "x": -1.2862,
-      "y": 1.1256,
+      "x": -4.7378,
+      "y": 3.5659,
       "id": 62,
-      "size": 2,
+      "size": 11,
       "color": "#BF8B12"
     },
     {
       "label": "Courfeyrac",
-      "x": -1.0077,
-      "y": 1.5452,
+      "x": -4.1292,
+      "y": 3.1731,
       "id": 63,
-      "size": 6,
+      "size": 13,
       "color": "#BF8B12"
     },
     {
       "label": "Bahorel",
-      "x": -1.2688,
-      "y": 1.9423,
+      "x": -4.6362,
+      "y": 3.0554,
       "id": 64,
-      "size": 1,
+      "size": 12,
       "color": "#BF8B12"
     },
     {
       "label": "Bossuet",
-      "x": -0.3006,
-      "y": 1.77,
+      "x": -3.7267,
+      "y": 2.6283,
       "id": 65,
-      "size": 3,
+      "size": 13,
       "color": "#BF8B12"
     },
     {
       "label": "Joly",
-      "x": -1.5756,
-      "y": 1.6768,
+      "x": -4.3145,
+      "y": 3.4905,
       "id": 66,
-      "size": 3,
+      "size": 12,
       "color": "#BF8B12"
     },
     {
       "label": "Grantaire",
-      "x": -2.0542,
-      "y": 2.1219,
+      "x": -5.2756,
+      "y": 2.8556,
       "id": 67,
-      "size": 2,
+      "size": 10,
       "color": "#BF8B12"
     },
     {
       "label": "MotherPlutarch",
-      "x": -4.7381,
-      "y": 0.1683,
+      "x": -6.4879,
+      "y": 6.3948,
       "id": 68,
       "size": 1,
       "color": "#927132"
     },
     {
       "label": "Gueulemer",
-      "x": 2.0676,
-      "y": 1.9894,
+      "x": -1.779,
+      "y": 1.5163,
       "id": 69,
-      "size": 2,
+      "size": 10,
       "color": "#8068AE"
     },
     {
       "label": "Babet",
-      "x": 1.7024,
-      "y": 1.7857,
+      "x": -1.9396,
+      "y": 1.8978,
       "id": 70,
-      "size": 2,
+      "size": 10,
       "color": "#8068AE"
     },
     {
       "label": "Claquesous",
-      "x": 2.0614,
-      "y": 1.4974,
+      "x": -1.4974,
+      "y": 1.9183,
       "id": 71,
-      "size": 1,
+      "size": 10,
       "color": "#8068AE"
     },
     {
       "label": "Montparnasse",
-      "x": 1.8839,
-      "y": 2.4217,
+      "x": -2.192,
+      "y": 1.2579,
       "id": 72,
-      "size": 2,
+      "size": 9,
       "color": "#8068AE"
     },
     {
       "label": "Toussaint",
-      "x": 4.0251,
-      "y": 0.559,
+      "x": 0.5284,
+      "y": 1.203,
       "id": 73,
-      "size": 1,
+      "size": 3,
       "color": "#D03792"
     },
     {
       "label": "Child1",
-      "x": -2.4648,
-      "y": 4.6438,
+      "x": -6.8512,
+      "y": 0.8551,
       "id": 74,
-      "size": 3,
+      "size": 2,
       "color": "#666666"
     },
     {
       "label": "Child2",
-      "x": -1.8517,
-      "y": 5.1282,
+      "x": -7.0968,
+      "y": 1.5867,
       "id": 75,
       "size": 2,
       "color": "#666666"
     },
     {
       "label": "Brujon",
-      "x": 1.057,
-      "y": 2.5092,
+      "x": -2.8235,
+      "y": 1.7565,
       "id": 76,
       "size": 7,
       "color": "#8068AE"
     },
     {
       "label": "MmeHucheloup",
-      "x": -1.5314,
-      "y": 2.8861,
+      "x": -5.2063,
+      "y": 2.2709,
       "id": 77,
       "size": 7,
       "color": "#BF8B12"
@@ -9750,628 +9763,629 @@ sig <span class="op">%&gt;%</span>
       "size": 1,
       "color": "#636363"
     }
-  ]
-},"options":{"minNodeSize":1,"maxNodeSize":8,"minEdgeSize":3,"maxEdgeSize":1,"neighborEvent":"onClick","neighborStart":"clickNode","neighborEnd":"clickStage","doubleClickZoom":true,"mouseWheelZoom":true},"graph":{"vertices":{"id":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76],"label":["Myriel","Napoleon","MlleBaptistine","MmeMagloire","CountessDeLo","Geborand","Champtercier","Cravatte","Count","OldMan","Labarre","Valjean","Marguerite","MmeDeR","Isabeau","Gervais","Tholomyes","Listolier","Fameuil","Blacheville","Favourite","Dahlia","Zephine","Fantine","MmeThenardier","Thenardier","Cosette","Javert","Fauchelevent","Bamatabois","Perpetue","Simplice","Scaufflaire","Woman1","Judge","Champmathieu","Brevet","Chenildieu","Cochepaille","Pontmercy","Boulatruelle","Eponine","Anzelma","Woman2","MotherInnocent","Gribier","Jondrette","MmeBurgon","Gavroche","Gillenormand","Magnon","MlleGillenormand","MmePontmercy","MlleVaubois","LtGillenormand","Marius","BaronessT","Mabeuf","Enjolras","Combeferre","Prouvaire","Feuilly","Courfeyrac","Bahorel","Bossuet","Joly","Grantaire","MotherPlutarch","Gueulemer","Babet","Claquesous","Montparnasse","Toussaint","Child1","Child2","Brujon","MmeHucheloup"],"group":[1,1,1,1,1,1,1,1,1,1,2,2,3,2,2,2,3,3,3,3,3,3,3,3,4,4,5,4,6,2,3,2,2,2,2,2,2,2,2,4,7,4,4,5,6,6,8,8,9,5,5,5,5,5,5,9,5,9,9,9,9,9,9,9,9,9,9,10,4,4,4,4,5,11,11,4,9]},"edges":{"from":[1,1,1,3,1,1,1,1,1,1,11,4,3,1,12,12,12,12,17,17,18,17,18,19,17,18,19,20,17,18,19,20,21,17,18,19,20,21,22,17,18,19,20,21,22,23,13,12,24,12,25,24,12,25,12,17,26,12,24,26,25,27,12,28,24,28,12,24,31,12,24,28,12,12,28,12,30,12,35,30,35,36,12,30,35,36,37,12,30,35,36,37,38,12,30,26,26,25,26,42,26,25,12,27,28,29,12,29,47,48,26,28,12,27,12,50,25,50,27,12,52,40,52,52,50,27,52,50,40,55,27,12,17,26,42,49,50,56,56,42,49,56,49,28,58,12,59,56,49,58,49,59,60,49,59,61,60,58,56,56,59,60,49,58,42,62,61,60,49,63,58,59,62,61,56,56,63,49,64,59,62,61,60,58,12,64,65,49,63,59,62,61,60,58,56,65,59,60,63,66,49,64,62,61,58,26,12,25,28,49,42,26,69,12,25,28,49,42,26,70,69,12,25,28,42,59,28,70,69,71,12,49,42,26,27,28,12,49,49,74,70,69,26,49,42,71,72,65,66,67,64,63,49,59],"to":[2,3,4,4,5,6,7,8,9,10,12,12,12,12,13,14,15,16,18,19,19,20,20,20,21,21,21,21,22,22,22,22,22,23,23,23,23,23,23,24,24,24,24,24,24,24,24,24,25,25,26,26,26,27,27,27,27,28,28,28,28,28,29,29,30,30,30,31,32,32,32,32,33,34,34,35,35,36,36,36,37,37,37,37,38,38,38,38,38,39,39,39,39,39,39,40,41,42,42,43,43,43,44,44,44,45,45,46,48,49,49,49,49,50,50,51,51,52,52,52,53,53,54,55,55,55,56,56,56,56,56,56,56,56,56,56,57,57,58,58,58,59,59,59,59,59,60,60,60,60,61,61,61,62,62,62,62,62,62,63,63,63,63,63,63,63,63,64,64,64,64,64,64,64,64,65,65,65,65,65,65,65,65,65,65,66,66,66,66,66,66,66,66,66,66,67,67,67,67,67,67,67,67,67,68,69,69,69,69,69,69,70,70,70,70,70,70,70,71,71,71,71,71,71,71,71,72,72,72,72,72,72,72,72,73,73,73,74,75,75,76,76,76,76,76,76,76,77,77,77,77,77,77,77],"value":[1,8,10,6,1,1,1,1,2,1,1,3,3,5,1,1,1,1,4,4,4,4,4,4,3,3,3,4,3,3,3,3,5,3,3,3,3,4,4,3,3,3,3,4,4,4,2,9,2,7,13,1,12,4,31,1,1,17,5,5,1,1,8,1,1,1,2,1,2,3,2,1,1,2,1,3,2,3,3,2,2,2,2,1,2,2,2,2,1,2,2,2,2,2,1,1,1,2,3,2,2,1,3,1,1,3,1,2,1,2,1,1,1,3,2,1,1,9,2,2,1,1,1,2,1,1,6,12,1,1,21,19,1,2,5,4,1,1,1,1,1,7,7,6,1,4,15,5,6,2,1,4,2,2,6,2,5,1,1,9,17,13,7,2,1,6,3,5,5,6,2,4,3,2,1,5,12,5,4,10,6,2,9,1,1,5,7,3,5,5,5,2,5,1,2,3,3,1,2,2,1,1,1,1,3,5,1,1,1,1,1,6,6,1,1,2,1,1,4,4,4,1,1,1,1,1,1,2,2,2,1,1,1,1,2,1,1,2,2,3,3,3,3,1,1,1,1,1,1,1,1,1,1,1]}}},"evals":[],"jsHooks":[]}</script><p>We may also want to modify the edge size to reflect edge weights included in the data:</p>
+  ],
+  "directed": [false]
+},"options":{"minNodeSize":1,"maxNodeSize":8,"minEdgeSize":3,"maxEdgeSize":1,"neighborEvent":"onClick","neighborStart":"clickNode","neighborEnd":"clickStage","doubleClickZoom":true,"mouseWheelZoom":true,"edgeArrows":"def"},"graph":{"vertices":{"id":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76],"label":["Myriel","Napoleon","MlleBaptistine","MmeMagloire","CountessDeLo","Geborand","Champtercier","Cravatte","Count","OldMan","Labarre","Valjean","Marguerite","MmeDeR","Isabeau","Gervais","Tholomyes","Listolier","Fameuil","Blacheville","Favourite","Dahlia","Zephine","Fantine","MmeThenardier","Thenardier","Cosette","Javert","Fauchelevent","Bamatabois","Perpetue","Simplice","Scaufflaire","Woman1","Judge","Champmathieu","Brevet","Chenildieu","Cochepaille","Pontmercy","Boulatruelle","Eponine","Anzelma","Woman2","MotherInnocent","Gribier","Jondrette","MmeBurgon","Gavroche","Gillenormand","Magnon","MlleGillenormand","MmePontmercy","MlleVaubois","LtGillenormand","Marius","BaronessT","Mabeuf","Enjolras","Combeferre","Prouvaire","Feuilly","Courfeyrac","Bahorel","Bossuet","Joly","Grantaire","MotherPlutarch","Gueulemer","Babet","Claquesous","Montparnasse","Toussaint","Child1","Child2","Brujon","MmeHucheloup"],"group":[1,1,1,1,1,1,1,1,1,1,2,2,3,2,2,2,3,3,3,3,3,3,3,3,4,4,5,4,6,2,3,2,2,2,2,2,2,2,2,4,7,4,4,5,6,6,8,8,9,5,5,5,5,5,5,9,5,9,9,9,9,9,9,9,9,9,9,10,4,4,4,4,5,11,11,4,9]},"edges":{"from":[1,1,1,3,1,1,1,1,1,1,11,4,3,1,12,12,12,12,17,17,18,17,18,19,17,18,19,20,17,18,19,20,21,17,18,19,20,21,22,17,18,19,20,21,22,23,13,12,24,12,25,24,12,25,12,17,26,12,24,26,25,27,12,28,24,28,12,24,31,12,24,28,12,12,28,12,30,12,35,30,35,36,12,30,35,36,37,12,30,35,36,37,38,12,30,26,26,25,26,42,26,25,12,27,28,29,12,29,47,48,26,28,12,27,12,50,25,50,27,12,52,40,52,52,50,27,52,50,40,55,27,12,17,26,42,49,50,56,56,42,49,56,49,28,58,12,59,56,49,58,49,59,60,49,59,61,60,58,56,56,59,60,49,58,42,62,61,60,49,63,58,59,62,61,56,56,63,49,64,59,62,61,60,58,12,64,65,49,63,59,62,61,60,58,56,65,59,60,63,66,49,64,62,61,58,26,12,25,28,49,42,26,69,12,25,28,49,42,26,70,69,12,25,28,42,59,28,70,69,71,12,49,42,26,27,28,12,49,49,74,70,69,26,49,42,71,72,65,66,67,64,63,49,59],"to":[2,3,4,4,5,6,7,8,9,10,12,12,12,12,13,14,15,16,18,19,19,20,20,20,21,21,21,21,22,22,22,22,22,23,23,23,23,23,23,24,24,24,24,24,24,24,24,24,25,25,26,26,26,27,27,27,27,28,28,28,28,28,29,29,30,30,30,31,32,32,32,32,33,34,34,35,35,36,36,36,37,37,37,37,38,38,38,38,38,39,39,39,39,39,39,40,41,42,42,43,43,43,44,44,44,45,45,46,48,49,49,49,49,50,50,51,51,52,52,52,53,53,54,55,55,55,56,56,56,56,56,56,56,56,56,56,57,57,58,58,58,59,59,59,59,59,60,60,60,60,61,61,61,62,62,62,62,62,62,63,63,63,63,63,63,63,63,64,64,64,64,64,64,64,64,65,65,65,65,65,65,65,65,65,65,66,66,66,66,66,66,66,66,66,66,67,67,67,67,67,67,67,67,67,68,69,69,69,69,69,69,70,70,70,70,70,70,70,71,71,71,71,71,71,71,71,72,72,72,72,72,72,72,72,73,73,73,74,75,75,76,76,76,76,76,76,76,77,77,77,77,77,77,77],"value":[1,8,10,6,1,1,1,1,2,1,1,3,3,5,1,1,1,1,4,4,4,4,4,4,3,3,3,4,3,3,3,3,5,3,3,3,3,4,4,3,3,3,3,4,4,4,2,9,2,7,13,1,12,4,31,1,1,17,5,5,1,1,8,1,1,1,2,1,2,3,2,1,1,2,1,3,2,3,3,2,2,2,2,1,2,2,2,2,1,2,2,2,2,2,1,1,1,2,3,2,2,1,3,1,1,3,1,2,1,2,1,1,1,3,2,1,1,9,2,2,1,1,1,2,1,1,6,12,1,1,21,19,1,2,5,4,1,1,1,1,1,7,7,6,1,4,15,5,6,2,1,4,2,2,6,2,5,1,1,9,17,13,7,2,1,6,3,5,5,6,2,4,3,2,1,5,12,5,4,10,6,2,9,1,1,5,7,3,5,5,5,2,5,1,2,3,3,1,2,2,1,1,1,1,3,5,1,1,1,1,1,6,6,1,1,2,1,1,4,4,4,1,1,1,1,1,1,2,2,2,1,1,1,1,2,1,1,2,2,3,3,3,3,1,1,1,1,1,1,1,1,1,1,1]}}},"evals":[],"jsHooks":[]}</script><p>We may also want to modify the edge size to reflect edge weights included in the data:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sig <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/addNodeSize.html">addNodeSize</a></span>(<span class="dt">sizeMetric =</span> <span class="st">'degree'</span>, <span class="dt">maxSize =</span> <span class="dv">8</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/addNodeLabels.html">addNodeLabels</a></span>(<span class="dt">labelAttr =</span> <span class="st">'label'</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/addNodeColors.html">addNodeColors</a></span>(<span class="dt">colorAttr =</span> <span class="st">'group'</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/addEdgeSize.html">addEdgeSize</a></span>(<span class="dt">sizeAttr =</span> <span class="st">'value'</span>, <span class="dt">minSize =</span> .<span class="dv">1</span>, <span class="dt">maxSize =</span> <span class="dv">2</span>)</code></pre></div>
-<div id="htmlwidget-af9ac1da8f41dcb5f4da" style="width:672px;height:480px;" class="sigmaNet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-af9ac1da8f41dcb5f4da">{"x":{"data":{
+<span class="st">  </span><span class="kw"><a href="../reference/addEdgeSize.html">addEdgeSize</a></span>(<span class="dt">sizeAttr =</span> <span class="st">'value'</span>, <span class="dt">minSize =</span> <span class="fl">.1</span>, <span class="dt">maxSize =</span> <span class="dv">2</span>)</code></pre></div>
+<div id="htmlwidget-90ba590d8990813178da" style="width:700px;height:432.632880098888px;" class="sigmaNet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-90ba590d8990813178da">{"x":{"data":{
   "nodes": [
     {
       "label": "Myriel",
-      "x": 9.0177,
-      "y": 5.8005,
+      "x": 2.1601,
+      "y": -5.6088,
       "id": 1,
       "size": 10,
       "color": "#1B9E77"
     },
     {
       "label": "Napoleon",
-      "x": 9.6453,
-      "y": 8.5204,
+      "x": 2.8082,
+      "y": -8.5526,
       "id": 2,
-      "size": 3,
-      "color": "#1B9E77"
-    },
-    {
-      "label": "MlleBaptistine",
-      "x": 7.3005,
-      "y": 4.0494,
-      "id": 3,
       "size": 1,
       "color": "#1B9E77"
     },
     {
+      "label": "MlleBaptistine",
+      "x": 1.5477,
+      "y": -3.2429,
+      "id": 3,
+      "size": 3,
+      "color": "#1B9E77"
+    },
+    {
       "label": "MmeMagloire",
-      "x": 6.9035,
-      "y": 4.503,
+      "x": 0.9845,
+      "y": -3.4666,
       "id": 4,
       "size": 3,
       "color": "#1B9E77"
     },
     {
       "label": "CountessDeLo",
-      "x": 10.9262,
-      "y": 7.3117,
+      "x": 1.299,
+      "y": -8.2073,
       "id": 5,
-      "size": 36,
+      "size": 1,
       "color": "#1B9E77"
     },
     {
       "label": "Geborand",
-      "x": 11.735,
-      "y": 5.7395,
+      "x": 2.9538,
+      "y": -7.7509,
       "id": 6,
-      "size": 9,
+      "size": 1,
       "color": "#1B9E77"
     },
     {
       "label": "Champtercier",
-      "x": 11.4612,
-      "y": 6.4507,
+      "x": 4.5607,
+      "y": -6.936,
       "id": 7,
-      "size": 7,
+      "size": 1,
       "color": "#1B9E77"
     },
     {
       "label": "Cravatte",
-      "x": 11.7135,
-      "y": 7.2252,
+      "x": 2.0503,
+      "y": -8.1904,
       "id": 8,
-      "size": 7,
+      "size": 1,
       "color": "#1B9E77"
     },
     {
       "label": "Count",
-      "x": 10.1062,
-      "y": 7.8609,
+      "x": 3.8185,
+      "y": -8.1141,
       "id": 9,
-      "size": 7,
+      "size": 1,
       "color": "#1B9E77"
     },
     {
       "label": "OldMan",
-      "x": 10.8764,
-      "y": 8.1784,
+      "x": 3.8993,
+      "y": -7.3161,
       "id": 10,
-      "size": 7,
+      "size": 1,
       "color": "#1B9E77"
     },
     {
       "label": "Labarre",
-      "x": 5.0404,
-      "y": 4.6753,
+      "x": -0.4207,
+      "y": -2.8802,
       "id": 11,
-      "size": 7,
+      "size": 1,
       "color": "#A07125"
     },
     {
       "label": "Valjean",
-      "x": 4.1401,
-      "y": 1.7819,
+      "x": -0.1134,
+      "y": 0.2424,
       "id": 12,
-      "size": 7,
+      "size": 36,
       "color": "#A07125"
     },
     {
       "label": "Marguerite",
-      "x": 5.6356,
-      "y": -0.8433,
+      "x": 2.6922,
+      "y": 1.317,
       "id": 13,
       "size": 2,
       "color": "#B16548"
     },
     {
       "label": "MmeDeR",
-      "x": 5.4966,
-      "y": 4.0852,
+      "x": -0.6584,
+      "y": -2.1912,
       "id": 14,
-      "size": 15,
+      "size": 1,
       "color": "#A07125"
     },
     {
       "label": "Isabeau",
-      "x": 7.2943,
-      "y": 2.4239,
+      "x": -1.4111,
+      "y": -2.6219,
       "id": 15,
-      "size": 11,
+      "size": 1,
       "color": "#A07125"
     },
     {
       "label": "Gervais",
-      "x": 6.0352,
-      "y": 3.4728,
+      "x": 1.379,
+      "y": -2.1146,
       "id": 16,
-      "size": 16,
+      "size": 1,
       "color": "#A07125"
     },
     {
       "label": "Tholomyes",
-      "x": 3.1893,
-      "y": -3.0906,
+      "x": 2.2033,
+      "y": 4.5296,
       "id": 17,
-      "size": 11,
+      "size": 9,
       "color": "#B16548"
     },
     {
       "label": "Listolier",
-      "x": 4.2686,
-      "y": -4.7063,
+      "x": 3.795,
+      "y": 5.4671,
       "id": 18,
-      "size": 17,
+      "size": 7,
       "color": "#B16548"
     },
     {
       "label": "Fameuil",
-      "x": 3.8069,
-      "y": -4.3166,
+      "x": 4.1138,
+      "y": 4.3549,
       "id": 19,
-      "size": 2,
+      "size": 7,
       "color": "#B16548"
     },
     {
       "label": "Blacheville",
-      "x": 4.723,
-      "y": -4.6438,
+      "x": 4.3609,
+      "y": 4.7263,
       "id": 20,
-      "size": 8,
+      "size": 7,
       "color": "#B16548"
     },
     {
       "label": "Favourite",
-      "x": 4.3484,
-      "y": -4.0769,
+      "x": 4.1636,
+      "y": 5.1573,
       "id": 21,
-      "size": 6,
+      "size": 7,
       "color": "#B16548"
     },
     {
       "label": "Dahlia",
-      "x": 3.798,
-      "y": -4.7907,
+      "x": 3.4415,
+      "y": 5.1884,
       "id": 22,
-      "size": 6,
+      "size": 7,
       "color": "#B16548"
     },
     {
       "label": "Zephine",
-      "x": 4.8433,
-      "y": -4.1723,
+      "x": 3.6887,
+      "y": 4.6653,
       "id": 23,
-      "size": 6,
+      "size": 7,
       "color": "#B16548"
     },
     {
       "label": "Fantine",
-      "x": 4.0807,
-      "y": -1.9014,
+      "x": 2.1808,
+      "y": 3.1489,
       "id": 24,
-      "size": 6,
+      "size": 15,
       "color": "#B16548"
     },
     {
       "label": "MmeThenardier",
-      "x": 2.3825,
-      "y": 0.1391,
+      "x": -0.4829,
+      "y": 2.8082,
       "id": 25,
       "size": 11,
       "color": "#8068AE"
     },
     {
       "label": "Thenardier",
-      "x": 1.6299,
-      "y": 0.8377,
+      "x": -1.3416,
+      "y": 3.0476,
       "id": 26,
-      "size": 4,
+      "size": 16,
       "color": "#8068AE"
     },
     {
       "label": "Cosette",
-      "x": 2.5356,
-      "y": -0.5894,
+      "x": 0.1617,
+      "y": 3.0263,
       "id": 27,
-      "size": 1,
+      "size": 11,
       "color": "#D03792"
     },
     {
       "label": "Javert",
-      "x": 2.9461,
-      "y": 1.2066,
+      "x": -0.6903,
+      "y": 1.4475,
       "id": 28,
-      "size": 2,
+      "size": 17,
       "color": "#8068AE"
     },
     {
       "label": "Fauchelevent",
-      "x": 3.4312,
-      "y": 4.3722,
+      "x": -2.339,
+      "y": -1.2703,
       "id": 29,
-      "size": 7,
+      "size": 4,
       "color": "#A66753"
     },
     {
       "label": "Bamatabois",
-      "x": 5.4674,
-      "y": 0.4073,
+      "x": 1.7589,
+      "y": 0.4427,
       "id": 30,
-      "size": 7,
+      "size": 8,
       "color": "#A07125"
     },
     {
       "label": "Perpetue",
-      "x": 6.0862,
-      "y": -2.6992,
+      "x": 4.2326,
+      "y": 2.463,
       "id": 31,
-      "size": 3,
+      "size": 2,
       "color": "#B16548"
     },
     {
       "label": "Simplice",
-      "x": 4.7925,
-      "y": -0.724,
+      "x": 1.9738,
+      "y": 1.7722,
       "id": 32,
       "size": 4,
       "color": "#A07125"
     },
     {
       "label": "Scaufflaire",
-      "x": 6.5811,
-      "y": 2.8228,
+      "x": 0.3749,
+      "y": -2.2761,
       "id": 33,
-      "size": 22,
+      "size": 1,
       "color": "#A07125"
     },
     {
       "label": "Woman1",
-      "x": 4.0554,
-      "y": 3.0026,
+      "x": -0.9539,
+      "y": -0.6344,
       "id": 34,
-      "size": 19,
+      "size": 2,
       "color": "#A07125"
     },
     {
       "label": "Judge",
-      "x": 6.5025,
-      "y": 1.4358,
+      "x": 2.6349,
+      "y": -0.2821,
       "id": 35,
-      "size": 11,
+      "size": 6,
       "color": "#A07125"
     },
     {
       "label": "Champmathieu",
-      "x": 6.3138,
-      "y": 0.9717,
+      "x": 1.7737,
+      "y": -0.961,
       "id": 36,
-      "size": 15,
+      "size": 6,
       "color": "#A07125"
     },
     {
       "label": "Brevet",
-      "x": 6.9903,
-      "y": 1.1793,
+      "x": 2.7107,
+      "y": -0.8031,
       "id": 37,
-      "size": 11,
+      "size": 6,
       "color": "#A07125"
     },
     {
       "label": "Chenildieu",
-      "x": 6.5703,
-      "y": 0.3843,
+      "x": 2.0778,
+      "y": -0.4841,
       "id": 38,
-      "size": 9,
+      "size": 6,
       "color": "#A07125"
     },
     {
       "label": "Cochepaille",
-      "x": 6.9702,
-      "y": 0.6471,
+      "x": 2.2671,
+      "y": -1.1265,
       "id": 39,
-      "size": 11,
+      "size": 6,
       "color": "#A07125"
     },
     {
       "label": "Pontmercy",
-      "x": -0.6465,
-      "y": -1.3632,
+      "x": -1.2437,
+      "y": 5.8447,
       "id": 40,
-      "size": 13,
+      "size": 3,
       "color": "#8068AE"
     },
     {
       "label": "Boulatruelle",
-      "x": 0.7533,
-      "y": 3.9066,
+      "x": -2.7152,
+      "y": 6.1574,
       "id": 41,
-      "size": 12,
+      "size": 1,
       "color": "#7FA718"
     },
     {
       "label": "Eponine",
-      "x": 0.6956,
-      "y": 1.1454,
+      "x": -2.4484,
+      "y": 2.9456,
       "id": 42,
-      "size": 13,
+      "size": 11,
       "color": "#8068AE"
     },
     {
       "label": "Anzelma",
-      "x": 0.7251,
-      "y": -0.44,
+      "x": -1.6946,
+      "y": 4.4861,
       "id": 43,
-      "size": 12,
+      "size": 3,
       "color": "#8068AE"
     },
     {
       "label": "Woman2",
-      "x": 3.9096,
-      "y": -0.0163,
+      "x": 0.8517,
+      "y": 1.7238,
       "id": 44,
-      "size": 10,
+      "size": 3,
       "color": "#D03792"
     },
     {
       "label": "MotherInnocent",
-      "x": 4.214,
-      "y": 4.729,
+      "x": -1.978,
+      "y": -2.0035,
       "id": 45,
-      "size": 10,
+      "size": 2,
       "color": "#A66753"
     },
     {
       "label": "Gribier",
-      "x": 3.338,
-      "y": 7.3084,
+      "x": -4.2348,
+      "y": -3.544,
       "id": 46,
-      "size": 10,
+      "size": 1,
       "color": "#A66753"
     },
     {
       "label": "Jondrette",
-      "x": -6.2827,
-      "y": 5.8817,
+      "x": -10.8515,
+      "y": 3.1141,
       "id": 47,
-      "size": 2,
+      "size": 1,
       "color": "#D9AA04"
     },
     {
       "label": "MmeBurgon",
-      "x": -3.8817,
-      "y": 4.5097,
+      "x": -8.1158,
+      "y": 2.6974,
       "id": 48,
-      "size": 9,
+      "size": 2,
       "color": "#D9AA04"
     },
     {
       "label": "Gavroche",
-      "x": -0.2013,
-      "y": 2.4759,
+      "x": -3.9795,
+      "y": 2.1488,
       "id": 49,
-      "size": 10,
+      "size": 22,
       "color": "#BF8B12"
     },
     {
       "label": "Gillenormand",
-      "x": 1.7088,
-      "y": -0.9932,
+      "x": -0.4646,
+      "y": 3.913,
       "id": 50,
-      "size": 1,
+      "size": 7,
       "color": "#D03792"
     },
     {
       "label": "Magnon",
-      "x": 1.8954,
-      "y": -2.4436,
+      "x": 0.5147,
+      "y": 5.3123,
       "id": 51,
-      "size": 1,
+      "size": 2,
       "color": "#D03792"
     },
     {
       "label": "MlleGillenormand",
-      "x": 1.3055,
-      "y": -1.7067,
+      "x": 0.0905,
+      "y": 4.5502,
       "id": 52,
-      "size": 1,
+      "size": 7,
       "color": "#D03792"
     },
     {
       "label": "MmePontmercy",
-      "x": -0.9668,
-      "y": -3.321,
+      "x": -0.2152,
+      "y": 7.3266,
       "id": 53,
-      "size": 1,
+      "size": 2,
       "color": "#D03792"
     },
     {
       "label": "MlleVaubois",
-      "x": 0.0505,
-      "y": -4.6217,
+      "x": 1.2249,
+      "y": 7.5014,
       "id": 54,
       "size": 1,
       "color": "#D03792"
     },
     {
       "label": "LtGillenormand",
-      "x": 0.6905,
-      "y": -1.8832,
+      "x": -0.5312,
+      "y": 5.0402,
       "id": 55,
-      "size": 1,
+      "size": 4,
       "color": "#D03792"
     },
     {
       "label": "Marius",
-      "x": 0.4144,
-      "y": 0.1326,
+      "x": -2.0769,
+      "y": 3.684,
       "id": 56,
-      "size": 1,
+      "size": 19,
       "color": "#BF8B12"
     },
     {
       "label": "BaronessT",
-      "x": -0.3712,
-      "y": -2.1517,
+      "x": -1.8364,
+      "y": 5.9712,
       "id": 57,
-      "size": 1,
+      "size": 2,
       "color": "#D03792"
     },
     {
       "label": "Mabeuf",
-      "x": -1.7022,
-      "y": 0.8086,
+      "x": -4.2693,
+      "y": 4.2342,
       "id": 58,
-      "size": 1,
+      "size": 11,
       "color": "#BF8B12"
     },
     {
       "label": "Enjolras",
-      "x": 0.1087,
-      "y": 1.6863,
+      "x": -3.3153,
+      "y": 2.5257,
       "id": 59,
-      "size": 1,
+      "size": 15,
       "color": "#BF8B12"
     },
     {
       "label": "Combeferre",
-      "x": -1.7244,
-      "y": 1.2941,
+      "x": -4.4798,
+      "y": 3.8626,
       "id": 60,
-      "size": 4,
+      "size": 11,
       "color": "#BF8B12"
     },
     {
       "label": "Prouvaire",
-      "x": -1.7448,
-      "y": 2.4025,
+      "x": -5.335,
+      "y": 3.3268,
       "id": 61,
-      "size": 1,
+      "size": 9,
       "color": "#BF8B12"
     },
     {
       "label": "Feuilly",
-      "x": -1.2862,
-      "y": 1.1256,
+      "x": -4.7378,
+      "y": 3.5659,
       "id": 62,
-      "size": 2,
+      "size": 11,
       "color": "#BF8B12"
     },
     {
       "label": "Courfeyrac",
-      "x": -1.0077,
-      "y": 1.5452,
+      "x": -4.1292,
+      "y": 3.1731,
       "id": 63,
-      "size": 6,
+      "size": 13,
       "color": "#BF8B12"
     },
     {
       "label": "Bahorel",
-      "x": -1.2688,
-      "y": 1.9423,
+      "x": -4.6362,
+      "y": 3.0554,
       "id": 64,
-      "size": 1,
+      "size": 12,
       "color": "#BF8B12"
     },
     {
       "label": "Bossuet",
-      "x": -0.3006,
-      "y": 1.77,
+      "x": -3.7267,
+      "y": 2.6283,
       "id": 65,
-      "size": 3,
+      "size": 13,
       "color": "#BF8B12"
     },
     {
       "label": "Joly",
-      "x": -1.5756,
-      "y": 1.6768,
+      "x": -4.3145,
+      "y": 3.4905,
       "id": 66,
-      "size": 3,
+      "size": 12,
       "color": "#BF8B12"
     },
     {
       "label": "Grantaire",
-      "x": -2.0542,
-      "y": 2.1219,
+      "x": -5.2756,
+      "y": 2.8556,
       "id": 67,
-      "size": 2,
+      "size": 10,
       "color": "#BF8B12"
     },
     {
       "label": "MotherPlutarch",
-      "x": -4.7381,
-      "y": 0.1683,
+      "x": -6.4879,
+      "y": 6.3948,
       "id": 68,
       "size": 1,
       "color": "#927132"
     },
     {
       "label": "Gueulemer",
-      "x": 2.0676,
-      "y": 1.9894,
+      "x": -1.779,
+      "y": 1.5163,
       "id": 69,
-      "size": 2,
+      "size": 10,
       "color": "#8068AE"
     },
     {
       "label": "Babet",
-      "x": 1.7024,
-      "y": 1.7857,
+      "x": -1.9396,
+      "y": 1.8978,
       "id": 70,
-      "size": 2,
+      "size": 10,
       "color": "#8068AE"
     },
     {
       "label": "Claquesous",
-      "x": 2.0614,
-      "y": 1.4974,
+      "x": -1.4974,
+      "y": 1.9183,
       "id": 71,
-      "size": 1,
+      "size": 10,
       "color": "#8068AE"
     },
     {
       "label": "Montparnasse",
-      "x": 1.8839,
-      "y": 2.4217,
+      "x": -2.192,
+      "y": 1.2579,
       "id": 72,
-      "size": 2,
+      "size": 9,
       "color": "#8068AE"
     },
     {
       "label": "Toussaint",
-      "x": 4.0251,
-      "y": 0.559,
+      "x": 0.5284,
+      "y": 1.203,
       "id": 73,
-      "size": 1,
+      "size": 3,
       "color": "#D03792"
     },
     {
       "label": "Child1",
-      "x": -2.4648,
-      "y": 4.6438,
+      "x": -6.8512,
+      "y": 0.8551,
       "id": 74,
-      "size": 3,
+      "size": 2,
       "color": "#666666"
     },
     {
       "label": "Child2",
-      "x": -1.8517,
-      "y": 5.1282,
+      "x": -7.0968,
+      "y": 1.5867,
       "id": 75,
       "size": 2,
       "color": "#666666"
     },
     {
       "label": "Brujon",
-      "x": 1.057,
-      "y": 2.5092,
+      "x": -2.8235,
+      "y": 1.7565,
       "id": 76,
       "size": 7,
       "color": "#8068AE"
     },
     {
       "label": "MmeHucheloup",
-      "x": -1.5314,
-      "y": 2.8861,
+      "x": -5.2063,
+      "y": 2.2709,
       "id": 77,
       "size": 7,
       "color": "#BF8B12"
@@ -12156,629 +12170,630 @@ sig <span class="op">%&gt;%</span>
       "size": "1",
       "color": "#636363"
     }
-  ]
-},"options":{"minNodeSize":1,"maxNodeSize":8,"minEdgeSize":0.1,"maxEdgeSize":2,"neighborEvent":"onClick","neighborStart":"clickNode","neighborEnd":"clickStage","doubleClickZoom":true,"mouseWheelZoom":true},"graph":{"vertices":{"id":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76],"label":["Myriel","Napoleon","MlleBaptistine","MmeMagloire","CountessDeLo","Geborand","Champtercier","Cravatte","Count","OldMan","Labarre","Valjean","Marguerite","MmeDeR","Isabeau","Gervais","Tholomyes","Listolier","Fameuil","Blacheville","Favourite","Dahlia","Zephine","Fantine","MmeThenardier","Thenardier","Cosette","Javert","Fauchelevent","Bamatabois","Perpetue","Simplice","Scaufflaire","Woman1","Judge","Champmathieu","Brevet","Chenildieu","Cochepaille","Pontmercy","Boulatruelle","Eponine","Anzelma","Woman2","MotherInnocent","Gribier","Jondrette","MmeBurgon","Gavroche","Gillenormand","Magnon","MlleGillenormand","MmePontmercy","MlleVaubois","LtGillenormand","Marius","BaronessT","Mabeuf","Enjolras","Combeferre","Prouvaire","Feuilly","Courfeyrac","Bahorel","Bossuet","Joly","Grantaire","MotherPlutarch","Gueulemer","Babet","Claquesous","Montparnasse","Toussaint","Child1","Child2","Brujon","MmeHucheloup"],"group":[1,1,1,1,1,1,1,1,1,1,2,2,3,2,2,2,3,3,3,3,3,3,3,3,4,4,5,4,6,2,3,2,2,2,2,2,2,2,2,4,7,4,4,5,6,6,8,8,9,5,5,5,5,5,5,9,5,9,9,9,9,9,9,9,9,9,9,10,4,4,4,4,5,11,11,4,9]},"edges":{"from":[1,1,1,3,1,1,1,1,1,1,11,4,3,1,12,12,12,12,17,17,18,17,18,19,17,18,19,20,17,18,19,20,21,17,18,19,20,21,22,17,18,19,20,21,22,23,13,12,24,12,25,24,12,25,12,17,26,12,24,26,25,27,12,28,24,28,12,24,31,12,24,28,12,12,28,12,30,12,35,30,35,36,12,30,35,36,37,12,30,35,36,37,38,12,30,26,26,25,26,42,26,25,12,27,28,29,12,29,47,48,26,28,12,27,12,50,25,50,27,12,52,40,52,52,50,27,52,50,40,55,27,12,17,26,42,49,50,56,56,42,49,56,49,28,58,12,59,56,49,58,49,59,60,49,59,61,60,58,56,56,59,60,49,58,42,62,61,60,49,63,58,59,62,61,56,56,63,49,64,59,62,61,60,58,12,64,65,49,63,59,62,61,60,58,56,65,59,60,63,66,49,64,62,61,58,26,12,25,28,49,42,26,69,12,25,28,49,42,26,70,69,12,25,28,42,59,28,70,69,71,12,49,42,26,27,28,12,49,49,74,70,69,26,49,42,71,72,65,66,67,64,63,49,59],"to":[2,3,4,4,5,6,7,8,9,10,12,12,12,12,13,14,15,16,18,19,19,20,20,20,21,21,21,21,22,22,22,22,22,23,23,23,23,23,23,24,24,24,24,24,24,24,24,24,25,25,26,26,26,27,27,27,27,28,28,28,28,28,29,29,30,30,30,31,32,32,32,32,33,34,34,35,35,36,36,36,37,37,37,37,38,38,38,38,38,39,39,39,39,39,39,40,41,42,42,43,43,43,44,44,44,45,45,46,48,49,49,49,49,50,50,51,51,52,52,52,53,53,54,55,55,55,56,56,56,56,56,56,56,56,56,56,57,57,58,58,58,59,59,59,59,59,60,60,60,60,61,61,61,62,62,62,62,62,62,63,63,63,63,63,63,63,63,64,64,64,64,64,64,64,64,65,65,65,65,65,65,65,65,65,65,66,66,66,66,66,66,66,66,66,66,67,67,67,67,67,67,67,67,67,68,69,69,69,69,69,69,70,70,70,70,70,70,70,71,71,71,71,71,71,71,71,72,72,72,72,72,72,72,72,73,73,73,74,75,75,76,76,76,76,76,76,76,77,77,77,77,77,77,77],"value":[1,8,10,6,1,1,1,1,2,1,1,3,3,5,1,1,1,1,4,4,4,4,4,4,3,3,3,4,3,3,3,3,5,3,3,3,3,4,4,3,3,3,3,4,4,4,2,9,2,7,13,1,12,4,31,1,1,17,5,5,1,1,8,1,1,1,2,1,2,3,2,1,1,2,1,3,2,3,3,2,2,2,2,1,2,2,2,2,1,2,2,2,2,2,1,1,1,2,3,2,2,1,3,1,1,3,1,2,1,2,1,1,1,3,2,1,1,9,2,2,1,1,1,2,1,1,6,12,1,1,21,19,1,2,5,4,1,1,1,1,1,7,7,6,1,4,15,5,6,2,1,4,2,2,6,2,5,1,1,9,17,13,7,2,1,6,3,5,5,6,2,4,3,2,1,5,12,5,4,10,6,2,9,1,1,5,7,3,5,5,5,2,5,1,2,3,3,1,2,2,1,1,1,1,3,5,1,1,1,1,1,6,6,1,1,2,1,1,4,4,4,1,1,1,1,1,1,2,2,2,1,1,1,1,2,1,1,2,2,3,3,3,3,1,1,1,1,1,1,1,1,1,1,1]}}},"evals":[],"jsHooks":[]}</script><p>And we might even want to change the edge colors (here I’ll change all of them, but you can also color them by an attribute):</p>
+  ],
+  "directed": [false]
+},"options":{"minNodeSize":1,"maxNodeSize":8,"minEdgeSize":0.1,"maxEdgeSize":2,"neighborEvent":"onClick","neighborStart":"clickNode","neighborEnd":"clickStage","doubleClickZoom":true,"mouseWheelZoom":true,"edgeArrows":"def"},"graph":{"vertices":{"id":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76],"label":["Myriel","Napoleon","MlleBaptistine","MmeMagloire","CountessDeLo","Geborand","Champtercier","Cravatte","Count","OldMan","Labarre","Valjean","Marguerite","MmeDeR","Isabeau","Gervais","Tholomyes","Listolier","Fameuil","Blacheville","Favourite","Dahlia","Zephine","Fantine","MmeThenardier","Thenardier","Cosette","Javert","Fauchelevent","Bamatabois","Perpetue","Simplice","Scaufflaire","Woman1","Judge","Champmathieu","Brevet","Chenildieu","Cochepaille","Pontmercy","Boulatruelle","Eponine","Anzelma","Woman2","MotherInnocent","Gribier","Jondrette","MmeBurgon","Gavroche","Gillenormand","Magnon","MlleGillenormand","MmePontmercy","MlleVaubois","LtGillenormand","Marius","BaronessT","Mabeuf","Enjolras","Combeferre","Prouvaire","Feuilly","Courfeyrac","Bahorel","Bossuet","Joly","Grantaire","MotherPlutarch","Gueulemer","Babet","Claquesous","Montparnasse","Toussaint","Child1","Child2","Brujon","MmeHucheloup"],"group":[1,1,1,1,1,1,1,1,1,1,2,2,3,2,2,2,3,3,3,3,3,3,3,3,4,4,5,4,6,2,3,2,2,2,2,2,2,2,2,4,7,4,4,5,6,6,8,8,9,5,5,5,5,5,5,9,5,9,9,9,9,9,9,9,9,9,9,10,4,4,4,4,5,11,11,4,9]},"edges":{"from":[1,1,1,3,1,1,1,1,1,1,11,4,3,1,12,12,12,12,17,17,18,17,18,19,17,18,19,20,17,18,19,20,21,17,18,19,20,21,22,17,18,19,20,21,22,23,13,12,24,12,25,24,12,25,12,17,26,12,24,26,25,27,12,28,24,28,12,24,31,12,24,28,12,12,28,12,30,12,35,30,35,36,12,30,35,36,37,12,30,35,36,37,38,12,30,26,26,25,26,42,26,25,12,27,28,29,12,29,47,48,26,28,12,27,12,50,25,50,27,12,52,40,52,52,50,27,52,50,40,55,27,12,17,26,42,49,50,56,56,42,49,56,49,28,58,12,59,56,49,58,49,59,60,49,59,61,60,58,56,56,59,60,49,58,42,62,61,60,49,63,58,59,62,61,56,56,63,49,64,59,62,61,60,58,12,64,65,49,63,59,62,61,60,58,56,65,59,60,63,66,49,64,62,61,58,26,12,25,28,49,42,26,69,12,25,28,49,42,26,70,69,12,25,28,42,59,28,70,69,71,12,49,42,26,27,28,12,49,49,74,70,69,26,49,42,71,72,65,66,67,64,63,49,59],"to":[2,3,4,4,5,6,7,8,9,10,12,12,12,12,13,14,15,16,18,19,19,20,20,20,21,21,21,21,22,22,22,22,22,23,23,23,23,23,23,24,24,24,24,24,24,24,24,24,25,25,26,26,26,27,27,27,27,28,28,28,28,28,29,29,30,30,30,31,32,32,32,32,33,34,34,35,35,36,36,36,37,37,37,37,38,38,38,38,38,39,39,39,39,39,39,40,41,42,42,43,43,43,44,44,44,45,45,46,48,49,49,49,49,50,50,51,51,52,52,52,53,53,54,55,55,55,56,56,56,56,56,56,56,56,56,56,57,57,58,58,58,59,59,59,59,59,60,60,60,60,61,61,61,62,62,62,62,62,62,63,63,63,63,63,63,63,63,64,64,64,64,64,64,64,64,65,65,65,65,65,65,65,65,65,65,66,66,66,66,66,66,66,66,66,66,67,67,67,67,67,67,67,67,67,68,69,69,69,69,69,69,70,70,70,70,70,70,70,71,71,71,71,71,71,71,71,72,72,72,72,72,72,72,72,73,73,73,74,75,75,76,76,76,76,76,76,76,77,77,77,77,77,77,77],"value":[1,8,10,6,1,1,1,1,2,1,1,3,3,5,1,1,1,1,4,4,4,4,4,4,3,3,3,4,3,3,3,3,5,3,3,3,3,4,4,3,3,3,3,4,4,4,2,9,2,7,13,1,12,4,31,1,1,17,5,5,1,1,8,1,1,1,2,1,2,3,2,1,1,2,1,3,2,3,3,2,2,2,2,1,2,2,2,2,1,2,2,2,2,2,1,1,1,2,3,2,2,1,3,1,1,3,1,2,1,2,1,1,1,3,2,1,1,9,2,2,1,1,1,2,1,1,6,12,1,1,21,19,1,2,5,4,1,1,1,1,1,7,7,6,1,4,15,5,6,2,1,4,2,2,6,2,5,1,1,9,17,13,7,2,1,6,3,5,5,6,2,4,3,2,1,5,12,5,4,10,6,2,9,1,1,5,7,3,5,5,5,2,5,1,2,3,3,1,2,2,1,1,1,1,3,5,1,1,1,1,1,6,6,1,1,2,1,1,4,4,4,1,1,1,1,1,1,2,2,2,1,1,1,1,2,1,1,2,2,3,3,3,3,1,1,1,1,1,1,1,1,1,1,1]}}},"evals":[],"jsHooks":[]}</script><p>And we might even want to change the edge colors (here I’ll change all of them, but you can also color them by an attribute):</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sig <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/addNodeSize.html">addNodeSize</a></span>(<span class="dt">sizeMetric =</span> <span class="st">'degree'</span>, <span class="dt">maxSize =</span> <span class="dv">8</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/addNodeLabels.html">addNodeLabels</a></span>(<span class="dt">labelAttr =</span> <span class="st">'label'</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/addNodeColors.html">addNodeColors</a></span>(<span class="dt">colorAttr =</span> <span class="st">'group'</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/addEdgeSize.html">addEdgeSize</a></span>(<span class="dt">sizeAttr =</span> <span class="st">'value'</span>, <span class="dt">minSize =</span> .<span class="dv">1</span>, <span class="dt">maxSize =</span> <span class="dv">2</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw"><a href="../reference/addEdgeSize.html">addEdgeSize</a></span>(<span class="dt">sizeAttr =</span> <span class="st">'value'</span>, <span class="dt">minSize =</span> <span class="fl">.1</span>, <span class="dt">maxSize =</span> <span class="dv">2</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/addEdgeColors.html">addEdgeColors</a></span>(<span class="dt">oneColor =</span> <span class="st">'#3182bd'</span>)</code></pre></div>
-<div id="htmlwidget-d50bdae18b07c73bdd43" style="width:672px;height:480px;" class="sigmaNet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d50bdae18b07c73bdd43">{"x":{"data":{
+<div id="htmlwidget-281cae55e091fc35dd38" style="width:700px;height:432.632880098888px;" class="sigmaNet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-281cae55e091fc35dd38">{"x":{"data":{
   "nodes": [
     {
       "label": "Myriel",
-      "x": 9.0177,
-      "y": 5.8005,
+      "x": 2.1601,
+      "y": -5.6088,
       "id": 1,
       "size": 10,
       "color": "#1B9E77"
     },
     {
       "label": "Napoleon",
-      "x": 9.6453,
-      "y": 8.5204,
+      "x": 2.8082,
+      "y": -8.5526,
       "id": 2,
-      "size": 3,
-      "color": "#1B9E77"
-    },
-    {
-      "label": "MlleBaptistine",
-      "x": 7.3005,
-      "y": 4.0494,
-      "id": 3,
       "size": 1,
       "color": "#1B9E77"
     },
     {
+      "label": "MlleBaptistine",
+      "x": 1.5477,
+      "y": -3.2429,
+      "id": 3,
+      "size": 3,
+      "color": "#1B9E77"
+    },
+    {
       "label": "MmeMagloire",
-      "x": 6.9035,
-      "y": 4.503,
+      "x": 0.9845,
+      "y": -3.4666,
       "id": 4,
       "size": 3,
       "color": "#1B9E77"
     },
     {
       "label": "CountessDeLo",
-      "x": 10.9262,
-      "y": 7.3117,
+      "x": 1.299,
+      "y": -8.2073,
       "id": 5,
-      "size": 36,
+      "size": 1,
       "color": "#1B9E77"
     },
     {
       "label": "Geborand",
-      "x": 11.735,
-      "y": 5.7395,
+      "x": 2.9538,
+      "y": -7.7509,
       "id": 6,
-      "size": 9,
+      "size": 1,
       "color": "#1B9E77"
     },
     {
       "label": "Champtercier",
-      "x": 11.4612,
-      "y": 6.4507,
+      "x": 4.5607,
+      "y": -6.936,
       "id": 7,
-      "size": 7,
+      "size": 1,
       "color": "#1B9E77"
     },
     {
       "label": "Cravatte",
-      "x": 11.7135,
-      "y": 7.2252,
+      "x": 2.0503,
+      "y": -8.1904,
       "id": 8,
-      "size": 7,
+      "size": 1,
       "color": "#1B9E77"
     },
     {
       "label": "Count",
-      "x": 10.1062,
-      "y": 7.8609,
+      "x": 3.8185,
+      "y": -8.1141,
       "id": 9,
-      "size": 7,
+      "size": 1,
       "color": "#1B9E77"
     },
     {
       "label": "OldMan",
-      "x": 10.8764,
-      "y": 8.1784,
+      "x": 3.8993,
+      "y": -7.3161,
       "id": 10,
-      "size": 7,
+      "size": 1,
       "color": "#1B9E77"
     },
     {
       "label": "Labarre",
-      "x": 5.0404,
-      "y": 4.6753,
+      "x": -0.4207,
+      "y": -2.8802,
       "id": 11,
-      "size": 7,
+      "size": 1,
       "color": "#A07125"
     },
     {
       "label": "Valjean",
-      "x": 4.1401,
-      "y": 1.7819,
+      "x": -0.1134,
+      "y": 0.2424,
       "id": 12,
-      "size": 7,
+      "size": 36,
       "color": "#A07125"
     },
     {
       "label": "Marguerite",
-      "x": 5.6356,
-      "y": -0.8433,
+      "x": 2.6922,
+      "y": 1.317,
       "id": 13,
       "size": 2,
       "color": "#B16548"
     },
     {
       "label": "MmeDeR",
-      "x": 5.4966,
-      "y": 4.0852,
+      "x": -0.6584,
+      "y": -2.1912,
       "id": 14,
-      "size": 15,
+      "size": 1,
       "color": "#A07125"
     },
     {
       "label": "Isabeau",
-      "x": 7.2943,
-      "y": 2.4239,
+      "x": -1.4111,
+      "y": -2.6219,
       "id": 15,
-      "size": 11,
+      "size": 1,
       "color": "#A07125"
     },
     {
       "label": "Gervais",
-      "x": 6.0352,
-      "y": 3.4728,
+      "x": 1.379,
+      "y": -2.1146,
       "id": 16,
-      "size": 16,
+      "size": 1,
       "color": "#A07125"
     },
     {
       "label": "Tholomyes",
-      "x": 3.1893,
-      "y": -3.0906,
+      "x": 2.2033,
+      "y": 4.5296,
       "id": 17,
-      "size": 11,
+      "size": 9,
       "color": "#B16548"
     },
     {
       "label": "Listolier",
-      "x": 4.2686,
-      "y": -4.7063,
+      "x": 3.795,
+      "y": 5.4671,
       "id": 18,
-      "size": 17,
+      "size": 7,
       "color": "#B16548"
     },
     {
       "label": "Fameuil",
-      "x": 3.8069,
-      "y": -4.3166,
+      "x": 4.1138,
+      "y": 4.3549,
       "id": 19,
-      "size": 2,
+      "size": 7,
       "color": "#B16548"
     },
     {
       "label": "Blacheville",
-      "x": 4.723,
-      "y": -4.6438,
+      "x": 4.3609,
+      "y": 4.7263,
       "id": 20,
-      "size": 8,
+      "size": 7,
       "color": "#B16548"
     },
     {
       "label": "Favourite",
-      "x": 4.3484,
-      "y": -4.0769,
+      "x": 4.1636,
+      "y": 5.1573,
       "id": 21,
-      "size": 6,
+      "size": 7,
       "color": "#B16548"
     },
     {
       "label": "Dahlia",
-      "x": 3.798,
-      "y": -4.7907,
+      "x": 3.4415,
+      "y": 5.1884,
       "id": 22,
-      "size": 6,
+      "size": 7,
       "color": "#B16548"
     },
     {
       "label": "Zephine",
-      "x": 4.8433,
-      "y": -4.1723,
+      "x": 3.6887,
+      "y": 4.6653,
       "id": 23,
-      "size": 6,
+      "size": 7,
       "color": "#B16548"
     },
     {
       "label": "Fantine",
-      "x": 4.0807,
-      "y": -1.9014,
+      "x": 2.1808,
+      "y": 3.1489,
       "id": 24,
-      "size": 6,
+      "size": 15,
       "color": "#B16548"
     },
     {
       "label": "MmeThenardier",
-      "x": 2.3825,
-      "y": 0.1391,
+      "x": -0.4829,
+      "y": 2.8082,
       "id": 25,
       "size": 11,
       "color": "#8068AE"
     },
     {
       "label": "Thenardier",
-      "x": 1.6299,
-      "y": 0.8377,
+      "x": -1.3416,
+      "y": 3.0476,
       "id": 26,
-      "size": 4,
+      "size": 16,
       "color": "#8068AE"
     },
     {
       "label": "Cosette",
-      "x": 2.5356,
-      "y": -0.5894,
+      "x": 0.1617,
+      "y": 3.0263,
       "id": 27,
-      "size": 1,
+      "size": 11,
       "color": "#D03792"
     },
     {
       "label": "Javert",
-      "x": 2.9461,
-      "y": 1.2066,
+      "x": -0.6903,
+      "y": 1.4475,
       "id": 28,
-      "size": 2,
+      "size": 17,
       "color": "#8068AE"
     },
     {
       "label": "Fauchelevent",
-      "x": 3.4312,
-      "y": 4.3722,
+      "x": -2.339,
+      "y": -1.2703,
       "id": 29,
-      "size": 7,
+      "size": 4,
       "color": "#A66753"
     },
     {
       "label": "Bamatabois",
-      "x": 5.4674,
-      "y": 0.4073,
+      "x": 1.7589,
+      "y": 0.4427,
       "id": 30,
-      "size": 7,
+      "size": 8,
       "color": "#A07125"
     },
     {
       "label": "Perpetue",
-      "x": 6.0862,
-      "y": -2.6992,
+      "x": 4.2326,
+      "y": 2.463,
       "id": 31,
-      "size": 3,
+      "size": 2,
       "color": "#B16548"
     },
     {
       "label": "Simplice",
-      "x": 4.7925,
-      "y": -0.724,
+      "x": 1.9738,
+      "y": 1.7722,
       "id": 32,
       "size": 4,
       "color": "#A07125"
     },
     {
       "label": "Scaufflaire",
-      "x": 6.5811,
-      "y": 2.8228,
+      "x": 0.3749,
+      "y": -2.2761,
       "id": 33,
-      "size": 22,
+      "size": 1,
       "color": "#A07125"
     },
     {
       "label": "Woman1",
-      "x": 4.0554,
-      "y": 3.0026,
+      "x": -0.9539,
+      "y": -0.6344,
       "id": 34,
-      "size": 19,
+      "size": 2,
       "color": "#A07125"
     },
     {
       "label": "Judge",
-      "x": 6.5025,
-      "y": 1.4358,
+      "x": 2.6349,
+      "y": -0.2821,
       "id": 35,
-      "size": 11,
+      "size": 6,
       "color": "#A07125"
     },
     {
       "label": "Champmathieu",
-      "x": 6.3138,
-      "y": 0.9717,
+      "x": 1.7737,
+      "y": -0.961,
       "id": 36,
-      "size": 15,
+      "size": 6,
       "color": "#A07125"
     },
     {
       "label": "Brevet",
-      "x": 6.9903,
-      "y": 1.1793,
+      "x": 2.7107,
+      "y": -0.8031,
       "id": 37,
-      "size": 11,
+      "size": 6,
       "color": "#A07125"
     },
     {
       "label": "Chenildieu",
-      "x": 6.5703,
-      "y": 0.3843,
+      "x": 2.0778,
+      "y": -0.4841,
       "id": 38,
-      "size": 9,
+      "size": 6,
       "color": "#A07125"
     },
     {
       "label": "Cochepaille",
-      "x": 6.9702,
-      "y": 0.6471,
+      "x": 2.2671,
+      "y": -1.1265,
       "id": 39,
-      "size": 11,
+      "size": 6,
       "color": "#A07125"
     },
     {
       "label": "Pontmercy",
-      "x": -0.6465,
-      "y": -1.3632,
+      "x": -1.2437,
+      "y": 5.8447,
       "id": 40,
-      "size": 13,
+      "size": 3,
       "color": "#8068AE"
     },
     {
       "label": "Boulatruelle",
-      "x": 0.7533,
-      "y": 3.9066,
+      "x": -2.7152,
+      "y": 6.1574,
       "id": 41,
-      "size": 12,
+      "size": 1,
       "color": "#7FA718"
     },
     {
       "label": "Eponine",
-      "x": 0.6956,
-      "y": 1.1454,
+      "x": -2.4484,
+      "y": 2.9456,
       "id": 42,
-      "size": 13,
+      "size": 11,
       "color": "#8068AE"
     },
     {
       "label": "Anzelma",
-      "x": 0.7251,
-      "y": -0.44,
+      "x": -1.6946,
+      "y": 4.4861,
       "id": 43,
-      "size": 12,
+      "size": 3,
       "color": "#8068AE"
     },
     {
       "label": "Woman2",
-      "x": 3.9096,
-      "y": -0.0163,
+      "x": 0.8517,
+      "y": 1.7238,
       "id": 44,
-      "size": 10,
+      "size": 3,
       "color": "#D03792"
     },
     {
       "label": "MotherInnocent",
-      "x": 4.214,
-      "y": 4.729,
+      "x": -1.978,
+      "y": -2.0035,
       "id": 45,
-      "size": 10,
+      "size": 2,
       "color": "#A66753"
     },
     {
       "label": "Gribier",
-      "x": 3.338,
-      "y": 7.3084,
+      "x": -4.2348,
+      "y": -3.544,
       "id": 46,
-      "size": 10,
+      "size": 1,
       "color": "#A66753"
     },
     {
       "label": "Jondrette",
-      "x": -6.2827,
-      "y": 5.8817,
+      "x": -10.8515,
+      "y": 3.1141,
       "id": 47,
-      "size": 2,
+      "size": 1,
       "color": "#D9AA04"
     },
     {
       "label": "MmeBurgon",
-      "x": -3.8817,
-      "y": 4.5097,
+      "x": -8.1158,
+      "y": 2.6974,
       "id": 48,
-      "size": 9,
+      "size": 2,
       "color": "#D9AA04"
     },
     {
       "label": "Gavroche",
-      "x": -0.2013,
-      "y": 2.4759,
+      "x": -3.9795,
+      "y": 2.1488,
       "id": 49,
-      "size": 10,
+      "size": 22,
       "color": "#BF8B12"
     },
     {
       "label": "Gillenormand",
-      "x": 1.7088,
-      "y": -0.9932,
+      "x": -0.4646,
+      "y": 3.913,
       "id": 50,
-      "size": 1,
+      "size": 7,
       "color": "#D03792"
     },
     {
       "label": "Magnon",
-      "x": 1.8954,
-      "y": -2.4436,
+      "x": 0.5147,
+      "y": 5.3123,
       "id": 51,
-      "size": 1,
+      "size": 2,
       "color": "#D03792"
     },
     {
       "label": "MlleGillenormand",
-      "x": 1.3055,
-      "y": -1.7067,
+      "x": 0.0905,
+      "y": 4.5502,
       "id": 52,
-      "size": 1,
+      "size": 7,
       "color": "#D03792"
     },
     {
       "label": "MmePontmercy",
-      "x": -0.9668,
-      "y": -3.321,
+      "x": -0.2152,
+      "y": 7.3266,
       "id": 53,
-      "size": 1,
+      "size": 2,
       "color": "#D03792"
     },
     {
       "label": "MlleVaubois",
-      "x": 0.0505,
-      "y": -4.6217,
+      "x": 1.2249,
+      "y": 7.5014,
       "id": 54,
       "size": 1,
       "color": "#D03792"
     },
     {
       "label": "LtGillenormand",
-      "x": 0.6905,
-      "y": -1.8832,
+      "x": -0.5312,
+      "y": 5.0402,
       "id": 55,
-      "size": 1,
+      "size": 4,
       "color": "#D03792"
     },
     {
       "label": "Marius",
-      "x": 0.4144,
-      "y": 0.1326,
+      "x": -2.0769,
+      "y": 3.684,
       "id": 56,
-      "size": 1,
+      "size": 19,
       "color": "#BF8B12"
     },
     {
       "label": "BaronessT",
-      "x": -0.3712,
-      "y": -2.1517,
+      "x": -1.8364,
+      "y": 5.9712,
       "id": 57,
-      "size": 1,
+      "size": 2,
       "color": "#D03792"
     },
     {
       "label": "Mabeuf",
-      "x": -1.7022,
-      "y": 0.8086,
+      "x": -4.2693,
+      "y": 4.2342,
       "id": 58,
-      "size": 1,
+      "size": 11,
       "color": "#BF8B12"
     },
     {
       "label": "Enjolras",
-      "x": 0.1087,
-      "y": 1.6863,
+      "x": -3.3153,
+      "y": 2.5257,
       "id": 59,
-      "size": 1,
+      "size": 15,
       "color": "#BF8B12"
     },
     {
       "label": "Combeferre",
-      "x": -1.7244,
-      "y": 1.2941,
+      "x": -4.4798,
+      "y": 3.8626,
       "id": 60,
-      "size": 4,
+      "size": 11,
       "color": "#BF8B12"
     },
     {
       "label": "Prouvaire",
-      "x": -1.7448,
-      "y": 2.4025,
+      "x": -5.335,
+      "y": 3.3268,
       "id": 61,
-      "size": 1,
+      "size": 9,
       "color": "#BF8B12"
     },
     {
       "label": "Feuilly",
-      "x": -1.2862,
-      "y": 1.1256,
+      "x": -4.7378,
+      "y": 3.5659,
       "id": 62,
-      "size": 2,
+      "size": 11,
       "color": "#BF8B12"
     },
     {
       "label": "Courfeyrac",
-      "x": -1.0077,
-      "y": 1.5452,
+      "x": -4.1292,
+      "y": 3.1731,
       "id": 63,
-      "size": 6,
+      "size": 13,
       "color": "#BF8B12"
     },
     {
       "label": "Bahorel",
-      "x": -1.2688,
-      "y": 1.9423,
+      "x": -4.6362,
+      "y": 3.0554,
       "id": 64,
-      "size": 1,
+      "size": 12,
       "color": "#BF8B12"
     },
     {
       "label": "Bossuet",
-      "x": -0.3006,
-      "y": 1.77,
+      "x": -3.7267,
+      "y": 2.6283,
       "id": 65,
-      "size": 3,
+      "size": 13,
       "color": "#BF8B12"
     },
     {
       "label": "Joly",
-      "x": -1.5756,
-      "y": 1.6768,
+      "x": -4.3145,
+      "y": 3.4905,
       "id": 66,
-      "size": 3,
+      "size": 12,
       "color": "#BF8B12"
     },
     {
       "label": "Grantaire",
-      "x": -2.0542,
-      "y": 2.1219,
+      "x": -5.2756,
+      "y": 2.8556,
       "id": 67,
-      "size": 2,
+      "size": 10,
       "color": "#BF8B12"
     },
     {
       "label": "MotherPlutarch",
-      "x": -4.7381,
-      "y": 0.1683,
+      "x": -6.4879,
+      "y": 6.3948,
       "id": 68,
       "size": 1,
       "color": "#927132"
     },
     {
       "label": "Gueulemer",
-      "x": 2.0676,
-      "y": 1.9894,
+      "x": -1.779,
+      "y": 1.5163,
       "id": 69,
-      "size": 2,
+      "size": 10,
       "color": "#8068AE"
     },
     {
       "label": "Babet",
-      "x": 1.7024,
-      "y": 1.7857,
+      "x": -1.9396,
+      "y": 1.8978,
       "id": 70,
-      "size": 2,
+      "size": 10,
       "color": "#8068AE"
     },
     {
       "label": "Claquesous",
-      "x": 2.0614,
-      "y": 1.4974,
+      "x": -1.4974,
+      "y": 1.9183,
       "id": 71,
-      "size": 1,
+      "size": 10,
       "color": "#8068AE"
     },
     {
       "label": "Montparnasse",
-      "x": 1.8839,
-      "y": 2.4217,
+      "x": -2.192,
+      "y": 1.2579,
       "id": 72,
-      "size": 2,
+      "size": 9,
       "color": "#8068AE"
     },
     {
       "label": "Toussaint",
-      "x": 4.0251,
-      "y": 0.559,
+      "x": 0.5284,
+      "y": 1.203,
       "id": 73,
-      "size": 1,
+      "size": 3,
       "color": "#D03792"
     },
     {
       "label": "Child1",
-      "x": -2.4648,
-      "y": 4.6438,
+      "x": -6.8512,
+      "y": 0.8551,
       "id": 74,
-      "size": 3,
+      "size": 2,
       "color": "#666666"
     },
     {
       "label": "Child2",
-      "x": -1.8517,
-      "y": 5.1282,
+      "x": -7.0968,
+      "y": 1.5867,
       "id": 75,
       "size": 2,
       "color": "#666666"
     },
     {
       "label": "Brujon",
-      "x": 1.057,
-      "y": 2.5092,
+      "x": -2.8235,
+      "y": 1.7565,
       "id": 76,
       "size": 7,
       "color": "#8068AE"
     },
     {
       "label": "MmeHucheloup",
-      "x": -1.5314,
-      "y": 2.8861,
+      "x": -5.2063,
+      "y": 2.2709,
       "id": 77,
       "size": 7,
       "color": "#BF8B12"
@@ -14563,630 +14578,631 @@ sig <span class="op">%&gt;%</span>
       "size": "1",
       "color": "#3182bd"
     }
-  ]
-},"options":{"minNodeSize":1,"maxNodeSize":8,"minEdgeSize":0.1,"maxEdgeSize":2,"neighborEvent":"onClick","neighborStart":"clickNode","neighborEnd":"clickStage","doubleClickZoom":true,"mouseWheelZoom":true},"graph":{"vertices":{"id":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76],"label":["Myriel","Napoleon","MlleBaptistine","MmeMagloire","CountessDeLo","Geborand","Champtercier","Cravatte","Count","OldMan","Labarre","Valjean","Marguerite","MmeDeR","Isabeau","Gervais","Tholomyes","Listolier","Fameuil","Blacheville","Favourite","Dahlia","Zephine","Fantine","MmeThenardier","Thenardier","Cosette","Javert","Fauchelevent","Bamatabois","Perpetue","Simplice","Scaufflaire","Woman1","Judge","Champmathieu","Brevet","Chenildieu","Cochepaille","Pontmercy","Boulatruelle","Eponine","Anzelma","Woman2","MotherInnocent","Gribier","Jondrette","MmeBurgon","Gavroche","Gillenormand","Magnon","MlleGillenormand","MmePontmercy","MlleVaubois","LtGillenormand","Marius","BaronessT","Mabeuf","Enjolras","Combeferre","Prouvaire","Feuilly","Courfeyrac","Bahorel","Bossuet","Joly","Grantaire","MotherPlutarch","Gueulemer","Babet","Claquesous","Montparnasse","Toussaint","Child1","Child2","Brujon","MmeHucheloup"],"group":[1,1,1,1,1,1,1,1,1,1,2,2,3,2,2,2,3,3,3,3,3,3,3,3,4,4,5,4,6,2,3,2,2,2,2,2,2,2,2,4,7,4,4,5,6,6,8,8,9,5,5,5,5,5,5,9,5,9,9,9,9,9,9,9,9,9,9,10,4,4,4,4,5,11,11,4,9]},"edges":{"from":[1,1,1,3,1,1,1,1,1,1,11,4,3,1,12,12,12,12,17,17,18,17,18,19,17,18,19,20,17,18,19,20,21,17,18,19,20,21,22,17,18,19,20,21,22,23,13,12,24,12,25,24,12,25,12,17,26,12,24,26,25,27,12,28,24,28,12,24,31,12,24,28,12,12,28,12,30,12,35,30,35,36,12,30,35,36,37,12,30,35,36,37,38,12,30,26,26,25,26,42,26,25,12,27,28,29,12,29,47,48,26,28,12,27,12,50,25,50,27,12,52,40,52,52,50,27,52,50,40,55,27,12,17,26,42,49,50,56,56,42,49,56,49,28,58,12,59,56,49,58,49,59,60,49,59,61,60,58,56,56,59,60,49,58,42,62,61,60,49,63,58,59,62,61,56,56,63,49,64,59,62,61,60,58,12,64,65,49,63,59,62,61,60,58,56,65,59,60,63,66,49,64,62,61,58,26,12,25,28,49,42,26,69,12,25,28,49,42,26,70,69,12,25,28,42,59,28,70,69,71,12,49,42,26,27,28,12,49,49,74,70,69,26,49,42,71,72,65,66,67,64,63,49,59],"to":[2,3,4,4,5,6,7,8,9,10,12,12,12,12,13,14,15,16,18,19,19,20,20,20,21,21,21,21,22,22,22,22,22,23,23,23,23,23,23,24,24,24,24,24,24,24,24,24,25,25,26,26,26,27,27,27,27,28,28,28,28,28,29,29,30,30,30,31,32,32,32,32,33,34,34,35,35,36,36,36,37,37,37,37,38,38,38,38,38,39,39,39,39,39,39,40,41,42,42,43,43,43,44,44,44,45,45,46,48,49,49,49,49,50,50,51,51,52,52,52,53,53,54,55,55,55,56,56,56,56,56,56,56,56,56,56,57,57,58,58,58,59,59,59,59,59,60,60,60,60,61,61,61,62,62,62,62,62,62,63,63,63,63,63,63,63,63,64,64,64,64,64,64,64,64,65,65,65,65,65,65,65,65,65,65,66,66,66,66,66,66,66,66,66,66,67,67,67,67,67,67,67,67,67,68,69,69,69,69,69,69,70,70,70,70,70,70,70,71,71,71,71,71,71,71,71,72,72,72,72,72,72,72,72,73,73,73,74,75,75,76,76,76,76,76,76,76,77,77,77,77,77,77,77],"value":[1,8,10,6,1,1,1,1,2,1,1,3,3,5,1,1,1,1,4,4,4,4,4,4,3,3,3,4,3,3,3,3,5,3,3,3,3,4,4,3,3,3,3,4,4,4,2,9,2,7,13,1,12,4,31,1,1,17,5,5,1,1,8,1,1,1,2,1,2,3,2,1,1,2,1,3,2,3,3,2,2,2,2,1,2,2,2,2,1,2,2,2,2,2,1,1,1,2,3,2,2,1,3,1,1,3,1,2,1,2,1,1,1,3,2,1,1,9,2,2,1,1,1,2,1,1,6,12,1,1,21,19,1,2,5,4,1,1,1,1,1,7,7,6,1,4,15,5,6,2,1,4,2,2,6,2,5,1,1,9,17,13,7,2,1,6,3,5,5,6,2,4,3,2,1,5,12,5,4,10,6,2,9,1,1,5,7,3,5,5,5,2,5,1,2,3,3,1,2,2,1,1,1,1,3,5,1,1,1,1,1,6,6,1,1,2,1,1,4,4,4,1,1,1,1,1,1,2,2,2,1,1,1,1,2,1,1,2,2,3,3,3,3,1,1,1,1,1,1,1,1,1,1,1]}}},"evals":[],"jsHooks":[]}</script><p>Now, we might want to add or remove interactivity. By default, visualizations have the following interactivity: node labels on-hover, highlight neighborhoods on-click, zoom on double-click, and zoom on mouse-wheel. Let’s remove the neighborhoods on-click feature:</p>
+  ],
+  "directed": [false]
+},"options":{"minNodeSize":1,"maxNodeSize":8,"minEdgeSize":0.1,"maxEdgeSize":2,"neighborEvent":"onClick","neighborStart":"clickNode","neighborEnd":"clickStage","doubleClickZoom":true,"mouseWheelZoom":true,"edgeArrows":"def"},"graph":{"vertices":{"id":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76],"label":["Myriel","Napoleon","MlleBaptistine","MmeMagloire","CountessDeLo","Geborand","Champtercier","Cravatte","Count","OldMan","Labarre","Valjean","Marguerite","MmeDeR","Isabeau","Gervais","Tholomyes","Listolier","Fameuil","Blacheville","Favourite","Dahlia","Zephine","Fantine","MmeThenardier","Thenardier","Cosette","Javert","Fauchelevent","Bamatabois","Perpetue","Simplice","Scaufflaire","Woman1","Judge","Champmathieu","Brevet","Chenildieu","Cochepaille","Pontmercy","Boulatruelle","Eponine","Anzelma","Woman2","MotherInnocent","Gribier","Jondrette","MmeBurgon","Gavroche","Gillenormand","Magnon","MlleGillenormand","MmePontmercy","MlleVaubois","LtGillenormand","Marius","BaronessT","Mabeuf","Enjolras","Combeferre","Prouvaire","Feuilly","Courfeyrac","Bahorel","Bossuet","Joly","Grantaire","MotherPlutarch","Gueulemer","Babet","Claquesous","Montparnasse","Toussaint","Child1","Child2","Brujon","MmeHucheloup"],"group":[1,1,1,1,1,1,1,1,1,1,2,2,3,2,2,2,3,3,3,3,3,3,3,3,4,4,5,4,6,2,3,2,2,2,2,2,2,2,2,4,7,4,4,5,6,6,8,8,9,5,5,5,5,5,5,9,5,9,9,9,9,9,9,9,9,9,9,10,4,4,4,4,5,11,11,4,9]},"edges":{"from":[1,1,1,3,1,1,1,1,1,1,11,4,3,1,12,12,12,12,17,17,18,17,18,19,17,18,19,20,17,18,19,20,21,17,18,19,20,21,22,17,18,19,20,21,22,23,13,12,24,12,25,24,12,25,12,17,26,12,24,26,25,27,12,28,24,28,12,24,31,12,24,28,12,12,28,12,30,12,35,30,35,36,12,30,35,36,37,12,30,35,36,37,38,12,30,26,26,25,26,42,26,25,12,27,28,29,12,29,47,48,26,28,12,27,12,50,25,50,27,12,52,40,52,52,50,27,52,50,40,55,27,12,17,26,42,49,50,56,56,42,49,56,49,28,58,12,59,56,49,58,49,59,60,49,59,61,60,58,56,56,59,60,49,58,42,62,61,60,49,63,58,59,62,61,56,56,63,49,64,59,62,61,60,58,12,64,65,49,63,59,62,61,60,58,56,65,59,60,63,66,49,64,62,61,58,26,12,25,28,49,42,26,69,12,25,28,49,42,26,70,69,12,25,28,42,59,28,70,69,71,12,49,42,26,27,28,12,49,49,74,70,69,26,49,42,71,72,65,66,67,64,63,49,59],"to":[2,3,4,4,5,6,7,8,9,10,12,12,12,12,13,14,15,16,18,19,19,20,20,20,21,21,21,21,22,22,22,22,22,23,23,23,23,23,23,24,24,24,24,24,24,24,24,24,25,25,26,26,26,27,27,27,27,28,28,28,28,28,29,29,30,30,30,31,32,32,32,32,33,34,34,35,35,36,36,36,37,37,37,37,38,38,38,38,38,39,39,39,39,39,39,40,41,42,42,43,43,43,44,44,44,45,45,46,48,49,49,49,49,50,50,51,51,52,52,52,53,53,54,55,55,55,56,56,56,56,56,56,56,56,56,56,57,57,58,58,58,59,59,59,59,59,60,60,60,60,61,61,61,62,62,62,62,62,62,63,63,63,63,63,63,63,63,64,64,64,64,64,64,64,64,65,65,65,65,65,65,65,65,65,65,66,66,66,66,66,66,66,66,66,66,67,67,67,67,67,67,67,67,67,68,69,69,69,69,69,69,70,70,70,70,70,70,70,71,71,71,71,71,71,71,71,72,72,72,72,72,72,72,72,73,73,73,74,75,75,76,76,76,76,76,76,76,77,77,77,77,77,77,77],"value":[1,8,10,6,1,1,1,1,2,1,1,3,3,5,1,1,1,1,4,4,4,4,4,4,3,3,3,4,3,3,3,3,5,3,3,3,3,4,4,3,3,3,3,4,4,4,2,9,2,7,13,1,12,4,31,1,1,17,5,5,1,1,8,1,1,1,2,1,2,3,2,1,1,2,1,3,2,3,3,2,2,2,2,1,2,2,2,2,1,2,2,2,2,2,1,1,1,2,3,2,2,1,3,1,1,3,1,2,1,2,1,1,1,3,2,1,1,9,2,2,1,1,1,2,1,1,6,12,1,1,21,19,1,2,5,4,1,1,1,1,1,7,7,6,1,4,15,5,6,2,1,4,2,2,6,2,5,1,1,9,17,13,7,2,1,6,3,5,5,6,2,4,3,2,1,5,12,5,4,10,6,2,9,1,1,5,7,3,5,5,5,2,5,1,2,3,3,1,2,2,1,1,1,1,3,5,1,1,1,1,1,6,6,1,1,2,1,1,4,4,4,1,1,1,1,1,1,2,2,2,1,1,1,1,2,1,1,2,2,3,3,3,3,1,1,1,1,1,1,1,1,1,1,1]}}},"evals":[],"jsHooks":[]}</script><p>Now, we might want to add or remove interactivity. By default, visualizations have the following interactivity: node labels on-hover, highlight neighborhoods on-click, zoom on double-click, and zoom on mouse-wheel. Let’s remove the neighborhoods on-click feature:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sig <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/addNodeSize.html">addNodeSize</a></span>(<span class="dt">sizeMetric =</span> <span class="st">'degree'</span>, <span class="dt">maxSize =</span> <span class="dv">8</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/addNodeLabels.html">addNodeLabels</a></span>(<span class="dt">labelAttr =</span> <span class="st">'label'</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/addNodeColors.html">addNodeColors</a></span>(<span class="dt">colorAttr =</span> <span class="st">'group'</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/addEdgeSize.html">addEdgeSize</a></span>(<span class="dt">sizeAttr =</span> <span class="st">'value'</span>, <span class="dt">minSize =</span> .<span class="dv">1</span>, <span class="dt">maxSize =</span> <span class="dv">2</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw"><a href="../reference/addEdgeSize.html">addEdgeSize</a></span>(<span class="dt">sizeAttr =</span> <span class="st">'value'</span>, <span class="dt">minSize =</span> <span class="fl">.1</span>, <span class="dt">maxSize =</span> <span class="dv">2</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/addEdgeColors.html">addEdgeColors</a></span>(<span class="dt">oneColor =</span> <span class="st">'#3182bd'</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/addInteraction.html">addInteraction</a></span>(<span class="dt">neighborEvent =</span> <span class="st">'None'</span>)</code></pre></div>
-<div id="htmlwidget-23faec64a5e43c01ab5a" style="width:672px;height:480px;" class="sigmaNet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-23faec64a5e43c01ab5a">{"x":{"data":{
+<div id="htmlwidget-a86d38c32dc798b5d8d9" style="width:700px;height:432.632880098888px;" class="sigmaNet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a86d38c32dc798b5d8d9">{"x":{"data":{
   "nodes": [
     {
       "label": "Myriel",
-      "x": 9.0177,
-      "y": 5.8005,
+      "x": 2.1601,
+      "y": -5.6088,
       "id": 1,
       "size": 10,
       "color": "#1B9E77"
     },
     {
       "label": "Napoleon",
-      "x": 9.6453,
-      "y": 8.5204,
+      "x": 2.8082,
+      "y": -8.5526,
       "id": 2,
-      "size": 3,
-      "color": "#1B9E77"
-    },
-    {
-      "label": "MlleBaptistine",
-      "x": 7.3005,
-      "y": 4.0494,
-      "id": 3,
       "size": 1,
       "color": "#1B9E77"
     },
     {
+      "label": "MlleBaptistine",
+      "x": 1.5477,
+      "y": -3.2429,
+      "id": 3,
+      "size": 3,
+      "color": "#1B9E77"
+    },
+    {
       "label": "MmeMagloire",
-      "x": 6.9035,
-      "y": 4.503,
+      "x": 0.9845,
+      "y": -3.4666,
       "id": 4,
       "size": 3,
       "color": "#1B9E77"
     },
     {
       "label": "CountessDeLo",
-      "x": 10.9262,
-      "y": 7.3117,
+      "x": 1.299,
+      "y": -8.2073,
       "id": 5,
-      "size": 36,
+      "size": 1,
       "color": "#1B9E77"
     },
     {
       "label": "Geborand",
-      "x": 11.735,
-      "y": 5.7395,
+      "x": 2.9538,
+      "y": -7.7509,
       "id": 6,
-      "size": 9,
+      "size": 1,
       "color": "#1B9E77"
     },
     {
       "label": "Champtercier",
-      "x": 11.4612,
-      "y": 6.4507,
+      "x": 4.5607,
+      "y": -6.936,
       "id": 7,
-      "size": 7,
+      "size": 1,
       "color": "#1B9E77"
     },
     {
       "label": "Cravatte",
-      "x": 11.7135,
-      "y": 7.2252,
+      "x": 2.0503,
+      "y": -8.1904,
       "id": 8,
-      "size": 7,
+      "size": 1,
       "color": "#1B9E77"
     },
     {
       "label": "Count",
-      "x": 10.1062,
-      "y": 7.8609,
+      "x": 3.8185,
+      "y": -8.1141,
       "id": 9,
-      "size": 7,
+      "size": 1,
       "color": "#1B9E77"
     },
     {
       "label": "OldMan",
-      "x": 10.8764,
-      "y": 8.1784,
+      "x": 3.8993,
+      "y": -7.3161,
       "id": 10,
-      "size": 7,
+      "size": 1,
       "color": "#1B9E77"
     },
     {
       "label": "Labarre",
-      "x": 5.0404,
-      "y": 4.6753,
+      "x": -0.4207,
+      "y": -2.8802,
       "id": 11,
-      "size": 7,
+      "size": 1,
       "color": "#A07125"
     },
     {
       "label": "Valjean",
-      "x": 4.1401,
-      "y": 1.7819,
+      "x": -0.1134,
+      "y": 0.2424,
       "id": 12,
-      "size": 7,
+      "size": 36,
       "color": "#A07125"
     },
     {
       "label": "Marguerite",
-      "x": 5.6356,
-      "y": -0.8433,
+      "x": 2.6922,
+      "y": 1.317,
       "id": 13,
       "size": 2,
       "color": "#B16548"
     },
     {
       "label": "MmeDeR",
-      "x": 5.4966,
-      "y": 4.0852,
+      "x": -0.6584,
+      "y": -2.1912,
       "id": 14,
-      "size": 15,
+      "size": 1,
       "color": "#A07125"
     },
     {
       "label": "Isabeau",
-      "x": 7.2943,
-      "y": 2.4239,
+      "x": -1.4111,
+      "y": -2.6219,
       "id": 15,
-      "size": 11,
+      "size": 1,
       "color": "#A07125"
     },
     {
       "label": "Gervais",
-      "x": 6.0352,
-      "y": 3.4728,
+      "x": 1.379,
+      "y": -2.1146,
       "id": 16,
-      "size": 16,
+      "size": 1,
       "color": "#A07125"
     },
     {
       "label": "Tholomyes",
-      "x": 3.1893,
-      "y": -3.0906,
+      "x": 2.2033,
+      "y": 4.5296,
       "id": 17,
-      "size": 11,
+      "size": 9,
       "color": "#B16548"
     },
     {
       "label": "Listolier",
-      "x": 4.2686,
-      "y": -4.7063,
+      "x": 3.795,
+      "y": 5.4671,
       "id": 18,
-      "size": 17,
+      "size": 7,
       "color": "#B16548"
     },
     {
       "label": "Fameuil",
-      "x": 3.8069,
-      "y": -4.3166,
+      "x": 4.1138,
+      "y": 4.3549,
       "id": 19,
-      "size": 2,
+      "size": 7,
       "color": "#B16548"
     },
     {
       "label": "Blacheville",
-      "x": 4.723,
-      "y": -4.6438,
+      "x": 4.3609,
+      "y": 4.7263,
       "id": 20,
-      "size": 8,
+      "size": 7,
       "color": "#B16548"
     },
     {
       "label": "Favourite",
-      "x": 4.3484,
-      "y": -4.0769,
+      "x": 4.1636,
+      "y": 5.1573,
       "id": 21,
-      "size": 6,
+      "size": 7,
       "color": "#B16548"
     },
     {
       "label": "Dahlia",
-      "x": 3.798,
-      "y": -4.7907,
+      "x": 3.4415,
+      "y": 5.1884,
       "id": 22,
-      "size": 6,
+      "size": 7,
       "color": "#B16548"
     },
     {
       "label": "Zephine",
-      "x": 4.8433,
-      "y": -4.1723,
+      "x": 3.6887,
+      "y": 4.6653,
       "id": 23,
-      "size": 6,
+      "size": 7,
       "color": "#B16548"
     },
     {
       "label": "Fantine",
-      "x": 4.0807,
-      "y": -1.9014,
+      "x": 2.1808,
+      "y": 3.1489,
       "id": 24,
-      "size": 6,
+      "size": 15,
       "color": "#B16548"
     },
     {
       "label": "MmeThenardier",
-      "x": 2.3825,
-      "y": 0.1391,
+      "x": -0.4829,
+      "y": 2.8082,
       "id": 25,
       "size": 11,
       "color": "#8068AE"
     },
     {
       "label": "Thenardier",
-      "x": 1.6299,
-      "y": 0.8377,
+      "x": -1.3416,
+      "y": 3.0476,
       "id": 26,
-      "size": 4,
+      "size": 16,
       "color": "#8068AE"
     },
     {
       "label": "Cosette",
-      "x": 2.5356,
-      "y": -0.5894,
+      "x": 0.1617,
+      "y": 3.0263,
       "id": 27,
-      "size": 1,
+      "size": 11,
       "color": "#D03792"
     },
     {
       "label": "Javert",
-      "x": 2.9461,
-      "y": 1.2066,
+      "x": -0.6903,
+      "y": 1.4475,
       "id": 28,
-      "size": 2,
+      "size": 17,
       "color": "#8068AE"
     },
     {
       "label": "Fauchelevent",
-      "x": 3.4312,
-      "y": 4.3722,
+      "x": -2.339,
+      "y": -1.2703,
       "id": 29,
-      "size": 7,
+      "size": 4,
       "color": "#A66753"
     },
     {
       "label": "Bamatabois",
-      "x": 5.4674,
-      "y": 0.4073,
+      "x": 1.7589,
+      "y": 0.4427,
       "id": 30,
-      "size": 7,
+      "size": 8,
       "color": "#A07125"
     },
     {
       "label": "Perpetue",
-      "x": 6.0862,
-      "y": -2.6992,
+      "x": 4.2326,
+      "y": 2.463,
       "id": 31,
-      "size": 3,
+      "size": 2,
       "color": "#B16548"
     },
     {
       "label": "Simplice",
-      "x": 4.7925,
-      "y": -0.724,
+      "x": 1.9738,
+      "y": 1.7722,
       "id": 32,
       "size": 4,
       "color": "#A07125"
     },
     {
       "label": "Scaufflaire",
-      "x": 6.5811,
-      "y": 2.8228,
+      "x": 0.3749,
+      "y": -2.2761,
       "id": 33,
-      "size": 22,
+      "size": 1,
       "color": "#A07125"
     },
     {
       "label": "Woman1",
-      "x": 4.0554,
-      "y": 3.0026,
+      "x": -0.9539,
+      "y": -0.6344,
       "id": 34,
-      "size": 19,
+      "size": 2,
       "color": "#A07125"
     },
     {
       "label": "Judge",
-      "x": 6.5025,
-      "y": 1.4358,
+      "x": 2.6349,
+      "y": -0.2821,
       "id": 35,
-      "size": 11,
+      "size": 6,
       "color": "#A07125"
     },
     {
       "label": "Champmathieu",
-      "x": 6.3138,
-      "y": 0.9717,
+      "x": 1.7737,
+      "y": -0.961,
       "id": 36,
-      "size": 15,
+      "size": 6,
       "color": "#A07125"
     },
     {
       "label": "Brevet",
-      "x": 6.9903,
-      "y": 1.1793,
+      "x": 2.7107,
+      "y": -0.8031,
       "id": 37,
-      "size": 11,
+      "size": 6,
       "color": "#A07125"
     },
     {
       "label": "Chenildieu",
-      "x": 6.5703,
-      "y": 0.3843,
+      "x": 2.0778,
+      "y": -0.4841,
       "id": 38,
-      "size": 9,
+      "size": 6,
       "color": "#A07125"
     },
     {
       "label": "Cochepaille",
-      "x": 6.9702,
-      "y": 0.6471,
+      "x": 2.2671,
+      "y": -1.1265,
       "id": 39,
-      "size": 11,
+      "size": 6,
       "color": "#A07125"
     },
     {
       "label": "Pontmercy",
-      "x": -0.6465,
-      "y": -1.3632,
+      "x": -1.2437,
+      "y": 5.8447,
       "id": 40,
-      "size": 13,
+      "size": 3,
       "color": "#8068AE"
     },
     {
       "label": "Boulatruelle",
-      "x": 0.7533,
-      "y": 3.9066,
+      "x": -2.7152,
+      "y": 6.1574,
       "id": 41,
-      "size": 12,
+      "size": 1,
       "color": "#7FA718"
     },
     {
       "label": "Eponine",
-      "x": 0.6956,
-      "y": 1.1454,
+      "x": -2.4484,
+      "y": 2.9456,
       "id": 42,
-      "size": 13,
+      "size": 11,
       "color": "#8068AE"
     },
     {
       "label": "Anzelma",
-      "x": 0.7251,
-      "y": -0.44,
+      "x": -1.6946,
+      "y": 4.4861,
       "id": 43,
-      "size": 12,
+      "size": 3,
       "color": "#8068AE"
     },
     {
       "label": "Woman2",
-      "x": 3.9096,
-      "y": -0.0163,
+      "x": 0.8517,
+      "y": 1.7238,
       "id": 44,
-      "size": 10,
+      "size": 3,
       "color": "#D03792"
     },
     {
       "label": "MotherInnocent",
-      "x": 4.214,
-      "y": 4.729,
+      "x": -1.978,
+      "y": -2.0035,
       "id": 45,
-      "size": 10,
+      "size": 2,
       "color": "#A66753"
     },
     {
       "label": "Gribier",
-      "x": 3.338,
-      "y": 7.3084,
+      "x": -4.2348,
+      "y": -3.544,
       "id": 46,
-      "size": 10,
+      "size": 1,
       "color": "#A66753"
     },
     {
       "label": "Jondrette",
-      "x": -6.2827,
-      "y": 5.8817,
+      "x": -10.8515,
+      "y": 3.1141,
       "id": 47,
-      "size": 2,
+      "size": 1,
       "color": "#D9AA04"
     },
     {
       "label": "MmeBurgon",
-      "x": -3.8817,
-      "y": 4.5097,
+      "x": -8.1158,
+      "y": 2.6974,
       "id": 48,
-      "size": 9,
+      "size": 2,
       "color": "#D9AA04"
     },
     {
       "label": "Gavroche",
-      "x": -0.2013,
-      "y": 2.4759,
+      "x": -3.9795,
+      "y": 2.1488,
       "id": 49,
-      "size": 10,
+      "size": 22,
       "color": "#BF8B12"
     },
     {
       "label": "Gillenormand",
-      "x": 1.7088,
-      "y": -0.9932,
+      "x": -0.4646,
+      "y": 3.913,
       "id": 50,
-      "size": 1,
+      "size": 7,
       "color": "#D03792"
     },
     {
       "label": "Magnon",
-      "x": 1.8954,
-      "y": -2.4436,
+      "x": 0.5147,
+      "y": 5.3123,
       "id": 51,
-      "size": 1,
+      "size": 2,
       "color": "#D03792"
     },
     {
       "label": "MlleGillenormand",
-      "x": 1.3055,
-      "y": -1.7067,
+      "x": 0.0905,
+      "y": 4.5502,
       "id": 52,
-      "size": 1,
+      "size": 7,
       "color": "#D03792"
     },
     {
       "label": "MmePontmercy",
-      "x": -0.9668,
-      "y": -3.321,
+      "x": -0.2152,
+      "y": 7.3266,
       "id": 53,
-      "size": 1,
+      "size": 2,
       "color": "#D03792"
     },
     {
       "label": "MlleVaubois",
-      "x": 0.0505,
-      "y": -4.6217,
+      "x": 1.2249,
+      "y": 7.5014,
       "id": 54,
       "size": 1,
       "color": "#D03792"
     },
     {
       "label": "LtGillenormand",
-      "x": 0.6905,
-      "y": -1.8832,
+      "x": -0.5312,
+      "y": 5.0402,
       "id": 55,
-      "size": 1,
+      "size": 4,
       "color": "#D03792"
     },
     {
       "label": "Marius",
-      "x": 0.4144,
-      "y": 0.1326,
+      "x": -2.0769,
+      "y": 3.684,
       "id": 56,
-      "size": 1,
+      "size": 19,
       "color": "#BF8B12"
     },
     {
       "label": "BaronessT",
-      "x": -0.3712,
-      "y": -2.1517,
+      "x": -1.8364,
+      "y": 5.9712,
       "id": 57,
-      "size": 1,
+      "size": 2,
       "color": "#D03792"
     },
     {
       "label": "Mabeuf",
-      "x": -1.7022,
-      "y": 0.8086,
+      "x": -4.2693,
+      "y": 4.2342,
       "id": 58,
-      "size": 1,
+      "size": 11,
       "color": "#BF8B12"
     },
     {
       "label": "Enjolras",
-      "x": 0.1087,
-      "y": 1.6863,
+      "x": -3.3153,
+      "y": 2.5257,
       "id": 59,
-      "size": 1,
+      "size": 15,
       "color": "#BF8B12"
     },
     {
       "label": "Combeferre",
-      "x": -1.7244,
-      "y": 1.2941,
+      "x": -4.4798,
+      "y": 3.8626,
       "id": 60,
-      "size": 4,
+      "size": 11,
       "color": "#BF8B12"
     },
     {
       "label": "Prouvaire",
-      "x": -1.7448,
-      "y": 2.4025,
+      "x": -5.335,
+      "y": 3.3268,
       "id": 61,
-      "size": 1,
+      "size": 9,
       "color": "#BF8B12"
     },
     {
       "label": "Feuilly",
-      "x": -1.2862,
-      "y": 1.1256,
+      "x": -4.7378,
+      "y": 3.5659,
       "id": 62,
-      "size": 2,
+      "size": 11,
       "color": "#BF8B12"
     },
     {
       "label": "Courfeyrac",
-      "x": -1.0077,
-      "y": 1.5452,
+      "x": -4.1292,
+      "y": 3.1731,
       "id": 63,
-      "size": 6,
+      "size": 13,
       "color": "#BF8B12"
     },
     {
       "label": "Bahorel",
-      "x": -1.2688,
-      "y": 1.9423,
+      "x": -4.6362,
+      "y": 3.0554,
       "id": 64,
-      "size": 1,
+      "size": 12,
       "color": "#BF8B12"
     },
     {
       "label": "Bossuet",
-      "x": -0.3006,
-      "y": 1.77,
+      "x": -3.7267,
+      "y": 2.6283,
       "id": 65,
-      "size": 3,
+      "size": 13,
       "color": "#BF8B12"
     },
     {
       "label": "Joly",
-      "x": -1.5756,
-      "y": 1.6768,
+      "x": -4.3145,
+      "y": 3.4905,
       "id": 66,
-      "size": 3,
+      "size": 12,
       "color": "#BF8B12"
     },
     {
       "label": "Grantaire",
-      "x": -2.0542,
-      "y": 2.1219,
+      "x": -5.2756,
+      "y": 2.8556,
       "id": 67,
-      "size": 2,
+      "size": 10,
       "color": "#BF8B12"
     },
     {
       "label": "MotherPlutarch",
-      "x": -4.7381,
-      "y": 0.1683,
+      "x": -6.4879,
+      "y": 6.3948,
       "id": 68,
       "size": 1,
       "color": "#927132"
     },
     {
       "label": "Gueulemer",
-      "x": 2.0676,
-      "y": 1.9894,
+      "x": -1.779,
+      "y": 1.5163,
       "id": 69,
-      "size": 2,
+      "size": 10,
       "color": "#8068AE"
     },
     {
       "label": "Babet",
-      "x": 1.7024,
-      "y": 1.7857,
+      "x": -1.9396,
+      "y": 1.8978,
       "id": 70,
-      "size": 2,
+      "size": 10,
       "color": "#8068AE"
     },
     {
       "label": "Claquesous",
-      "x": 2.0614,
-      "y": 1.4974,
+      "x": -1.4974,
+      "y": 1.9183,
       "id": 71,
-      "size": 1,
+      "size": 10,
       "color": "#8068AE"
     },
     {
       "label": "Montparnasse",
-      "x": 1.8839,
-      "y": 2.4217,
+      "x": -2.192,
+      "y": 1.2579,
       "id": 72,
-      "size": 2,
+      "size": 9,
       "color": "#8068AE"
     },
     {
       "label": "Toussaint",
-      "x": 4.0251,
-      "y": 0.559,
+      "x": 0.5284,
+      "y": 1.203,
       "id": 73,
-      "size": 1,
+      "size": 3,
       "color": "#D03792"
     },
     {
       "label": "Child1",
-      "x": -2.4648,
-      "y": 4.6438,
+      "x": -6.8512,
+      "y": 0.8551,
       "id": 74,
-      "size": 3,
+      "size": 2,
       "color": "#666666"
     },
     {
       "label": "Child2",
-      "x": -1.8517,
-      "y": 5.1282,
+      "x": -7.0968,
+      "y": 1.5867,
       "id": 75,
       "size": 2,
       "color": "#666666"
     },
     {
       "label": "Brujon",
-      "x": 1.057,
-      "y": 2.5092,
+      "x": -2.8235,
+      "y": 1.7565,
       "id": 76,
       "size": 7,
       "color": "#8068AE"
     },
     {
       "label": "MmeHucheloup",
-      "x": -1.5314,
-      "y": 2.8861,
+      "x": -5.2063,
+      "y": 2.2709,
       "id": 77,
       "size": 7,
       "color": "#BF8B12"
@@ -16971,13 +16987,14 @@ sig <span class="op">%&gt;%</span>
       "size": "1",
       "color": "#3182bd"
     }
-  ]
-},"options":{"minNodeSize":1,"maxNodeSize":8,"minEdgeSize":0.1,"maxEdgeSize":2,"neighborEvent":"None","neighborStart":"clickNode","neighborEnd":"clickStage","doubleClickZoom":true,"mouseWheelZoom":true},"graph":{"vertices":{"id":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76],"label":["Myriel","Napoleon","MlleBaptistine","MmeMagloire","CountessDeLo","Geborand","Champtercier","Cravatte","Count","OldMan","Labarre","Valjean","Marguerite","MmeDeR","Isabeau","Gervais","Tholomyes","Listolier","Fameuil","Blacheville","Favourite","Dahlia","Zephine","Fantine","MmeThenardier","Thenardier","Cosette","Javert","Fauchelevent","Bamatabois","Perpetue","Simplice","Scaufflaire","Woman1","Judge","Champmathieu","Brevet","Chenildieu","Cochepaille","Pontmercy","Boulatruelle","Eponine","Anzelma","Woman2","MotherInnocent","Gribier","Jondrette","MmeBurgon","Gavroche","Gillenormand","Magnon","MlleGillenormand","MmePontmercy","MlleVaubois","LtGillenormand","Marius","BaronessT","Mabeuf","Enjolras","Combeferre","Prouvaire","Feuilly","Courfeyrac","Bahorel","Bossuet","Joly","Grantaire","MotherPlutarch","Gueulemer","Babet","Claquesous","Montparnasse","Toussaint","Child1","Child2","Brujon","MmeHucheloup"],"group":[1,1,1,1,1,1,1,1,1,1,2,2,3,2,2,2,3,3,3,3,3,3,3,3,4,4,5,4,6,2,3,2,2,2,2,2,2,2,2,4,7,4,4,5,6,6,8,8,9,5,5,5,5,5,5,9,5,9,9,9,9,9,9,9,9,9,9,10,4,4,4,4,5,11,11,4,9]},"edges":{"from":[1,1,1,3,1,1,1,1,1,1,11,4,3,1,12,12,12,12,17,17,18,17,18,19,17,18,19,20,17,18,19,20,21,17,18,19,20,21,22,17,18,19,20,21,22,23,13,12,24,12,25,24,12,25,12,17,26,12,24,26,25,27,12,28,24,28,12,24,31,12,24,28,12,12,28,12,30,12,35,30,35,36,12,30,35,36,37,12,30,35,36,37,38,12,30,26,26,25,26,42,26,25,12,27,28,29,12,29,47,48,26,28,12,27,12,50,25,50,27,12,52,40,52,52,50,27,52,50,40,55,27,12,17,26,42,49,50,56,56,42,49,56,49,28,58,12,59,56,49,58,49,59,60,49,59,61,60,58,56,56,59,60,49,58,42,62,61,60,49,63,58,59,62,61,56,56,63,49,64,59,62,61,60,58,12,64,65,49,63,59,62,61,60,58,56,65,59,60,63,66,49,64,62,61,58,26,12,25,28,49,42,26,69,12,25,28,49,42,26,70,69,12,25,28,42,59,28,70,69,71,12,49,42,26,27,28,12,49,49,74,70,69,26,49,42,71,72,65,66,67,64,63,49,59],"to":[2,3,4,4,5,6,7,8,9,10,12,12,12,12,13,14,15,16,18,19,19,20,20,20,21,21,21,21,22,22,22,22,22,23,23,23,23,23,23,24,24,24,24,24,24,24,24,24,25,25,26,26,26,27,27,27,27,28,28,28,28,28,29,29,30,30,30,31,32,32,32,32,33,34,34,35,35,36,36,36,37,37,37,37,38,38,38,38,38,39,39,39,39,39,39,40,41,42,42,43,43,43,44,44,44,45,45,46,48,49,49,49,49,50,50,51,51,52,52,52,53,53,54,55,55,55,56,56,56,56,56,56,56,56,56,56,57,57,58,58,58,59,59,59,59,59,60,60,60,60,61,61,61,62,62,62,62,62,62,63,63,63,63,63,63,63,63,64,64,64,64,64,64,64,64,65,65,65,65,65,65,65,65,65,65,66,66,66,66,66,66,66,66,66,66,67,67,67,67,67,67,67,67,67,68,69,69,69,69,69,69,70,70,70,70,70,70,70,71,71,71,71,71,71,71,71,72,72,72,72,72,72,72,72,73,73,73,74,75,75,76,76,76,76,76,76,76,77,77,77,77,77,77,77],"value":[1,8,10,6,1,1,1,1,2,1,1,3,3,5,1,1,1,1,4,4,4,4,4,4,3,3,3,4,3,3,3,3,5,3,3,3,3,4,4,3,3,3,3,4,4,4,2,9,2,7,13,1,12,4,31,1,1,17,5,5,1,1,8,1,1,1,2,1,2,3,2,1,1,2,1,3,2,3,3,2,2,2,2,1,2,2,2,2,1,2,2,2,2,2,1,1,1,2,3,2,2,1,3,1,1,3,1,2,1,2,1,1,1,3,2,1,1,9,2,2,1,1,1,2,1,1,6,12,1,1,21,19,1,2,5,4,1,1,1,1,1,7,7,6,1,4,15,5,6,2,1,4,2,2,6,2,5,1,1,9,17,13,7,2,1,6,3,5,5,6,2,4,3,2,1,5,12,5,4,10,6,2,9,1,1,5,7,3,5,5,5,2,5,1,2,3,3,1,2,2,1,1,1,1,3,5,1,1,1,1,1,6,6,1,1,2,1,1,4,4,4,1,1,1,1,1,1,2,2,2,1,1,1,1,2,1,1,2,2,3,3,3,3,1,1,1,1,1,1,1,1,1,1,1]}}},"evals":[],"jsHooks":[]}</script><p>Finally, we can save our work as an html object. This is useful when you are creating a very large graph and don’t want to risk crashing your ‘R’ session. The output will be an html visualization that maintains all of the interactivity and attributes you’ve added.</p>
+  ],
+  "directed": [false]
+},"options":{"minNodeSize":1,"maxNodeSize":8,"minEdgeSize":0.1,"maxEdgeSize":2,"neighborEvent":"None","neighborStart":"clickNode","neighborEnd":"clickStage","doubleClickZoom":true,"mouseWheelZoom":true,"edgeArrows":"def"},"graph":{"vertices":{"id":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76],"label":["Myriel","Napoleon","MlleBaptistine","MmeMagloire","CountessDeLo","Geborand","Champtercier","Cravatte","Count","OldMan","Labarre","Valjean","Marguerite","MmeDeR","Isabeau","Gervais","Tholomyes","Listolier","Fameuil","Blacheville","Favourite","Dahlia","Zephine","Fantine","MmeThenardier","Thenardier","Cosette","Javert","Fauchelevent","Bamatabois","Perpetue","Simplice","Scaufflaire","Woman1","Judge","Champmathieu","Brevet","Chenildieu","Cochepaille","Pontmercy","Boulatruelle","Eponine","Anzelma","Woman2","MotherInnocent","Gribier","Jondrette","MmeBurgon","Gavroche","Gillenormand","Magnon","MlleGillenormand","MmePontmercy","MlleVaubois","LtGillenormand","Marius","BaronessT","Mabeuf","Enjolras","Combeferre","Prouvaire","Feuilly","Courfeyrac","Bahorel","Bossuet","Joly","Grantaire","MotherPlutarch","Gueulemer","Babet","Claquesous","Montparnasse","Toussaint","Child1","Child2","Brujon","MmeHucheloup"],"group":[1,1,1,1,1,1,1,1,1,1,2,2,3,2,2,2,3,3,3,3,3,3,3,3,4,4,5,4,6,2,3,2,2,2,2,2,2,2,2,4,7,4,4,5,6,6,8,8,9,5,5,5,5,5,5,9,5,9,9,9,9,9,9,9,9,9,9,10,4,4,4,4,5,11,11,4,9]},"edges":{"from":[1,1,1,3,1,1,1,1,1,1,11,4,3,1,12,12,12,12,17,17,18,17,18,19,17,18,19,20,17,18,19,20,21,17,18,19,20,21,22,17,18,19,20,21,22,23,13,12,24,12,25,24,12,25,12,17,26,12,24,26,25,27,12,28,24,28,12,24,31,12,24,28,12,12,28,12,30,12,35,30,35,36,12,30,35,36,37,12,30,35,36,37,38,12,30,26,26,25,26,42,26,25,12,27,28,29,12,29,47,48,26,28,12,27,12,50,25,50,27,12,52,40,52,52,50,27,52,50,40,55,27,12,17,26,42,49,50,56,56,42,49,56,49,28,58,12,59,56,49,58,49,59,60,49,59,61,60,58,56,56,59,60,49,58,42,62,61,60,49,63,58,59,62,61,56,56,63,49,64,59,62,61,60,58,12,64,65,49,63,59,62,61,60,58,56,65,59,60,63,66,49,64,62,61,58,26,12,25,28,49,42,26,69,12,25,28,49,42,26,70,69,12,25,28,42,59,28,70,69,71,12,49,42,26,27,28,12,49,49,74,70,69,26,49,42,71,72,65,66,67,64,63,49,59],"to":[2,3,4,4,5,6,7,8,9,10,12,12,12,12,13,14,15,16,18,19,19,20,20,20,21,21,21,21,22,22,22,22,22,23,23,23,23,23,23,24,24,24,24,24,24,24,24,24,25,25,26,26,26,27,27,27,27,28,28,28,28,28,29,29,30,30,30,31,32,32,32,32,33,34,34,35,35,36,36,36,37,37,37,37,38,38,38,38,38,39,39,39,39,39,39,40,41,42,42,43,43,43,44,44,44,45,45,46,48,49,49,49,49,50,50,51,51,52,52,52,53,53,54,55,55,55,56,56,56,56,56,56,56,56,56,56,57,57,58,58,58,59,59,59,59,59,60,60,60,60,61,61,61,62,62,62,62,62,62,63,63,63,63,63,63,63,63,64,64,64,64,64,64,64,64,65,65,65,65,65,65,65,65,65,65,66,66,66,66,66,66,66,66,66,66,67,67,67,67,67,67,67,67,67,68,69,69,69,69,69,69,70,70,70,70,70,70,70,71,71,71,71,71,71,71,71,72,72,72,72,72,72,72,72,73,73,73,74,75,75,76,76,76,76,76,76,76,77,77,77,77,77,77,77],"value":[1,8,10,6,1,1,1,1,2,1,1,3,3,5,1,1,1,1,4,4,4,4,4,4,3,3,3,4,3,3,3,3,5,3,3,3,3,4,4,3,3,3,3,4,4,4,2,9,2,7,13,1,12,4,31,1,1,17,5,5,1,1,8,1,1,1,2,1,2,3,2,1,1,2,1,3,2,3,3,2,2,2,2,1,2,2,2,2,1,2,2,2,2,2,1,1,1,2,3,2,2,1,3,1,1,3,1,2,1,2,1,1,1,3,2,1,1,9,2,2,1,1,1,2,1,1,6,12,1,1,21,19,1,2,5,4,1,1,1,1,1,7,7,6,1,4,15,5,6,2,1,4,2,2,6,2,5,1,1,9,17,13,7,2,1,6,3,5,5,6,2,4,3,2,1,5,12,5,4,10,6,2,9,1,1,5,7,3,5,5,5,2,5,1,2,3,3,1,2,2,1,1,1,1,3,5,1,1,1,1,1,6,6,1,1,2,1,1,4,4,4,1,1,1,1,1,1,2,2,2,1,1,1,1,2,1,1,2,2,3,3,3,3,1,1,1,1,1,1,1,1,1,1,1]}}},"evals":[],"jsHooks":[]}</script><p>Finally, we can save our work as an html object. This is useful when you are creating a very large graph and don’t want to risk crashing your ‘R’ session. The output will be an html visualization that maintains all of the interactivity and attributes you’ve added.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sig <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/addNodeSize.html">addNodeSize</a></span>(<span class="dt">sizeMetric =</span> <span class="st">'degree'</span>, <span class="dt">maxSize =</span> <span class="dv">8</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/addNodeLabels.html">addNodeLabels</a></span>(<span class="dt">labelAttr =</span> <span class="st">'label'</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/addNodeColors.html">addNodeColors</a></span>(<span class="dt">colorAttr =</span> <span class="st">'group'</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="../reference/addEdgeSize.html">addEdgeSize</a></span>(<span class="dt">sizeAttr =</span> <span class="st">'value'</span>, <span class="dt">minSize =</span> .<span class="dv">1</span>, <span class="dt">maxSize =</span> <span class="dv">2</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw"><a href="../reference/addEdgeSize.html">addEdgeSize</a></span>(<span class="dt">sizeAttr =</span> <span class="st">'value'</span>, <span class="dt">minSize =</span> <span class="fl">.1</span>, <span class="dt">maxSize =</span> <span class="dv">2</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/addEdgeColors.html">addEdgeColors</a></span>(<span class="dt">oneColor =</span> <span class="st">'#3182bd'</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/addInteraction.html">addInteraction</a></span>(<span class="dt">neighborEvent =</span> <span class="st">'None'</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="../reference/saveSigma.html">saveSigma</a></span>(<span class="st">'mySigmaGraph.html'</span>)</code></pre></div>
@@ -16986,7 +17003,6 @@ sig <span class="op">%&gt;%</span>
 <h2 class="hasAnchor">
 <a href="#conclusion" class="anchor"></a>Conclusion</h2>
 <p>This guide explained why this package exists, when you should use it, and how to use it. I plan to develop additional features as I spend some time using the functions myself. Please do not hesitate to request additional features you would find useful here: <a href="https://github.com/iankloo/sigmaNet/issues" class="uri">https://github.com/iankloo/sigmaNet/issues</a>.</p>
-</div>
 </div>
   </div>
 
@@ -17017,6 +17033,8 @@ sig <span class="op">%&gt;%</span>
 
       </footer>
 </div>
+
+  
 
   </body>
 </html>
