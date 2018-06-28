@@ -59,7 +59,7 @@ addNodeColors <- function(sigmaObj, oneColor = NULL, colorAttr = NULL, colorPal 
 
   graphOut <- list(nodes, edges, directed)
   names(graphOut) <- c('nodes','edges', 'directed')
-  
+
   sigmaObj$x$data <- jsonlite::toJSON(graphOut, pretty = TRUE)
   return(sigmaObj)
 }
@@ -76,6 +76,7 @@ addNodeColors <- function(sigmaObj, oneColor = NULL, colorAttr = NULL, colorPal 
 #' @param minSize The minimum node size on the graph (for scaling)
 #' @param maxSize The maximum node size on the graph (for scaling)
 #' @param sizeMetric The metric to use when sizing the nodes.  Options are: degree, closeness, betweenness, pageRank, or eigenCentrality.
+#' @param mode The mode to be used when calculating degree or closeness for directed networks. Options are: all, in, out and total. The default behaviour will match that of igraph.
 #' @param sizeVector An optional vector with the sizes for each node (overrides sizeMetric and min/maxSize)
 #' @param oneSize A single size to use for all nodes
 #'
@@ -108,11 +109,11 @@ addNodeColors <- function(sigmaObj, oneColor = NULL, colorAttr = NULL, colorPal 
 #' sig
 #'
 #' @export
-addNodeSize <- function(sigmaObj, minSize = 1, maxSize = 3, sizeMetric = 'degree', sizeVector = NULL, oneSize = NULL){
+addNodeSize <- function(sigmaObj, minSize = 1, maxSize = 3, sizeMetric = 'degree', mode = NULL, sizeVector = NULL, oneSize = NULL){
   edges <- jsonlite::fromJSON(sigmaObj$x$data)$edges
   nodes <- jsonlite::fromJSON(sigmaObj$x$data)$nodes
   directed <- jsonlite::fromJSON(sigmaObj$x$data)$directed
-  
+
   if(!is.null(oneSize)){
     nodes$size <- oneSize
     sigmaObj$x$options$minNodeSize <- oneSize
@@ -125,10 +126,19 @@ addNodeSize <- function(sigmaObj, minSize = 1, maxSize = 3, sizeMetric = 'degree
     tmp_graph <- igraph::graph_from_data_frame(d = edges,
                                                directed = directed,
                                                vertices = nodes$id)
+    # set default mode to match those of igraph
+    if(is.null(mode)){
+      if(sizeMetric == 'degree'){
+        mode = "all"
+      } else if(sizeMetric == 'closeness'){
+        mode = "out"
+      }
+    }
+
     if(sizeMetric == 'degree'){
-      nodes$size <- igraph::degree(tmp_graph)
+      nodes$size <- igraph::degree(tmp_graph, mode = mode)
     } else if(sizeMetric == 'closeness'){
-      nodes$size <- igraph::closeness(tmp_graph)
+      nodes$size <- igraph::closeness(tmp_graph, mode = mode)
     } else if(sizeMetric == 'betweenness'){
       nodes$size <- igraph::betweenness(tmp_graph, directed = directed)
     } else if(sizeMetric == 'pageRank'){
@@ -144,7 +154,7 @@ addNodeSize <- function(sigmaObj, minSize = 1, maxSize = 3, sizeMetric = 'degree
 
   graphOut <- list(nodes, edges, directed)
   names(graphOut) <- c('nodes','edges', 'directed')
-  
+
   sigmaObj$x$data <- jsonlite::toJSON(graphOut, pretty = TRUE)
   return(sigmaObj)
 
@@ -242,7 +252,7 @@ addEdgeSize <- function(sigmaObj, sizeAttr = NULL, minSize = 1, maxSize = 5, one
 
   graphOut <- list(nodes, edges, directed)
   names(graphOut) <- c('nodes','edges', 'directed')
-  
+
   sigmaObj$x$data <- jsonlite::toJSON(graphOut, pretty = TRUE)
   return(sigmaObj)
 }
@@ -299,7 +309,7 @@ addEdgeColors <- function(sigmaObj, oneColor = NULL, colorAttr = NULL, colorPal 
 
   graphOut <- list(nodes, edges, directed)
   names(graphOut) <- c('nodes','edges', 'directed')
-  
+
   sigmaObj$x$data <- jsonlite::toJSON(graphOut, pretty = TRUE)
   return(sigmaObj)
 }
@@ -307,7 +317,7 @@ addEdgeColors <- function(sigmaObj, oneColor = NULL, colorAttr = NULL, colorPal 
 #'
 #' Add edge arrows to a directed graph.  Due to complexities of writing custom renderers in webGL, we are stuck with one
 #' arrow:edge size ratio.  In other words, you can only affect the edge arrow size by making the edges bigger.
-#' 
+#'
 #' This is only applicable for directed graphs - if you run this on an undirected graph, you'll get an error.
 #'
 #' @param sigmaObj A 'sigmaNet' object - created using the 'sigmaFromIgraph' function
