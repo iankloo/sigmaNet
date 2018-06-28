@@ -5,7 +5,7 @@
 \title{Modify the node size of a 'sigmaNet' object.}
 \usage{
 addNodeSize(sigmaObj, minSize = 1, maxSize = 3, sizeMetric = "degree",
-  sizeVector = NULL, oneSize = NULL)
+  mode = NULL, sizeVector = NULL, oneSize = NULL)
 }
 \arguments{
 \item{sigmaObj}{A 'sigmaNet' object - created using the 'sigmaFromIgraph' function}
@@ -15,6 +15,8 @@ addNodeSize(sigmaObj, minSize = 1, maxSize = 3, sizeMetric = "degree",
 \item{maxSize}{The maximum node size on the graph (for scaling)}
 
 \item{sizeMetric}{The metric to use when sizing the nodes.  Options are: degree, closeness, betweenness, pageRank, or eigenCentrality.}
+
+\item{mode}{The mode to be used when calculating degree or closeness for directed networks. Options are: all, in, out and total. The default behaviour will match that of igraph.}
 
 \item{sizeVector}{An optional vector with the sizes for each node (overrides sizeMetric and min/maxSize)}
 
